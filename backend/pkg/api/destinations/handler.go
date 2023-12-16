@@ -109,16 +109,17 @@ func CreateDestination(c *gin.Context) {
 		return
 	}
 
-	Destination := models.Destination{ColClass: input.ColClass,
-		Title:          input.Title,
-		Location:       input.Location,
-		Travellers:     input.Travellers,
-		HoverText:      input.HoverText,
-		Img:            input.Img,
-		City:           input.City,
-		Properties:     input.Properties,
-		Region:         input.Region,
-		DelayAnimation: input.DelayAnimation}
+	Destination := models.Destination{Class: input.Class,
+		Title:      input.Title,
+		Location:   input.Location,
+		Travellers: input.Travellers,
+		Hover:      input.Hover,
+		Img:        input.Img,
+		City:       input.City,
+		Properties: input.Properties,
+		Region:     input.Region,
+		Animation:  input.Animation,
+		Name:       input.Name}
 
 	database.Database.DB.Create(&Destination)
 
@@ -182,16 +183,17 @@ func UpdateDestination(c *gin.Context) {
 		return
 	}
 
-	database.Database.DB.Model(&Destination).Updates(models.Destination{ColClass: input.ColClass,
-		Title:          input.Title,
-		Location:       input.Location,
-		Travellers:     input.Travellers,
-		HoverText:      input.HoverText,
-		Img:            input.Img,
-		City:           input.City,
-		Properties:     input.Properties,
-		Region:         input.Region,
-		DelayAnimation: input.DelayAnimation})
+	database.Database.DB.Model(&Destination).Updates(models.Destination{Class: input.Class,
+		Title:      input.Title,
+		Location:   input.Location,
+		Travellers: input.Travellers,
+		Hover:      input.Hover,
+		Img:        input.Img,
+		City:       input.City,
+		Properties: input.Properties,
+		Region:     input.Region,
+		Animation:  input.Animation,
+		Name:       input.Name})
 
 	c.JSON(http.StatusOK, gin.H{"data": Destination})
 }

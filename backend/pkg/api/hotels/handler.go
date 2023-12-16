@@ -71,7 +71,12 @@ func FindHotels(c *gin.Context) {
 	// }
 
 	// If cache missed, fetch data from the database
-	database.Database.DB.Offset(offset).Limit(limit).Find(&hotels)
+	dB := database.Database.DB
+	// dB.Joins("JOIN hotel_images ON hotel_id = hotels.id").Offset(offset).Limit(limit).Find(&hotels)
+	// dB.Joins("JOIN hotel_images").Offset(offset).Limit(limit).Find(&hotels)
+	// database.Database.DB.Offset(offset).Limit(limit).Find(&hotels)
+	// Raw SQL
+	dB.Raw("Select * from Hotel_images hi inner join hotels h on hi.hotel_id = h.id").Offset(offset).Limit(limit).Scan(&hotels)
 
 	// Serialize hotels object and store it in Redis
 	//serializedBooks, err := json.Marshal(hotels)
@@ -110,15 +115,15 @@ func CreateHotel(c *gin.Context) {
 	}
 
 	Hotel := models.Hotel{Category_ID: input.Category_ID,
-		Tag:             input.Tag,
-		Img:             input.Img,
-		Title:           input.Title,
-		Location:        input.Location,
-		Rating:          input.Rating,
-		NumberOfReviews: input.NumberOfReviews,
-		Price:           input.Price,
-		DelayAnimation:  input.DelayAnimation,
-		City:            input.City}
+		Tag:       input.Tag,
+		Img:       input.Img,
+		Title:     input.Title,
+		Location:  input.Location,
+		Ratings:   input.Ratings,
+		Reviews:   input.Reviews,
+		Price:     input.Price,
+		Animation: input.Animation,
+		City:      input.City}
 
 	database.Database.DB.Create(&Hotel)
 
@@ -183,15 +188,15 @@ func UpdateHotel(c *gin.Context) {
 	}
 
 	database.Database.DB.Model(&Hotel).Updates(models.Hotel{Category_ID: input.Category_ID,
-		Tag:             input.Tag,
-		Img:             input.Img,
-		Title:           input.Title,
-		Location:        input.Location,
-		Rating:          input.Rating,
-		NumberOfReviews: input.NumberOfReviews,
-		Price:           input.Price,
-		DelayAnimation:  input.DelayAnimation,
-		City:            input.City})
+		Tag:       input.Tag,
+		Img:       input.Img,
+		Title:     input.Title,
+		Location:  input.Location,
+		Ratings:   input.Ratings,
+		Reviews:   input.Reviews,
+		Price:     input.Price,
+		Animation: input.Animation,
+		City:      input.City})
 
 	c.JSON(http.StatusOK, gin.H{"data": Hotel})
 }

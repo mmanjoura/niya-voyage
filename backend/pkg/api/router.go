@@ -2,8 +2,10 @@ package api
 
 import (
 	"niya-voyage/backend/docs"
+	"niya-voyage/backend/pkg/api/activities"
 	"niya-voyage/backend/pkg/api/blogs"
 	"niya-voyage/backend/pkg/api/books"
+	"niya-voyage/backend/pkg/api/cars"
 	"niya-voyage/backend/pkg/api/customers"
 	"niya-voyage/backend/pkg/api/destinations"
 	"niya-voyage/backend/pkg/api/hotels"
@@ -11,9 +13,10 @@ import (
 	"niya-voyage/backend/pkg/api/orders"
 	"niya-voyage/backend/pkg/api/payments"
 	"niya-voyage/backend/pkg/api/products"
+	"niya-voyage/backend/pkg/api/rentals"
 	"niya-voyage/backend/pkg/api/reviewRatings"
 	"niya-voyage/backend/pkg/api/testimonials"
-	"niya-voyage/backend/pkg/api/tourPackages"
+	"niya-voyage/backend/pkg/api/tours"
 	"niya-voyage/backend/pkg/auth"
 	"niya-voyage/backend/pkg/middleware"
 	"time"
@@ -32,7 +35,8 @@ func InitRouter() *gin.Engine {
 		r.Use(middleware.Security())
 		//r.Use(middleware.Xss())
 	}
-	r.Use(middleware.Cors())
+	// r.Use(middleware.Cors())
+	r.Use(middleware.CORSMiddleware())
 	r.Use(middleware.RateLimiter(rate.Every(1*time.Minute), 60)) // 60 requests per minute
 
 	docs.SwaggerInfo.BasePath = "/api/v1"
@@ -106,12 +110,33 @@ func InitRouter() *gin.Engine {
 		v1.PUT("/orderDetails/:id", middleware.APIKeyAuth(), orderDetails.UpdateOrderDetail)
 		v1.DELETE("/orderDetails/:id", middleware.APIKeyAuth(), orderDetails.DeleteOrderDetail)
 
-		// tourPackage routes
-		v1.GET("/tourPackages", middleware.APIKeyAuth(), tourPackages.FindTourPackages)
-		v1.POST("/tourPackages", middleware.APIKeyAuth(), middleware.JWTAuth(), tourPackages.CreateTourPackage)
-		v1.GET("/tourPackages/:id", middleware.APIKeyAuth(), tourPackages.FindTourPackage)
-		v1.PUT("/tourPackages/:id", middleware.APIKeyAuth(), tourPackages.UpdateTourPackage)
-		v1.DELETE("/tourPackages/:id", middleware.APIKeyAuth(), tourPackages.DeleteTourPackage)
+		// activities routes
+		v1.GET("/activities", middleware.APIKeyAuth(), activities.FindActivities)
+		v1.POST("/activities", middleware.APIKeyAuth(), middleware.JWTAuth(), activities.CreateActivity)
+		v1.GET("/activities/:id", middleware.APIKeyAuth(), activities.FindActivity)
+		v1.PUT("/activities/:id", middleware.APIKeyAuth(), activities.UpdateActivity)
+		v1.DELETE("/activities/:id", middleware.APIKeyAuth(), activities.DeleteActivity)
+
+		// tour routes
+		v1.GET("/tours", middleware.APIKeyAuth(), tours.FindTours)
+		v1.POST("/tours", middleware.APIKeyAuth(), middleware.JWTAuth(), tours.CreateTour)
+		v1.GET("/tours/:id", middleware.APIKeyAuth(), tours.FindTour)
+		v1.PUT("/tours/:id", middleware.APIKeyAuth(), tours.UpdateTour)
+		v1.DELETE("/tours/:id", middleware.APIKeyAuth(), tours.DeleteTour)
+
+		// rental routes
+		v1.GET("/rentals", middleware.APIKeyAuth(), rentals.FindRentals)
+		v1.POST("/rentals", middleware.APIKeyAuth(), middleware.JWTAuth(), rentals.CreateRental)
+		v1.GET("/rentals/:id", middleware.APIKeyAuth(), rentals.FindRental)
+		v1.PUT("/rentals/:id", middleware.APIKeyAuth(), rentals.UpdateRental)
+		v1.DELETE("/rentals/:id", middleware.APIKeyAuth(), rentals.DeleteRental)
+
+		// car routes
+		v1.GET("/cars", middleware.APIKeyAuth(), cars.FindCars)
+		v1.POST("/cars", middleware.APIKeyAuth(), middleware.JWTAuth(), cars.CreateCar)
+		v1.GET("/cars/:id", middleware.APIKeyAuth(), cars.FindCar)
+		v1.PUT("/cars/:id", middleware.APIKeyAuth(), cars.UpdateCar)
+		v1.DELETE("/cars/:id", middleware.APIKeyAuth(), cars.DeleteCar)
 
 		// payment routes
 		v1.GET("/payments", middleware.APIKeyAuth(), payments.FindPayments)
