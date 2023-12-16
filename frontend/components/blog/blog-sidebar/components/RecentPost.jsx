@@ -18,7 +18,7 @@ const RecentPost = () => {
 
             <div className="ml-15">
               <h5 className="text-15 lh-15 fw-500">
-                <Link href={`/blog-details/${item.id}`}>{item.title}</Link>
+                <Link href={`/blog/blog-details/${item.id}`}>{item.title}</Link>
               </h5>
               <div className="text-13 lh-1 mt-5">{item.date}</div>
             </div>

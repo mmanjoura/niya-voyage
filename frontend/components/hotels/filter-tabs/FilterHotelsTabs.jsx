@@ -1,10 +1,7 @@
+import { useState } from "react";
 
-'use client'
-
-
-
-const FilterTabsHotels3 = ({filterOption,setFilterOption}) => {
-
+const FilterTabsHotels3 = () => {
+  const [filterOption, setFilterOption] = useState("hotel");
 
   const filterOptions = [
     { label: "Hotel", value: "hotel" },
@@ -15,7 +12,6 @@ const FilterTabsHotels3 = ({filterOption,setFilterOption}) => {
     { label: "Cruise", value: "cruise" },
     { label: "Flights", value: "flights" },
     // add more options as needed
-
   ];
 
   return (

@@ -1,13 +1,25 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
-import carsData from "../../data/cars";
+// import carsData from "../../data/cars";
 import isTextMatched from "../../utils/isTextMatched";
 
-const Cars = () => {
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+var  slideImg = ["/img/hotels/2.png", "/img/hotels/1.png", "/img/hotels/3.png"]
+
+export default function TopCars() {
+  const [cars, setCars] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL+'/cars').then((response) => {
+      setCars(response.data);
+    });
+  }, []);
+
+  if (!cars) return null;
   var settings = {
     dots: true,
     infinite: true,
@@ -68,18 +80,17 @@ const Cars = () => {
       </button>
     );
   }
-
   return (
     <>
       <Slider {...settings}>
-        {carsData.slice(0, 4).map((item) => (
+        {cars.data.slice(0, 4).map((item) => (
           <div
             key={item.id}
             data-aos="fade"
             data-aos-delay={item.delayAnimation}
           >
             <Link
-              href={`/car-single/5`}
+              href={`/car/car-single/5`}
               className="carCard -type-1 d-block rounded-4 hover-inside-slider"
             >
               <div className="carCard__image">
@@ -92,7 +103,7 @@ const Cars = () => {
                       nextArrow={<Arrow type="next" />}
                       prevArrow={<Arrow type="prev" />}
                     >
-                      {item?.slideImg?.map((slide, i) => (
+                      {slideImg?.map((slide, i) => (
                         <div className="cardImage ratio ratio-6:5" key={i}>
                           <div className="cardImage__content ">
                             <Image
@@ -201,6 +212,5 @@ const Cars = () => {
       </Slider>
     </>
   );
-};
-
-export default Cars;
+ 
+}

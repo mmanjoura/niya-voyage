@@ -1,6 +1,3 @@
-
-'use client'
-
 const SearchBox = () => {
   const handleSearch = (event) => {
     event.preventDefault();

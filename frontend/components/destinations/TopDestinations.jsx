@@ -1,15 +1,29 @@
 import Link from "next/link";
-import { destinations5 } from "../../data/desinations";
+import axios from "axios";
+import React from "react";
 
-const TopDestinations = () => {
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+
+export default function TopDestinations() {
+  const [destinations, setDestinations] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL+'/destinations').then((response) => {
+      setDestinations(response.data);
+    });
+  }, []);
+
+  if (!destinations) return null;
+
   return (
     <>
-      {destinations5.map((item) => (
+      {destinations.data.map((item) => (
+        
         <div
-          className={item.colClass}
+          className={item.class}
           key={item.id}
           data-aos="fade"
-          data-aos-delay={item.delayAnimation}
+          data-aos-delay={item.animation}
         >
           <Link
             href="/tour-list-v3"
@@ -20,10 +34,10 @@ const TopDestinations = () => {
             </div>
             <div className="citiesCard__content px-30 py-30">
               <h4 className="text-26 fw-600 text-white text-capitalize">
-                {item.name}
+                {item.title}
               </h4>
               <div className="text-15 text-white">
-                {item.numberOfProperties} properties
+                {item.properties} properties
               </div>
             </div>
           </Link>
@@ -31,6 +45,4 @@ const TopDestinations = () => {
       ))}
     </>
   );
-};
-
-export default TopDestinations;
+}

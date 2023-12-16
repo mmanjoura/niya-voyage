@@ -1,6 +1,3 @@
-
-'use client'
-
 import carsData from "../../../data/cars";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
@@ -141,7 +138,7 @@ const CarPropertes = () => {
                 </div>
                 <div className="text-14 text-light-1 mt-5">Total</div>
                 <Link
-                  href={`/car-single/${item.id}`}
+                  href={`/car/car-single/${item.id}`}
                   className="button py-10 px-20 bg-dark-1 -yellow-1 text-white mt-15"
                 >
                   View Detail <div className="icon-arrow-top-right ml-15" />

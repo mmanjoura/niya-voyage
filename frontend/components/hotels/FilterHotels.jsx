@@ -1,14 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
 import { hotelsData } from "../../data/hotels";
 import isTextMatched from "../../utils/isTextMatched";
-import { useEffect, useState } from "react";
 
-const FilterHotels = ({ filterOption }) => {
-  const [filteredItems, setFilteredItems] = useState([]);
+const FilterHotels = () => {
   var itemSettings = {
     dots: true,
     infinite: true,
@@ -16,9 +12,6 @@ const FilterHotels = ({ filterOption }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  useEffect(() => {
-    setFilteredItems(hotelsData.filter((elm) => elm.category == filterOption));
-  }, [filterOption]);
 
   // custom navigation
   function ArrowSlick(props) {
@@ -46,7 +39,7 @@ const FilterHotels = ({ filterOption }) => {
 
   return (
     <>
-      {filteredItems.slice(0, 8).map((item) => (
+      {hotelsData.slice(0, 8).map((item) => (
         <div
           className="col-xl-3 col-lg-3 col-sm-6"
           key={item?.id}
@@ -54,7 +47,7 @@ const FilterHotels = ({ filterOption }) => {
           data-aos-delay={item.delayAnimation}
         >
           <Link
-            href={`/hotel-single-v2/${item.id}`}
+            href={`/hotel/hotel-single-v2/${item.id}`}
             className="hotelsCard -type-1 hover-inside-slider"
           >
             <div className="hotelsCard__image">

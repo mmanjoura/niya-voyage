@@ -1,10 +1,7 @@
-
-'use client'
-
 import { useState } from "react";
 
-const FilterHotelsTabs2 = ({filterOption, setFilterOption}) => {
-
+const FilterHotelsTabs2 = () => {
+  const [filterOption, setFilterOption] = useState("new_york");
 
   const filterOptions = [
     { label: "New York", value: "new_york" },

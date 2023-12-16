@@ -1,6 +1,3 @@
-
-'use client'
-
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
@@ -110,7 +107,7 @@ const TourProperties = () => {
                 <div className="text-14 text-light-1 mt-5">per adult</div>
 
                 <Link
-                  href={`/tour-single/${item.id}`}
+                  href={`/tour/tour-single/${item.id}`}
                   className="button -md -dark-1 bg-blue-1 text-white mt-24"
                 >
                   View Detail <div className="icon-arrow-top-right ml-15"></div>

@@ -2,7 +2,7 @@ import FilterBox from "../../components/hotel-single/filter-box";
 
 const SidebarRight = ({ hotel }) => {
   return (
-    <aside className="ml-50 lg:ml-0">
+    <div className="ml-50 lg:ml-0">
       <div className="px-30 py-30 border-light rounded-4 shadow-4">
         <div className="d-flex items-center justify-between">
           <div>
@@ -28,7 +28,7 @@ const SidebarRight = ({ hotel }) => {
         </div>
       </div>
       {/* End px-30 FilterBox */}
-    </aside>
+    </div>
   );
 };
 

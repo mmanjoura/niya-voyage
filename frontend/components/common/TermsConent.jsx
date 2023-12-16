@@ -1,6 +1,3 @@
-
-'use client'
-
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 const TermsConent = () => {

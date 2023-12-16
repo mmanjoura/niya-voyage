@@ -1,13 +1,25 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
-import activityData from "../../data/activity";
+// import activityData from "../../data/activity";
 import isTextMatched from "../../utils/isTextMatched";
 
-const Activity = () => {
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+var  slideImg = ["/img/hotels/2.png", "/img/hotels/1.png", "/img/hotels/3.png"]
+
+export default function TopActivities() {
+  const [activities, setActivities] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL+'/activities').then((response) => {
+      setActivities(response.data);
+    });
+  }, []);
+
+  if (!activities) return null;
   var settings = {
     dots: true,
     infinite: true,
@@ -72,14 +84,14 @@ const Activity = () => {
   return (
     <>
       <Slider {...settings}>
-        {activityData.slice(0, 4).map((item) => (
+        {activities.data.slice(0, 4).map((item) => (
           <div
             key={item?.id}
             data-aos="fade"
-            data-aos-delay={item?.delayAnimation}
+            data-aos-delay={item?.animation}
           >
             <Link
-              href={`/activity-single/${item.id}`}
+              href={`/activity/activity-single/${item.id}`}
               className="activityCard -type-1 rounded-4 hover-inside-slider"
             >
               <div className="activityCard__image position-relative">
@@ -90,7 +102,7 @@ const Activity = () => {
                     nextArrow={<Arrow type="next" />}
                     prevArrow={<Arrow type="prev" />}
                   >
-                    {item?.slideImg?.map((slide, i) => (
+                    {slideImg?.map((slide, i) => (
                       <div className="cardImage ratio ratio-1:1" key={i}>
                         <div className="cardImage__content ">
                           <Image
@@ -154,7 +166,7 @@ const Activity = () => {
                         <span className="text-15 text-dark-1 fw-500">
                           {item?.ratings}
                         </span>{" "}
-                        {item?.numberOfReviews} reviews
+                        {item?.reviews} reviews
                       </div>
                     </div>
                   </div>
@@ -176,6 +188,5 @@ const Activity = () => {
       </Slider>
     </>
   );
-};
-
-export default Activity;
+ 
+}

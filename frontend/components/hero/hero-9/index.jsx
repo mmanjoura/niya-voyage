@@ -1,6 +1,3 @@
-
-'use client'
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import MainFilterSearchBox from "./MainFilterSearchBox";

@@ -89,9 +89,7 @@
 
   &.-type-2 {
     margin-top: 20px;
-    transition:
-      background-color 0.4s $easeOutQuart,
-      margin 0.1s $easeOutQuart;
+    transition: background-color 0.4s $easeOutQuart, margin 0.1s $easeOutQuart;
 
     @include media-below(xl) {
       margin-top: 0;
@@ -532,7 +530,8 @@
 }
 
 // active menu
-.menu__nav li.current {
+.menu__nav li.current,
+.menu-active-link .ps-menu-label {
   color: var(--color-blue-1);
 }
 .mega__grid div.current {

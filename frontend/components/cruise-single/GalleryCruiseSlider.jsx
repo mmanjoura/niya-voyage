@@ -1,6 +1,3 @@
-
-'use client'
-
 import React, { useRef, useState } from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
 // Import Swiper React components

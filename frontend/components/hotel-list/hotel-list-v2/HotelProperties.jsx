@@ -1,6 +1,3 @@
-
-'use client'
-
 import { hotelsData } from "../../../data/hotels";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
@@ -154,7 +151,7 @@ const HotelProperties = () => {
                   </div>
 
                   <Link
-                    href={`/hotel-single-v2/${item.id}`}
+                    href={`/hotel/hotel-single-v2/${item.id}`}
                     className="button -md -dark-1 bg-blue-1 text-white mt-24"
                   >
                     See Availability{" "}

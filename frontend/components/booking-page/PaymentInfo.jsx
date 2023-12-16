@@ -1,6 +1,3 @@
-
-'use client'
-
 import { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import PricingSummary from "./sidebar/PricingSummary";

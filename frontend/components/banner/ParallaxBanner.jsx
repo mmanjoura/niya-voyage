@@ -1,6 +1,3 @@
-
-'use client'
-
 import Link from "next/link";
 import { Parallax } from "react-parallax";
 
@@ -22,7 +19,7 @@ const ParallaxBanner = () => {
               </h2>
               <div className="d-inline-block mt-30">
                 <Link
-                  href="/hotel-list-v5"
+                  href="/hotel/hotel-list-v5"
                   className="button -md -blue-1 bg-white text-dark-1"
                 >
                   Find Deals

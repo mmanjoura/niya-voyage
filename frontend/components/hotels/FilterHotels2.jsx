@@ -1,20 +1,10 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
 import { hotelsData } from "../../data/hotels";
 import isTextMatched from "../../utils/isTextMatched";
-import { useEffect, useState } from "react";
 
-const FilterHotels2 = ({filterOption}) => {
-  const [filteredItems, setFilteredItems] = useState([])
-  useEffect(() => {
-    setFilteredItems(hotelsData.filter(elm=>elm.city == filterOption))
-   
-  }, [filterOption])
-  
+const FilterHotels2 = () => {
   var itemSettings = {
     dots: true,
     infinite: true,
@@ -49,7 +39,7 @@ const FilterHotels2 = ({filterOption}) => {
 
   return (
     <>
-      {filteredItems.slice(0, 8).map((item) => (
+      {hotelsData.slice(0, 8).map((item) => (
         <div
           className="col-xl-3 col-lg-3 col-sm-6"
           key={item?.id}
@@ -57,7 +47,7 @@ const FilterHotels2 = ({filterOption}) => {
           data-aos-delay={item.delayAnimation}
         >
           <Link
-            href={`/hotel-single-v1/${item.id}`}
+            href={`/hotel/hotel-single-v1/${item.id}`}
             className="hotelsCard -type-1 hover-inside-slider"
           >
             <div className="hotelsCard__image">

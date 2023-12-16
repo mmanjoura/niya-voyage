@@ -7,7 +7,7 @@ const Blog2 = () => {
     <>
       {blogsData.slice(4, 9).map((item) => (
         <Link
-          href={`/blog-details/${item.id}`}
+          href={`/blog/blog-details/${item.id}`}
           className="blogCard -type-1 col-12"
           key={item.id}
         >

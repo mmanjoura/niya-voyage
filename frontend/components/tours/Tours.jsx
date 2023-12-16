@@ -1,13 +1,25 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
-import toursData from "../../data/tours";
+// import toursData from "../../data/tours";
 import isTextMatched from "../../utils/isTextMatched";
 
-const Tours = () => {
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+var  slideImg = ["/img/hotels/2.png", "/img/hotels/1.png", "/img/hotels/3.png"]
+
+export default function TopTours() {
+  const [tours, setTours] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL+'/tours').then((response) => {
+      setTours(response.data);
+    });
+  }, []);
+
+  if (!tours) return null;
   var settings = {
     dots: true,
     infinite: true,
@@ -72,7 +84,7 @@ const Tours = () => {
   return (
     <>
       <Slider {...settings}>
-        {toursData.slice(0, 4).map((item) => (
+        {tours.data.slice(0, 4).map((item) => (
           <div
             key={item?.id}
             data-aos="fade"
@@ -90,7 +102,7 @@ const Tours = () => {
                     nextArrow={<Arrow type="next" />}
                     prevArrow={<Arrow type="prev" />}
                   >
-                    {item?.slideImg?.map((slide, i) => (
+                    {slideImg?.map((slide, i) => (
                       <div className="cardImage ratio ratio-1:1" key={i}>
                         <div className="cardImage__content ">
                           <Image
@@ -183,6 +195,5 @@ const Tours = () => {
       </Slider>
     </>
   );
-};
-
-export default Tours;
+ 
+}

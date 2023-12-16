@@ -10,8 +10,6 @@ export const hotelsData = [
     numberOfReviews: "3014",
     price: "72",
     delayAnimation: "100",
-    city: "new_york",
-    category: "hotel",
   },
   {
     id: 2,
@@ -24,8 +22,6 @@ export const hotelsData = [
     numberOfReviews: "2345",
     price: "85",
     delayAnimation: "200",
-    city: "london",
-    category: "tour",
   },
   {
     id: 3,
@@ -38,8 +34,6 @@ export const hotelsData = [
     numberOfReviews: "3014",
     price: "68",
     delayAnimation: "300",
-    city: "new_york",
-    category: "activity",
   },
   {
     id: 4,
@@ -52,8 +46,6 @@ export const hotelsData = [
     numberOfReviews: "5633",
     price: "89",
     delayAnimation: "400",
-    city: "new_york",
-    category: "cruise",
   },
   {
     id: 5,
@@ -66,8 +58,6 @@ export const hotelsData = [
     numberOfReviews: "3014",
     price: "99",
     delayAnimation: "500",
-    city: "london",
-    category: "holiday_rentals",
   },
   {
     id: 6,
@@ -80,8 +70,6 @@ export const hotelsData = [
     numberOfReviews: "3467",
     price: "79",
     delayAnimation: "600",
-    city: "new_york",
-    category: "hotel",
   },
   {
     id: 7,
@@ -94,8 +82,6 @@ export const hotelsData = [
     numberOfReviews: "3014",
     price: "88",
     delayAnimation: "700",
-    city: "new_york",
-    category: "holiday_rentals",
   },
   {
     id: 8,
@@ -108,8 +94,6 @@ export const hotelsData = [
     numberOfReviews: "7654",
     price: "68",
     delayAnimation: "800",
-    city: "london",
-    category: "flights",
   },
   {
     id: 9,
@@ -122,8 +106,6 @@ export const hotelsData = [
     numberOfReviews: "3245",
     price: "72",
     delayAnimation: "900",
-    city: "new_york",
-    category: "car",
   },
   {
     id: 10,
@@ -140,8 +122,6 @@ export const hotelsData = [
     numberOfReviews: "3432",
     price: "85",
     delayAnimation: "1000",
-    city: "paris",
-    category: "hotel",
   },
   {
     id: 11,
@@ -154,8 +134,6 @@ export const hotelsData = [
     numberOfReviews: "3014",
     price: "68",
     delayAnimation: "1100",
-    city: "new_york",
-    category: "hotel",
   },
   {
     id: 12,
@@ -168,8 +146,6 @@ export const hotelsData = [
     numberOfReviews: "2343",
     price: "89",
     delayAnimation: "1200",
-    city: "paris",
-    category: "hotel",
   },
   {
     id: 13,
@@ -182,8 +158,6 @@ export const hotelsData = [
     numberOfReviews: "3014",
     price: "99",
     delayAnimation: "500",
-    city: "new_york",
-    category: "hotel",
   },
   {
     id: 14,
@@ -196,8 +170,6 @@ export const hotelsData = [
     numberOfReviews: "3467",
     price: "79",
     delayAnimation: "600",
-    city: "istanbul",
-    category: "tour",
   },
   {
     id: 15,
@@ -210,8 +182,6 @@ export const hotelsData = [
     numberOfReviews: "3014",
     price: "88",
     delayAnimation: "700",
-    city: "istanbul",
-    category: "hotel",
   },
   {
     id: 16,
@@ -224,7 +194,5 @@ export const hotelsData = [
     numberOfReviews: "7654",
     price: "68",
     delayAnimation: "800",
-    city: "new_york",
-    category: "hotel",
   },
 ];

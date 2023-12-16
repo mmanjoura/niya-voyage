@@ -1,6 +1,3 @@
-
-'use client'
-
 const SearchBox = () => {
   function handleSubmit(e) {
     e.preventDefault();

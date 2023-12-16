@@ -31,6 +31,7 @@ module.exports = [
     speed: "Unlimited",
     delayAnimation: "200",
   },
+
   {
     id: 3,
     tag: "best seller",

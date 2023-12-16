@@ -1,13 +1,26 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
-import { hotelsData } from "../../data/hotels";
+// import { hotelsData } from "../../data/hotels";
 import isTextMatched from "../../utils/isTextMatched";
 
-const Hotels2 = () => {
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+var  slideImg = ["/img/hotels/2.png", "/img/hotels/1.png", "/img/hotels/3.png"]
+
+export default function TopHotels() {
+  const [hotels, setHotels] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL+'/hotels').then((response) => {
+      setHotels(response.data);
+    });
+  }, []);
+console.log(hotels);
+  if (!hotels) return null;
+
   var settings = {
     dots: true,
     infinite: true,
@@ -72,12 +85,12 @@ const Hotels2 = () => {
   return (
     <>
       <Slider {...settings}>
-        {hotelsData.slice(0, 4).map((item) => (
+        {hotels.data.slice(0, 4).map((item) => (
           <div
             className="col-xl-3 col-lg-3 col-sm-6"
             key={item?.id}
             data-aos="fade"
-            data-aos-delay={item.delayAnimation}
+            data-aos-delay={item.animation}
           >
             <Link
               href={`/hotel-single-v1/${item.id}`}
@@ -91,7 +104,7 @@ const Hotels2 = () => {
                     nextArrow={<ArrowSlick type="next" />}
                     prevArrow={<ArrowSlick type="prev" />}
                   >
-                    {item?.slideImg?.map((slide, i) => (
+                    {slideImg?.map((slide, i) => (
                       <div className="cardImage ratio ratio-1:1" key={i}>
                         <div className="cardImage__content ">
                           <Image
@@ -148,7 +161,7 @@ const Hotels2 = () => {
                     Exceptional
                   </div>
                   <div className="text-14 text-light-1 ml-10">
-                    {item?.numberOfReviews} reviews
+                    {item?.reviews} reviews
                   </div>
                 </div>
                 <div className="mt-5">
@@ -164,6 +177,4 @@ const Hotels2 = () => {
       </Slider>
     </>
   );
-};
-
-export default Hotels2;
+}

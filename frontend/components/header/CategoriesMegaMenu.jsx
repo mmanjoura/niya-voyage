@@ -1,18 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { categorieMegaMenuItems } from "../../data/mainMenuData";
 import {
   isActiveParent,
   isActiveLink,
   isActiveParentChaild,
 } from "../../utils/linkActiveChecker";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
-
-const CategoriesMegaMenu = ({setIsActiveParent}) => {
-  const pathname = usePathname();
-  const [activeNestedMenu, setActiveNestedMenu] = useState(0)
+const CategoriesMegaMenu = () => {
+  const router = useRouter();
 
   const itemList = [
     "Hotel",
@@ -24,42 +22,23 @@ const CategoriesMegaMenu = ({setIsActiveParent}) => {
     "Flights",
   ];
 
-
- useEffect(() => {
-
-  categorieMegaMenuItems.map((megaMenu=>{
-    megaMenu?.menuCol?.map((megaCol=>{
-      megaCol?.menuItems?.map((item=>{   
-        item?.menuList?.map((list)=>{
-          if (list.routePath?.split('/')[1] == pathname.split('/')[1]) {
-            setIsActiveParent(true) 
-            setActiveNestedMenu(megaMenu.id - 1)           
-          } 
-                
-        })
-      }))
-    }))
-  }))
-   
- }, [])
- 
   return (
-    <div className="tabs -underline-2 js-tabs">
-      <div className="tabs__controls row x-gap-40 y-gap-10 lg:x-gap-20 pb-30 js-tabs-controls">
+    <Tabs className="tabs -underline-2 js-tabs">
+      <TabList className="tabs__controls row x-gap-40 y-gap-10 lg:x-gap-20 pb-30 js-tabs-controls">
         {itemList.map((item, i) => (
-          <div className="col-auto" key={i} onClick={()=>setActiveNestedMenu(i)}>
-            <button className={`tabs__button text-light-1 fw-500 js-tabs-button ${activeNestedMenu == i ? 'nested-menu-active':'nested-menu-inactive'} `}>
+          <Tab className="col-auto" key={i}>
+            <button className="tabs__button text-light-1 fw-500 js-tabs-button">
               {item}
             </button>
-          </div>
+          </Tab>
         ))}
-      </div>
+      </TabList>
       {/* End tab-controls */}
 
       <div className="tabs__content js-tabs-content">
-      
-          <div className={'react-tabs__tab-panel--selected'}>
-            {categorieMegaMenuItems[activeNestedMenu]?.menuCol?.map((megaCol, i) => (
+        {categorieMegaMenuItems.map((megaMenu) => (
+          <TabPanel key={megaMenu.id}>
+            {megaMenu?.menuCol?.map((megaCol, i) => (
               <ul className="mega__content" key={i}>
                 <li className="mega__grid">
                   {megaCol?.menuItems?.map((item) => (
@@ -70,7 +49,7 @@ const CategoriesMegaMenu = ({setIsActiveParent}) => {
                           <div
                             key={i}
                             className={
-                              isActiveLink(list.routePath, pathname)
+                              isActiveLink(list.routePath, router.asPath)
                                 ? "current"
                                 : ""
                             }
@@ -108,11 +87,11 @@ const CategoriesMegaMenu = ({setIsActiveParent}) => {
                 {/* End mega menu right images */}
               </ul>
             ))}
-          </div>
-
+          </TabPanel>
+        ))}
       </div>
       {/* End tab_content */}
-    </div>
+    </Tabs>
   );
 };
 

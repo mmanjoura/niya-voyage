@@ -1,6 +1,3 @@
-
-'use client'
-
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import MainMenu from "../MainMenu";
@@ -21,9 +18,6 @@ const Header1 = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
-    return () => {
-      window.removeEventListener("scroll", changeBackground);
-    };
   }, []);
 
   return (
@@ -35,8 +29,8 @@ const Header1 = () => {
             <div className="col-auto">
               <div className="d-flex items-center">
                 <Link href="/" className="header-logo mr-50">
-                  <img src="/img/general/logo-with-name.png" alt="logo icon" />
-                  <img src="/img/general/logo-with-name.png" alt="logo icon" />
+                  <img src="/img/general/logo-dark.svg" alt="logo icon" />
+                  <img src="/img/general/logo-dark.svg" alt="logo icon" />
                 </Link>
                 {/* End logo */}
 
@@ -71,13 +65,13 @@ const Header1 = () => {
                 {/* Start btn-group */}
                 <div className="d-flex items-center ml-20 is-menu-opened-hide md:d-none">
                   <Link
-                    href="/login"
+                    href="/others-pages/login"
                     className="button px-30 fw-400 text-14 -blue-1 bg-dark-4 h-50 text-white"
                   >
                     Become An Expert
                   </Link>
                   <Link
-                    href="/signup"
+                    href="/others-pages/signup"
                     className="button px-30 fw-400 text-14 -outline-blue-1 h-50 text-blue-1 ml-20"
                   >
                     Sign In / Register
@@ -89,7 +83,7 @@ const Header1 = () => {
                 <div className="d-none xl:d-flex x-gap-20 items-center pl-30 text-dark-1">
                   <div>
                     <Link
-                      href="/login"
+                      href="/others-pages/login"
                       className="d-flex items-center icon-user text-inherit text-22"
                     />
                   </div>

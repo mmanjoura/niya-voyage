@@ -1,6 +1,3 @@
-
-'use client'
-
 import Slider from "react-slick";
 
 const Categories = () => {
@@ -43,10 +40,10 @@ const Categories = () => {
     { id: 1, icon: "icon-bed", catName: "Hotel" },
     { id: 2, icon: "icon-destination", catName: "Tour" },
     { id: 4, icon: "icon-ski", catName: "Activity" },
-    { id: 5, icon: "icon-home", catName: "Holiday Rental" },
+    { id: 5, icon: "icon-home", catName: "Holiday Rentals" },
     { id: 5, icon: "icon-car", catName: "Car" },
     { id: 6, icon: "icon-yatch", catName: " Cruise" },
-    { id: 7, icon: "icon-tickets", catName: " Flight" },
+    { id: 7, icon: "icon-tickets", catName: " Flights" },
   ];
   return (
     <Slider {...settings}>

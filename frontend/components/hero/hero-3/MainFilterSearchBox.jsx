@@ -1,16 +1,13 @@
-'use client'
-
+import Router from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { addCurrentTab } from "../../../features/hero/findPlaceSlice";
 import DateSearch from "../DateSearch";
 import GuestSearch from "./GuestSearch";
 import LocationSearch from "./LocationSearch";
-import { useRouter } from "next/navigation";
 
 const MainFilterSearchBox = () => {
   const { tabs, currentTab } = useSelector((state) => state.hero) || {};
   const dispatch = useDispatch();
-  const Router = useRouter()
 
   return (
     <>
@@ -53,7 +50,7 @@ const MainFilterSearchBox = () => {
             <div className="button-item">
               <button
                 className="mainSearch__submit button -dark-1 py-15 px-35 h-60 col-12 rounded-4 bg-blue-1 text-white"
-                onClick={() => Router.push("/hotel-list-v3")}
+                onClick={() => Router.push("/hotel/hotel-list-v3")}
               >
                 <i className="icon-search text-20 mr-10" />
                 Search

@@ -1,21 +1,11 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import blogsData from "../../data/blogs";
 import BlogPagination from "./BlogPagination";
 
 const Blog1 = () => {
   const [filterOption, setFilterOption] = useState("art_culture");
-  const [filteredItems, setFilteredItems] = useState([])
-
-  useEffect(() => {
-    setFilteredItems(blogsData.filter(elm=>elm.tags?.includes(filterOption)))
-  
-  }, [filterOption])
-  
   const filterOptions = [
     { label: "Art and culture", value: "art_culture" },
     { label: "Beaches", value: "beaches" },
@@ -47,10 +37,10 @@ const Blog1 = () => {
         {/* End tab-controls */}
 
         <div className="row y-gap-30 pt-30">
-          {filteredItems.slice(0, 9).map((item) => (
+          {blogsData.slice(0, 9).map((item) => (
             <div className="col-lg-4 col-sm-6" key={item.id}>
               <Link
-                href={`/blog-details/${item.id}`}
+                href={`/blog/blog-details/${item.id}`}
                 className="blogCard -type-1 d-block "
               >
                 <div className="blogCard__image">

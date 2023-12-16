@@ -1,6 +1,3 @@
-
-'use client'
-
 import React, { useState } from "react";
 import CustomerInfo from "../CustomerInfo";
 import PaymentInfo from "../PaymentInfo";

@@ -1,6 +1,3 @@
-
-'use client'
-
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import CurrenctyMegaMenu from "../CurrenctyMegaMenu";
@@ -21,9 +18,6 @@ const Header1 = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
-    return () => {
-      window.removeEventListener("scroll", changeBackground);
-    };
   }, []);
 
   return (
@@ -36,7 +30,7 @@ const Header1 = () => {
                 <div className="mr-20 d-flex items-center">
                   <div className="mr-15 d-none md:d-flex">
                     <Link
-                      href="/login"
+                      href="/others-pages/login"
                       className="icon-user text-inherit text-22 text-white"
                     />
                   </div>
@@ -64,8 +58,8 @@ const Header1 = () => {
                 {/* End mobile humberger menu */}
 
                 <Link href="/" className="header-logo mr-20">
-                  <img src="/img/general/logo-with-name.png" alt="logo icon" />
-                  <img src="/img/general/logo-with-name.png" alt="logo icon" />
+                  <img src="/img/general/logo-light-2.svg" alt="logo icon" />
+                  <img src="/img/general/logo-dark.svg" alt="logo icon" />
                 </Link>
                 {/* End logo */}
 
@@ -98,13 +92,13 @@ const Header1 = () => {
                 {/* Start btn-group */}
                 <div className="d-flex items-center ml-20 is-menu-opened-hide md:d-none">
                   <Link
-                    href="/login"
+                    href="/others-pages/login"
                     className="button px-30 fw-400 text-14 -white bg-white h-50 text-dark-1"
                   >
                     Become An Expert
                   </Link>
                   <Link
-                    href="/signup"
+                    href="/others-pages/signup"
                     className="button px-30 fw-400 text-14 border-white -outline-white h-50 text-white ml-20"
                   >
                     Sign In / Register

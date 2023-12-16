@@ -1,6 +1,3 @@
-
-'use client'
-
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import MainMenu from "../MainMenu";
@@ -19,9 +16,6 @@ const Header1 = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
-    return () => {
-      window.removeEventListener("scroll", changeBackground);
-    };
   }, []);
 
   return (
@@ -35,8 +29,8 @@ const Header1 = () => {
             <div className="col-auto">
               <div className="d-flex items-center">
                 <Link href="/" className="header-logo mr-50">
-                  <img src="/img/general/logo-with-name.png" alt="logo icon" />
-                  <img src="/img/general/logo-with-name.png" alt="logo icon" />
+                  <img src="/img/general/logo-light.svg" alt="logo icon" />
+                  <img src="/img/general/logo-dark.svg" alt="logo icon" />
                 </Link>
                 {/* End logo */}
               </div>
@@ -67,7 +61,7 @@ const Header1 = () => {
                 <div className="d-none xl:d-flex x-gap-20 items-center pl-20 text-white">
                   <div>
                     <Link
-                      href="/login"
+                      href="/others-pages/login"
                       className="d-flex items-center icon-user text-inherit text-22"
                     />
                   </div>

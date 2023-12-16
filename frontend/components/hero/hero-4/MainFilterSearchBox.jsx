@@ -1,11 +1,9 @@
-'use client'
-import { useRouter } from "next/navigation";
+import Router from "next/router";
 import DateSearch from "../DateSearch";
 import GuestSearch from "./GuestSearch";
 import LocationSearch from "./LocationSearch";
 
 const MainFilterSearchBox = () => {
-  const Router = useRouter()
   return (
     <>
       <div
@@ -34,7 +32,7 @@ const MainFilterSearchBox = () => {
           <div className="button-item h-full">
             <button
               className="button -dark-1 py-15 px-40 h-full col-12 rounded-0 bg-blue-1 text-white"
-              onClick={() => Router.push("/hotel-list-v5")}
+              onClick={() => Router.push("/hotel/hotel-list-v5")}
             >
               <i className="icon-search text-20 mr-10" />
               Search

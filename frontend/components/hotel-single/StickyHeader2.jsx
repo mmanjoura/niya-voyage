@@ -1,6 +1,3 @@
-
-'use client'
-
 import { useEffect, useState } from "react";
 import FilterBox2 from "./filter-box-2";
 const StickyHeader2 = ({ hotel }) => {

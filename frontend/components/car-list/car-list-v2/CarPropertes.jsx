@@ -1,6 +1,3 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -50,7 +47,7 @@ const CarPropertes = () => {
           data-aos-delay={item.delayAnimation}
         >
           <Link
-            href={`/car-single/${item.id}`}
+            href={`/car/car-single/${item.id}`}
             className="carCard -type-1 d-block rounded-4 hover-inside-slider"
           >
             <div className="carCard__image">

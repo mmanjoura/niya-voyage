@@ -12,7 +12,7 @@ const Categories = () => {
     <>
       {catContent.map((item) => (
         <Link
-          href="/blog-list-v1"
+          href="/blog/blog-list-v1"
           className="d-flex items-center justify-between text-dark-1"
           key={item.id}
         >

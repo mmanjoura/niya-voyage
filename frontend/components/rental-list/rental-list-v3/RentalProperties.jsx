@@ -1,6 +1,3 @@
-
-'use client'
-
 import rentalssData from "../../../data/rentals";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
@@ -128,7 +125,7 @@ const RentalProperties = () => {
                 <div className="text-22 lh-12 fw-600 mt-5">US${item.price}</div>
                 <div className="text-14 text-light-1 mt-5">per adult</div>
                 <Link
-                  href={`/rental-single/${item.id}`}
+                  href={`/rental/rental-single/${item.id}`}
                   className="button py-10 px-20 -dark-1 bg-blue-1 text-white mt-10"
                 >
                   View Detail <div className="icon-arrow-top-right ml-15" />

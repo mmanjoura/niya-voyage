@@ -7,7 +7,6 @@ module.exports = [
     delayAnimation: "100",
     details: `For decades, travelers have been escaping to the Catskills — a mountainous region in upstate New York — whenever they’ve needed a reset.`,
     tag: "art",
-    tags: ["adventure_travel", "food_drink"],
   },
   {
     id: 2,
@@ -17,7 +16,6 @@ module.exports = [
     delayAnimation: "200",
     details: `For decades, travelers have been escaping to the Catskills — a mountainous region in upstate New York — whenever they’ve needed a reset.`,
     tag: "beaches",
-    tags: ["beaches", "family_holidays"],
   },
   {
     id: 3,
@@ -27,7 +25,6 @@ module.exports = [
     delayAnimation: "300",
     details: `For decades, travelers have been escaping to the Catskills — a mountainous region in upstate New York — whenever they’ve needed a reset.`,
     tag: "adventure",
-    tags: ["art_culture", "food_drink"],
   },
   {
     id: 4,
@@ -37,7 +34,6 @@ module.exports = [
     delayAnimation: "400",
     details: `For decades, travelers have been escaping to the Catskills — a mountainous region in upstate New York — whenever they’ve needed a reset.`,
     tag: "explore",
-    tags: ["beaches", "family_holidays"],
   },
   {
     id: 5,
@@ -47,7 +43,6 @@ module.exports = [
     delayAnimation: "100",
     details: `For decades, travelers have been escaping to the Catskills — a mountainous region in upstate New York — whenever they’ve needed a reset.`,
     tag: "holidays",
-    tags: ["art_culture", "food_drink"],
   },
   {
     id: 6,
@@ -57,7 +52,6 @@ module.exports = [
     delayAnimation: "200",
     details: `For decades, travelers have been escaping to the Catskills — a mountainous region in upstate New York — whenever they’ve needed a reset.`,
     tag: "travel",
-    tags: ["beaches", "family_holidays"],
   },
   {
     id: 7,
@@ -67,7 +61,6 @@ module.exports = [
     delayAnimation: "300",
     details: `For decades, travelers have been escaping to the Catskills — a mountainous region in upstate New York — whenever they’ve needed a reset.`,
     tag: "food",
-    tags: ["art_culture", "food_drink"],
   },
   {
     id: 8,
@@ -77,7 +70,6 @@ module.exports = [
     delayAnimation: "200",
     details: `For decades, travelers have been escaping to the Catskills — a mountainous region in upstate New York — whenever they’ve needed a reset.`,
     tag: "holidays",
-    tags: ["art_culture", "food_drink"],
   },
   {
     id: 9,
@@ -87,7 +79,6 @@ module.exports = [
     delayAnimation: "300",
     details: `For decades, travelers have been escaping to the Catskills — a mountainous region in upstate New York — whenever they’ve needed a reset.`,
     tag: "park",
-    tags: ["beaches", "explore"],
   },
   {
     id: 10,
@@ -97,7 +88,6 @@ module.exports = [
     delayAnimation: "100",
     details: `Ut enim ad minim veniam, quis nostrud exerc ullamco laboris nisi ut aliquip.`,
     tag: "",
-    tags: ["art_culture", "food_drink"],
   },
   {
     id: 11,
@@ -107,6 +97,5 @@ module.exports = [
     delayAnimation: "200",
     details: `Ut enim ad minim veniam, quis nostrud exerc ullamco laboris nisi ut aliquip.`,
     tag: "",
-    tags: ["art_culture", "air_travel"],
   },
 ];

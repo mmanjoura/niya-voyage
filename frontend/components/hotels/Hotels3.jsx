@@ -1,6 +1,3 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -38,7 +35,7 @@ const Hotels3 = () => {
         {hotelsData?.slice(11, 16)?.map((item) => (
           <SwiperSlide key={item?.id}>
             <Link
-              href={`/hotel-single-v2/${item.id}`}
+              href={`/hotel/hotel-single-v2/${item.id}`}
               className="hotelsCard -type-1 hover-inside-slider"
               data-aos="fade"
               data-aos-delay={item.delayAnimation}

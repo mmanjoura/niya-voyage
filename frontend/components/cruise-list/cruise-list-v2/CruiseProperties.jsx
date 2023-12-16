@@ -1,6 +1,3 @@
-
-'use client'
-
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
@@ -19,7 +16,7 @@ const CruiseProperties = () => {
           data-aos-delay={item?.delayAnimation}
         >
           <Link
-            href={`/cruise-single/${item.id}`}
+            href={`/cruise/cruise-single/${item.id}`}
             className="cruiseCard -type-1 rounded-4 "
           >
             <div className="cruiseCard__image position-relative">

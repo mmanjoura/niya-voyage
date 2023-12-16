@@ -1,6 +1,3 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -50,7 +47,7 @@ const HotelProperties = () => {
           data-aos-delay={item.delayAnimation}
         >
           <Link
-            href={`/hotel-single-v2/${item.id}`}
+            href={`/hotel/hotel-single-v2/${item.id}`}
             className="hotelsCard -type-1 hover-inside-slider"
           >
             <div className="hotelsCard__image">

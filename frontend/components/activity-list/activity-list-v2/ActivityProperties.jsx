@@ -1,6 +1,3 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -50,7 +47,7 @@ const ActivityProperties = () => {
           data-aos-delay={item?.delayAnimation}
         >
           <Link
-            href={`/activity-single/${item.id}`}
+            href={`/activity/activity-single/${item.id}`}
             className="activityCard -type-1 rounded-4 hover-inside-slider"
           >
             <div className="activityCard__image position-relative">

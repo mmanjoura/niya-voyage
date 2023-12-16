@@ -1,13 +1,25 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
-import rentalsData from "../../data/rentals";
+// import rentalsData from "../../data/rentals";
 import isTextMatched from "../../utils/isTextMatched";
 
-const Rentals = () => {
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+var  slideImg = ["/img/hotels/2.png", "/img/hotels/1.png", "/img/hotels/3.png"]
+
+export default function TopRentals() {
+  const [rentals, setRentals] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL+'/rentals').then((response) => {
+      setRentals(response.data);
+    });
+  }, []);
+
+  if (!rentals) return null;
   var settings = {
     dots: true,
     infinite: true,
@@ -68,18 +80,17 @@ const Rentals = () => {
       </button>
     );
   }
-
   return (
     <>
       <Slider {...settings}>
-        {rentalsData.slice(0, 4).map((item) => (
+        {rentals.data.slice(0, 4).map((item) => (
           <div
             key={item.id}
             data-aos="fade"
-            data-aos-delay={item.delayAnimation}
+            data-aos-delay={item.animation}
           >
             <Link
-              href={`/rental-single/${item.id}`}
+              href={`/rental/rental-single/${item.id}`}
               className="rentalCard -type-1 rounded-4 hover-inside-slider"
             >
               <div className="rentalCard__image">
@@ -90,7 +101,7 @@ const Rentals = () => {
                     nextArrow={<Arrow type="next" />}
                     prevArrow={<Arrow type="prev" />}
                   >
-                    {item?.slideImg?.map((slide, i) => (
+                    {slideImg?.map((slide, i) => (
                       <div className="cardImage ratio ratio-1:1" key={i}>
                         <div className="cardImage__content ">
                           <Image
@@ -157,7 +168,7 @@ const Rentals = () => {
                     Exceptional
                   </div>
                   <div className="text-14 text-light-1 ml-10">
-                    {item?.numberOfReviews} reviews
+                    {item?.reviews} reviews
                   </div>
                 </div>
                 <div className="mt-5">
@@ -173,6 +184,6 @@ const Rentals = () => {
       </Slider>
     </>
   );
-};
+ 
+}
 
-export default Rentals;

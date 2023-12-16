@@ -1,6 +1,3 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,7 +16,7 @@ const TourProperties = () => {
           data-aos-delay={item?.delayAnimation}
         >
           <Link
-            href={`/tour-single/${item.id}`}
+            href={`/tour/tour-single/${item.id}`}
             className="tourCard -type-1 rounded-4 position-relative"
           >
             <div className="tourCard__image">

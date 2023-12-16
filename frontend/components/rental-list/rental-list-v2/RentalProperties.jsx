@@ -1,6 +1,3 @@
-
-'use client'
-
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -50,7 +47,7 @@ const RentalProperties = () => {
           data-aos-delay={item.delayAnimation}
         >
           <Link
-            href={`/rental-single/${item.id}`}
+            href={`/rental/rental-single/${item.id}`}
             className="rentalCard -type-1 rounded-4 hover-inside-slider"
           >
             <div className="rentalCard__image">

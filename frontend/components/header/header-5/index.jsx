@@ -1,6 +1,3 @@
-
-'use client'
-
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import MainMenu from "../MainMenu";
@@ -19,9 +16,6 @@ const Header1 = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
-    return () => {
-      window.removeEventListener("scroll", changeBackground);
-    };
   }, []);
 
   return (
@@ -34,7 +28,7 @@ const Header1 = () => {
                 <div className="mr-20 d-flex items-center">
                   <div className="mr-15 d-none md:d-flex">
                     <Link
-                      href="/login"
+                      href="/others-pages/login"
                       className="icon-user text-inherit text-22 "
                     />
                   </div>
@@ -61,8 +55,8 @@ const Header1 = () => {
                 {/* humberger menu */}
 
                 <Link href="/" className="header-logo mr-20">
-                  <img src="/img/general/logo-with-name.png" alt="logo icon" />
-                  <img src="/img/general/logo-with-name.png" alt="logo icon" />
+                  <img src="/img/general/logo-dark.svg" alt="logo icon" />
+                  <img src="/img/general/logo-dark.svg" alt="logo icon" />
                 </Link>
                 {/* End logo */}
 
@@ -82,13 +76,13 @@ const Header1 = () => {
                 {/* Start btn-group */}
                 <div className="header__buttons d-flex items-center is-menu-opened-hide">
                   <Link
-                    href="/login"
+                    href="/others-pages/login"
                     className="button h-50 px-30 fw-400 text-14 -blue-1 bg-white text-dark-1 sm:d-none"
                   >
                     Become An Expert
                   </Link>
                   <Link
-                    href="/signup"
+                    href="/others-pages/signup"
                     className="button h-50 px-30 fw-400 text-14 -outline-white text-white ml-20 sm:ml-0"
                   >
                     Sign In / Register

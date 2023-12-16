@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import flightsData from "../data/flights";
+import flightsData from "../../data/flights";
 
 const Flights = () => {
   return (
@@ -68,7 +68,7 @@ const Flights = () => {
                     </div>
                   </div>
                   <Link
-                    href="/flight-list-v1"
+                    href="/flight/flight-list-v1"
                     className="button -outline-blue-1 px-30 h-50 text-blue-1"
                   >
                     View Deal <div className="icon-arrow-top-right ml-15" />
