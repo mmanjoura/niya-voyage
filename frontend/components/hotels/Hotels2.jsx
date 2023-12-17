@@ -93,7 +93,7 @@ console.log(hotels);
             data-aos-delay={item.animation}
           >
             <Link
-              href={`/hotel-single-v1/${item.id}`}
+              href={`/hotel/hotel-single-v1/${item.id}`}
               className="hotelsCard -type-1 hover-inside-slider"
             >
               <div className="hotelsCard__image">

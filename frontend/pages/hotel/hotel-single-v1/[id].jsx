@@ -29,15 +29,27 @@ import CallToActions from "../../../components/common/CallToActions";
 import DefaultFooter from "../../../components/footer/default";
 import Link from "next/link";
 
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+
 const HotelSingleV1Dynamic = () => {
+
   const [isOpen, setOpen] = useState(false);
   const router = useRouter();
   const [hotel, setHotel] = useState({});
   const id = router.query.id;
 
   useEffect(() => {
-    if (!id) <h1>Loading...</h1>;
-    else setHotel(hotelsData.find((item) => item.id == id));
+    if (!id) {<h1>Loading...</h1>;}
+    else 
+    {
+      axios.get(baseURL+'/hotels/'+{id}).then((response) => {
+        setHotel(response.data);
+      });
+     
+    }
 
     return () => {};
   }, [id]);
