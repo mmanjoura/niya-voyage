@@ -34,7 +34,7 @@ export default function TopDestinations() {
             </div>
             <div className="citiesCard__content px-30 py-30">
               <h4 className="text-26 fw-600 text-white text-capitalize">
-                {item.title}
+                {item.name}
               </h4>
               <div className="text-15 text-white">
                 {item.properties} properties

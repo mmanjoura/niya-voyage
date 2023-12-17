@@ -8,7 +8,7 @@ import axios from "axios";
 import React from "react";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
-var  slideImg = ["/img/hotels/2.png", "/img/hotels/1.png", "/img/hotels/3.png"]
+var  slideImg = ["/img/hotels/new/2.png", "/img/hotels/new/1.png", "/img/hotels/new/3.png", "/img/hotels/new/4.png"]
 
 export default function TopHotels() {
   const [hotels, setHotels] = React.useState(null);

@@ -18,7 +18,7 @@ import WhyChoose from "../../components/home/home-3/WhyChoose";
 const home_3 = () => {
   return (
     <>
-      <Seo pageTitle="Home-3" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <Header3 />
@@ -49,7 +49,7 @@ const home_3 = () => {
       </section>
       {/* End AddBanner Section */}
 
-      <section className="layout-pt-md layout-pb-md">
+      {/* <section className="layout-pt-md layout-pb-md">
         <div className="container">
           <div className="row justify-center text-center">
             <div className="col-auto">
@@ -61,15 +61,11 @@ const home_3 = () => {
               </div>
             </div>
           </div>
-          {/* End .row */}
-
           <div className="row y-gap-40 justify-between pt-50">
             <WhyChoose />
           </div>
-          {/* End row */}
         </div>
-        {/* End .container */}
-      </section>
+      </section> */}
       {/* End Why choose Section */}
 
       <section className="layout-pt-md layout-pb-md">
