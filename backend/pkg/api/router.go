@@ -8,6 +8,8 @@ import (
 	"niya-voyage/backend/pkg/api/cars"
 	"niya-voyage/backend/pkg/api/customers"
 	"niya-voyage/backend/pkg/api/destinations"
+	"niya-voyage/backend/pkg/api/flights"
+	"niya-voyage/backend/pkg/api/golfs"
 	"niya-voyage/backend/pkg/api/hotels"
 	"niya-voyage/backend/pkg/api/orderDetails"
 	"niya-voyage/backend/pkg/api/orders"
@@ -137,6 +139,20 @@ func InitRouter() *gin.Engine {
 		v1.GET("/cars/:id", middleware.APIKeyAuth(), cars.FindCar)
 		v1.PUT("/cars/:id", middleware.APIKeyAuth(), cars.UpdateCar)
 		v1.DELETE("/cars/:id", middleware.APIKeyAuth(), cars.DeleteCar)
+
+		// golf routes
+		v1.GET("/golfs", middleware.APIKeyAuth(), golfs.FindGolfs)
+		v1.POST("/golfs", middleware.APIKeyAuth(), middleware.JWTAuth(), golfs.CreateGolf)
+		v1.GET("/golfs/:id", middleware.APIKeyAuth(), golfs.FindGolf)
+		v1.PUT("/golfs/:id", middleware.APIKeyAuth(), golfs.UpdateGolf)
+		v1.DELETE("/golfs/:id", middleware.APIKeyAuth(), golfs.DeleteGolf)
+
+		// flight routes
+		v1.GET("/flights", middleware.APIKeyAuth(), flights.FindFlights)
+		v1.POST("/flights", middleware.APIKeyAuth(), middleware.JWTAuth(), flights.CreateFlight)
+		v1.GET("/flights/:id", middleware.APIKeyAuth(), flights.FindFlight)
+		v1.PUT("/flights/:id", middleware.APIKeyAuth(), flights.UpdateFlight)
+		v1.DELETE("/flights/:id", middleware.APIKeyAuth(), flights.DeleteFlight)
 
 		// payment routes
 		v1.GET("/payments", middleware.APIKeyAuth(), payments.FindPayments)

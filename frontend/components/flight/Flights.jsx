@@ -1,20 +1,57 @@
 import Image from "next/image";
 import Link from "next/link";
-import flightsData from "../../data/flights";
+//import flightsData from "../../data/flights";
 
-const Flights = () => {
+
+
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+var  flightList = [
+  {
+    id: 1,
+    avatar: "/img/flightIcons/1.png",
+    arrivalAirport: "SAW",
+    departureAirport: "STN",
+    departureTime: "14:00",
+    arrivalTime: "22:00",
+    duration: "3h 05m- Nonstop",
+  },
+  {
+    id: 2,
+    avatar: "/img/flightIcons/2.png",
+    arrivalAirport: "SAW",
+    departureAirport: "STN",
+    departureTime: "14:00",
+    arrivalTime: "22:00",
+    duration: "5h 05m- Nonstop",
+  },
+]
+
+export default function TopFlights() {
+  const [flights, setFlights] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL+'/flights').then((response) => {
+      setFlights(response.data);
+    });
+  }, []);
+
+  if (!flights) return null;
+
   return (
     <>
-      {flightsData.slice(0, 4).map((item) => (
+      {flights.data.slice(0, 4).map((item) => (
         <div
           className="col-12"
           key={item?.id}
           data-aos="fade"
-          data-aos-delay={item?.delayAnimation}
+          data-aos-delay={item?.animation}
         >
           <div className="px-20 py-20 rounded-4 border-light">
             <div className="row y-gap-30 justify-between xl:justify-">
-              {item?.flightList?.map((flight) => (
+              {flightList?.map((flight) => (
                 <div className="col-xl-4 col-lg-6" key={flight.id}>
                   <div className="row y-gap-10 items-center">
                     <div className="col-sm-auto">
@@ -85,5 +122,3 @@ const Flights = () => {
     </>
   );
 };
-
-export default Flights;

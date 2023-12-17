@@ -119,13 +119,13 @@ INSERT INTO Tours (ID, tag, title, price, location, duration, reviews, price, to
 VALUES
 (1, 'LIKELY TO SELL OUT*', 'Stonehenge, Windsor Castle and Bath with Pub Lunch in Lacock', 72.0, 'Westminster Borough, London', '16', '3014', '72', 'Full-day Tours', '100'),
 (2, '', 'Westminster Walking Tour & Westminster Abbey Entry', 65.0, 'Ciutat Vella, Barcelona', '14', '2045', '65', 'Attractions & Museums', '200'),
-(3, 'best seller', 'High-Speed Thames River RIB Cruise in London', 87.0, 'Manhattan, New York', '18', '2163', '87', 'Private and Luxury', '300'),
+(3, 'best seller', 'High-Speed Thames River RIB Golf in London', 87.0, 'Manhattan, New York', '18', '2163', '87', 'Private and Luxury', '300'),
 (4, 'top rated', 'Edinburgh Darkside Walking Tour: Mysteries, Murder and Legends', 99.0, 'Vaticano Prati, Rome', '20', '1458', '99', 'Bus Tours', '400'),
 (5, 'LIKELY TO SELL OUT*', 'Stonehenge, Windsor Castle and Bath with Pub Lunch in Lacock', 72.0, 'Westminster Borough, London', '16', '3014', '72', 'Full-day Tours', '100'),
 (6, '', 'Westminster Walking Tour & Westminster Abbey Entry', 65.0, 'Ciutat Vella, Barcelona', '14', '2045', '65', 'Attractions & Museums', '200'),
-(7, 'best seller', 'High-Speed Thames River RIB Cruise in London', 87.0, 'Manhattan, New York', '18', '2163', '87', 'Private and Luxury', '300'),
+(7, 'best seller', 'High-Speed Thames River RIB Golf in London', 87.0, 'Manhattan, New York', '18', '2163', '87', 'Private and Luxury', '300'),
 (8, 'top rated', 'Edinburgh Darkside Walking Tour: Mysteries, Murder and Legends', 99.0, 'Vaticano Prati, Rome', '20', '1458', '99', 'Bus Tours', '400'),
-(9, 'best seller', 'High-Speed Thames River RIB Cruise in London', 87.0, 'Manhattan, New York', '18', '2163', '87', 'Private and Luxury', '500');
+(9, 'best seller', 'High-Speed Thames River RIB Golf in London', 87.0, 'Manhattan, New York', '18', '2163', '87', 'Private and Luxury', '500');
 
 
 --------------Activities--------------------------------
@@ -148,12 +148,12 @@ INSERT INTO Activities (ID, tag, title, price, location, duration, reviews, rati
 VALUES
 (1, 'LIKELY TO SELL OUT*', 'Stonehenge, Windsor Castle and Bath with Pub Lunch in Lacock', 67.0, 'Westminster Borough, London', '16', '94', '4.82', '100'),
 (2, '', 'Westminster Walking Tour & Westminster Abbey Entry', 99.0, 'Ciutat Vella, Barcelona', '14', '2045', '4.82', '200'),
-(3, 'best seller', 'High-Speed Thames River RIB Cruise in London', 88.0, 'Manhattan, New York', '18', '2163', '4.82', '300'),
+(3, 'best seller', 'High-Speed Thames River RIB Golf in London', 88.0, 'Manhattan, New York', '18', '2163', '4.82', '300'),
 (4, 'top rated', 'Edinburgh Darkside Walking Tour: Mysteries, Murder and Legends', 55.0, 'Vaticano Prati, Rome', '20', '1458', '4.82', '400'),
 (5, 'LIKELY TO SELL OUT*', 'Stonehenge, Windsor Castle and Bath with Pub Lunch in Lacock', 67.0, 'Westminster Borough, London', '16', '94', '4.82', '100'),
 (6, 'LIKELY TO SELL OUT*', 'Stonehenge, Windsor Castle and Bath with Pub Lunch in Lacock', 67.0, 'Westminster Borough, London', '16', '94', '4.82', '200'),
 (7, '', 'Westminster Walking Tour & Westminster Abbey Entry', 99.0, 'Ciutat Vella, Barcelona', '14', '2045', '4.82', '300'),
-(8, 'best seller', 'High-Speed Thames River RIB Cruise in London', 88.0, 'Manhattan, New York', '18', '2163', '4.82', '400'),
+(8, 'best seller', 'High-Speed Thames River RIB Golf in London', 88.0, 'Manhattan, New York', '18', '2163', '4.82', '400'),
 (9, 'top rated', 'Edinburgh Darkside Walking Tour: Mysteries, Murder and Legends', 55.0, 'Vaticano Prati, Rome', '20', '1458', '4.82', '500');
 
 ----------------Rentals Table--------------------------------------------------------------------------------------------
@@ -226,10 +226,86 @@ VALUES
 (15, '', 'Mercedes-Benz E-Class', 72.0, 'Heathrow Airport', 'LUXURY', '4.8', '3014', '4', '1', 'Automatic', 'Unlimited', '100');
 
 
-------------------
+------------------Golf Table---------------------------------
+CREATE TABLE Golfs (
+    ID INTEGER PRIMARY KEY,
+    tag TEXT,
+    title TEXT,
+    price REAL,
+    location TEXT,
+    reviews TEXT,
+    ratings TEXT,
+    animation TEXT,
+    holes TEXT,
+    duration TEXT,
+    name TEXT,
+    Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 
+INSERT INTO Golfs (ID, tag, title, price, location, reviews, ratings, animation, holes, duration, name)
+VALUES
+(1, 'golf only', '7 Night Golf to the Western Mediterranean', 67.0, 'Southampton', '94', '4.82', '100', '9', '18/05/23', 'Norwegian Getaway'),
+(2, '', '12 Night Golf to the British Isles & Western Europe', 99.0, 'Southampton', '74', '4.82', '200', '8', '18/02/23', 'Norwegian Getaway'),
+(3, 'best seller', '11 Night Golf to the Eastern Mediterranean', 88.0, 'Southampton', '56', '4.82', '300', '7', '18/03/23', 'Norwegian Getaway'),
+(4, 'top rated', '13 Night Golf to the Baltic Sea Western Europe', 55.0, 'Southampton', '54', '4.82', '400', '6', '18/04/23', 'Norwegian Getaway'),
+(5, 'golf only', '7 Night Golf to the Western Mediterranean', 67.0, 'Southampton', '94', '4.82', '100', '9', '18/05/23', 'Norwegian Getaway'),
+(6, '', '12 Night Golf to the British Isles & Western Europe', 99.0, 'Southampton', '74', '4.82', '200', '8', '18/02/23', 'Norwegian Getaway'),
+(7, 'best seller', '11 Night Golf to the Eastern Mediterranean', 88.0, 'Southampton', '56', '4.82', '300', '7', '18/03/23', 'Norwegian Getaway'),
+(8, 'top rated', '13 Night Golf to the Baltic Sea Western Europe', 55.0, 'Southampton', '54', '4.82', '400', '6', '18/04/23', 'Norwegian Getaway'),
+(9, 'golf only', '7 Night Golf to the Western Mediterranean', 67.0, 'Southampton', '94', '4.82', '500', '9', '18/05/23', 'Norwegian Getaway');
 
+-------------------------Flights Table----------------------------------------------
 
+CREATE TABLE Flights (
+    ID INTEGER PRIMARY KEY,
+    price REAL,
+    deals TEXT,
+    animation TEXT,
+    SelectId TEXT,
+    Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP
+);  
+
+INSERT INTO Flights (ID, price, deals, animation, SelectId)
+VALUES
+(1, 934.0, '16', '100', 'collapse_1'),
+(2, 690.0, '12', '200', 'collapse_2'),
+(3, 999.0, '17', '300', 'collapse_3'),
+(4, 859.0, '15', '400', 'collapse_4'),
+(5, 934.0, '16', '500', 'collapse_5'),
+(6, 690.0, '12', '600', 'collapse_6');
+
+   
+
+CREATE TABLE Flight_List (
+    ID INTEGER PRIMARY KEY,
+    flight_id INTEGER,
+    avatar TEXT,
+    arrivalAirport TEXT,
+    departureAirport TEXT,
+    departureTime TEXT,
+    arrivalTime TEXT,
+    duration TEXT,
+    Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP,
+     FOREIGN KEY (flight_id) REFERENCES flights(id)
+);
+
+INSERT INTO Flight_List (ID, flight_id, avatar, arrivalAirport, departureAirport, departureTime, arrivalTime, duration)
+VALUES
+(1, 1, '/img/flightIcons/1.png', 'SAW', 'STN', '14:00', '22:00', '3h 05m- Nonstop'),
+(2, 1, '/img/flightIcons/2.png', 'SAW', 'STN', '14:00', '22:00', '5h 05m- Nonstop'),
+(3, 1, '/img/flightIcons/1.png', 'SAW', 'STN', '14:00', '22:00', '4h 05m- Nonstop'),
+(4, 2, '/img/flightIcons/2.png', 'SAW', 'STN', '14:00', '22:00', '6h 05m- Nonstop'),
+(5, 2, '/img/flightIcons/1.png', 'SAW', 'STN', '14:00', '22:00', '4h 05m- Nonstop'),
+(6, 3, '/img/flightIcons/2.png', 'SAW', 'STN', '14:00', '22:00', '7h 05m- Nonstop'),
+(7, 3, '/img/flightIcons/1.png', 'SAW', 'STN', '14:00', '22:00', '3h 05m- Nonstop'),
+(8, 4, '/img/flightIcons/2.png', 'SAW', 'STN', '14:00', '22:00', '5h 05m- Nonstop'),
+(9, 4, '/img/flightIcons/1.png', 'SAW', 'STN', '14:00', '22:00', '4h 05m- Nonstop'),
+(10, 5, '/img/flightIcons/2.png', 'SAW', 'STN', '14:00', '22:00', '6h 05m- Nonstop'),
+(11, 6, '/img/flightIcons/1.png', 'SAW', 'STN', '14:00', '22:00', '3h 05m- Nonstop'),
+(12, 6, '/img/flightIcons/2.png', 'SAW', 'STN', '14:00', '22:00', '5h 05m- Nonstop');
 
 
 

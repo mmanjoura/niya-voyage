@@ -9,8 +9,8 @@ import TopTours from "../../components/tours/Tours";
 import TopActivities from "../../components/activity/Activity";
 import TopRentals from "../../components/rentals/Rentals";
 import TopCars from "../../components/cars/Cars";
-import Cruise from "../../components/cruise/Cruise";
-import Flights from "../../components/flight/Flights";
+import TopGolfs from "../../components/golf/Golf";
+import TopFlights from "../../components/flight/Flights";
 import Footer3 from "../../components/footer/footer-3";
 import AddBanner from "../../components/home/home-3/AddBanner";
 import WhyChoose from "../../components/home/home-3/WhyChoose";
@@ -291,7 +291,7 @@ const home_3 = () => {
           {/* End .row */}
 
           <div className="row y-gap-30 pt-40 sm:pt-20 item_gap-x30">
-            <Cruise />
+            <TopGolfs />
           </div>
           {/* End .row */}
         </div>
@@ -325,7 +325,7 @@ const home_3 = () => {
           {/* End .row */}
 
           <div className="row y-gap-30 pt-40 sm:pt-20">
-            <Flights />
+            <TopFlights />
           </div>
           {/* End .row */}
         </div>

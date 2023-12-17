@@ -1,9 +1,22 @@
-import flightsData from "../../../data/flights";
+// import flightsData from "../../../data/flights";
+import axios from "axios";
+import React from "react";
 
-const FlightProperties = () => {
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+export default function FlightProperties() {
+  const [flights, setFlights] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL+'/flights').then((response) => {
+      setFlights(response.data);
+    });
+  }, []);
+
+  if (!flights) return null;
+
   return (
     <>
-      {flightsData.map((item) => (
+      {flights.data.map((item) => (
         <div className="js-accordion" key={item.id}>
           <div className="py-30 px-30 bg-white rounded-4 base-tr mt-30">
             <div className="row y-gap-30 justify-between">
@@ -269,5 +282,4 @@ const FlightProperties = () => {
     </>
   );
 };
-
-export default FlightProperties;
+ 

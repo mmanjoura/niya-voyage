@@ -3,7 +3,7 @@ module.exports = [
     id: 1,
     price: "934",
     deals: "16",
-    delayAnimation: "100",
+    animation: "100",
     selectId: "collapse_1",
     flightList: [
       {
@@ -31,7 +31,7 @@ module.exports = [
     price: "690",
     deals: "12",
     selectId: "collapse_2",
-    delayAnimation: "200",
+    animation: "200",
     flightList: [
       {
         id: 1,
@@ -57,7 +57,7 @@ module.exports = [
     id: 3,
     price: "999",
     deals: "17",
-    delayAnimation: "300",
+    animation: "300",
     selectId: "collapse_3",
     flightList: [
       {
@@ -82,7 +82,7 @@ module.exports = [
   },
   {
     id: 4,
-    delayAnimation: "400",
+    animation: "400",
     price: "859",
     deals: "15",
     selectId: "collapse_4",
@@ -112,7 +112,7 @@ module.exports = [
     price: "934",
     deals: "16",
     selectId: "collapse_5",
-    delayAnimation: "500",
+    animation: "500",
     flightList: [
       {
         id: 1,
@@ -139,7 +139,7 @@ module.exports = [
     price: "690",
     deals: "12",
     selectId: "collapse_6",
-    delayAnimation: "600",
+    animation: "600",
     flightList: [
       {
         id: 1,
@@ -162,3 +162,29 @@ module.exports = [
     ],
   },
 ];
+
+CREATE TABLE Flights (
+  ID INTEGER PRIMARY KEY,
+  price REAL,
+  deals TEXT,
+  animation TEXT,
+  SelectId TEXT,
+  Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
+  Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP
+);  
+
+
+
+CREATE TABLE FlightList (
+  ID INTEGER PRIMARY KEY,
+  avatar TEXT,
+  arrivalAirport TEXT,
+  departureAirport TEXT,
+  departureTime TEXT,
+  arrivalTime TEXT,
+  duration TEXT,
+  Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
+  Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+Can you make the insert findPlaceSlice.
