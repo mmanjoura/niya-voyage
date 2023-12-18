@@ -76,7 +76,8 @@ func FindHotels(c *gin.Context) {
 	// dB.Joins("JOIN hotel_images").Offset(offset).Limit(limit).Find(&hotels)
 	// database.Database.DB.Offset(offset).Limit(limit).Find(&hotels)
 	// Raw SQL
-	dB.Raw("Select * from Hotel_images hi inner join hotels h on hi.hotel_id = h.id").Offset(offset).Limit(limit).Scan(&hotels)
+	dB.Model(&models.Hotel{}).Preload("SlideImages").Offset(offset).Limit(limit).Find(&hotels)
+	// dB.Raw("Select * from slide_images hi inner join hotels h on hi.hotel_id = h.id").Offset(offset).Limit(limit).Scan(&hotels)
 
 	// Serialize hotels object and store it in Redis
 	//serializedBooks, err := json.Marshal(hotels)
