@@ -71,7 +71,8 @@ func FindTours(c *gin.Context) {
 	// }
 
 	// If cache missed, fetch data from the database
-	database.Database.DB.Offset(offset).Limit(limit).Find(&tours)
+	dB := database.Database.DB
+	dB.Model(&models.Tour{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&tours)
 
 	// Serialize tours object and store it in Redis
 	//serializedTours, err := json.Marshal(tours)

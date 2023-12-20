@@ -43,7 +43,7 @@ export default function TopFlights() {
   return (
     <>
       {flights.data.slice(0, 4).map((item) => (
-        <div
+        <div 
           className="col-12"
           key={item?.id}
           data-aos="fade"

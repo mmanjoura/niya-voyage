@@ -1,14 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
-// import activityData from "../../data/activity";
 import isTextMatched from "../../utils/isTextMatched";
-
 import axios from "axios";
 import React from "react";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
-var  slideImg = ["/img/hotels/2.png", "/img/hotels/1.png", "/img/hotels/3.png"]
 
 export default function TopActivities() {
   const [activities, setActivities] = React.useState(null);
@@ -102,14 +99,14 @@ export default function TopActivities() {
                     nextArrow={<Arrow type="next" />}
                     prevArrow={<Arrow type="prev" />}
                   >
-                    {slideImg?.map((slide, i) => (
+                    {item?.SlideImages?.map((slide, i) => (
                       <div className="cardImage ratio ratio-1:1" key={i}>
                         <div className="cardImage__content ">
                           <Image
                             width={300}
                             height={300}
                             className="col-12 js-lazy"
-                            src={slide}
+                            src={slide.slide_img}
                             alt="image"
                           />
                         </div>

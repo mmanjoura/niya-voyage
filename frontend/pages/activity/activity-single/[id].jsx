@@ -22,6 +22,11 @@ import Link from "next/link";
 import ImportantInfo from "../../../components/activity-single/ImportantInfo";
 import SlideGallery from "../../../components/activity-single/SlideGallery";
 import MapPropertyFinder from "../../../components/activity-single/MapPropertyFinder";
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+
 
 const TourSingleV1Dynamic = () => {
   const [isOpen, setOpen] = useState(false);
@@ -30,12 +35,18 @@ const TourSingleV1Dynamic = () => {
   const id = router.query.id;
 
   useEffect(() => {
-    if (!id) <h1>Loading...</h1>;
-    else setActivity(activityData.find((item) => item.id == id));
+    if (!id) {<h1>Loading...</h1>;}
+    else 
+    {
+      axios.get(`${baseURL}/activities/${id}`).then((response) => {
+        setActivity(response.data);
+      });
+     
+    }
 
     return () => {};
   }, [id]);
-
+console.log("This is the activity data", activity.data);
   return (
     <>
       <ModalVideo
@@ -60,7 +71,7 @@ const TourSingleV1Dynamic = () => {
 
       <section className="pt-40">
         <div className="container">
-          <SlideGallery />
+          <SlideGallery  activity={activity.data}/>
         </div>
       </section>
       {/* End gallery grid wrapper */}
@@ -71,7 +82,7 @@ const TourSingleV1Dynamic = () => {
             <div className="col-xl-8">
               <div className="row y-gap-20 justify-between items-end">
                 <div className="col-auto">
-                  <h1 className="text-26 fw-600">{activity?.title}</h1>
+                  <h1 className="text-26 fw-600">{activity.data?.title}</h1>
                   <div className="row x-gap-10 y-gap-20 items-center pt-10">
                     <div className="col-auto">
                       <div className="d-flex items-center">
@@ -81,7 +92,7 @@ const TourSingleV1Dynamic = () => {
                           <span className="text-15 fw-500 text-dark-1">
                             {activity?.ratings}
                           </span>
-                          {activity?.numberOffReviews} reviews
+                          {activity.data?.reviews} reviews
                         </div>
                       </div>
                     </div>
@@ -93,7 +104,7 @@ const TourSingleV1Dynamic = () => {
                           <div className="d-flex x-gap-5 items-center">
                             <i className="icon-location-2 text-16 text-light-1"></i>
                             <div className="text-15 text-light-1">
-                              {activity?.location}
+                              {activity.data?.location}
                             </div>
                           </div>
                         </div>
@@ -143,7 +154,7 @@ const TourSingleV1Dynamic = () => {
             {/* End .col-xl-8 */}
 
             <div className="col-xl-4">
-              <SidebarRight activity={activity} />
+              <SidebarRight activity={activity.data} />
             </div>
             {/* End .col-xl-4 */}
           </div>

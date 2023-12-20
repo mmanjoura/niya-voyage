@@ -11,8 +11,11 @@ import (
 	"niya-voyage/backend/pkg/api/flights"
 	"niya-voyage/backend/pkg/api/golfs"
 	"niya-voyage/backend/pkg/api/hotels"
+	"niya-voyage/backend/pkg/api/locations"
+	"niya-voyage/backend/pkg/api/merchants"
 	"niya-voyage/backend/pkg/api/orderDetails"
 	"niya-voyage/backend/pkg/api/orders"
+	"niya-voyage/backend/pkg/api/passwords"
 	"niya-voyage/backend/pkg/api/payments"
 	"niya-voyage/backend/pkg/api/products"
 	"niya-voyage/backend/pkg/api/rentals"
@@ -90,6 +93,27 @@ func InitRouter() *gin.Engine {
 		v1.GET("/customers/:id", middleware.APIKeyAuth(), customers.FindCustomer)
 		v1.PUT("/customers/:id", middleware.APIKeyAuth(), customers.UpdateCustomer)
 		v1.DELETE("/customers/:id", middleware.APIKeyAuth(), customers.DeleteCustomer)
+
+		//merchant routes
+		v1.GET("/merchants", middleware.APIKeyAuth(), merchants.FindMerchants)
+		v1.POST("/merchants", middleware.APIKeyAuth(), middleware.JWTAuth(), merchants.CreateMerchant)
+		v1.GET("/merchants/:id", middleware.APIKeyAuth(), merchants.FindMerchant)
+		v1.PUT("/merchants/:id", middleware.APIKeyAuth(), merchants.UpdateMerchant)
+		v1.DELETE("/merchants/:id", middleware.APIKeyAuth(), merchants.DeleteMerchant)
+
+		//location routes
+		v1.GET("/locations", middleware.APIKeyAuth(), locations.FindLocations)
+		v1.POST("/locations", middleware.APIKeyAuth(), middleware.JWTAuth(), locations.CreateLocation)
+		v1.GET("/locations/:id", middleware.APIKeyAuth(), locations.FindLocation)
+		v1.PUT("/locations/:id", middleware.APIKeyAuth(), locations.UpdateLocation)
+		v1.DELETE("/locations/:id", middleware.APIKeyAuth(), locations.DeleteLocation)
+
+		//password routes
+		v1.GET("/passwords", middleware.APIKeyAuth(), passwords.FindPasswords)
+		v1.POST("/passwords", middleware.APIKeyAuth(), middleware.JWTAuth(), passwords.CreatePassword)
+		v1.GET("/passwords/:id", middleware.APIKeyAuth(), passwords.FindPassword)
+		v1.PUT("/passwords/:id", middleware.APIKeyAuth(), passwords.UpdatePassword)
+		v1.DELETE("/passwords/:id", middleware.APIKeyAuth(), passwords.DeletePassword)
 
 		//product routes
 		v1.GET("/products", middleware.APIKeyAuth(), products.FindProducts)

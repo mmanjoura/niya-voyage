@@ -72,8 +72,8 @@ func FindGolfs(c *gin.Context) {
 
 	// If cache missed, fetch data from the database
 	dB := database.Database.DB
-	database.Database.DB.Offset(offset).Limit(limit).Find(&golfs)
-	dB.Raw("Select * from Golfs").Offset(offset).Limit(limit).Scan(&golfs)
+
+	dB.Model(&models.Golf{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&golfs)
 
 	// Serialize golfs object and store it in Redis
 	//serializedGolfs, err := json.Marshal(golfs)

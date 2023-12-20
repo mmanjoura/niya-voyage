@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
-// import toursData from "../../data/tours";
 import isTextMatched from "../../utils/isTextMatched";
-
 import axios from "axios";
 import React from "react";
 
@@ -91,7 +89,7 @@ export default function TopTours() {
             data-aos-delay={item?.delayAnimation}
           >
             <Link
-              href={`/tour-single/${item.id}`}
+              href={`/tour/tour-single/${item.id}`}
               className="tourCard -type-1 rounded-4 hover-inside-slider"
             >
               <div className="tourCard__image position-relative">
@@ -102,14 +100,14 @@ export default function TopTours() {
                     nextArrow={<Arrow type="next" />}
                     prevArrow={<Arrow type="prev" />}
                   >
-                    {slideImg?.map((slide, i) => (
+                    {item?.SlideImages?.map((slide, i) => (
                       <div className="cardImage ratio ratio-1:1" key={i}>
                         <div className="cardImage__content ">
                           <Image
                             width={300}
                             height={300}
                             className="col-12 js-lazy"
-                            src={slide}
+                            src={slide.slide_img}
                             alt="image"
                           />
                         </div>

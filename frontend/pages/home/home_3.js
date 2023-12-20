@@ -266,7 +266,7 @@ const home_3 = () => {
           <div className="row y-gap-20 justify-between items-end">
             <div className="col-auto">
               <div className="sectionTitle -md">
-                <h2 className="sectionTitle__title">Featured Cruise Deals</h2>
+                <h2 className="sectionTitle__title">Featured Golf Deals</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
                   Interdum et malesuada fames ac ante ipsum
                 </p>

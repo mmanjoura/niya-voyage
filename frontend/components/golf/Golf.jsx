@@ -1,15 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
-//import cruiseData from "../../data/cruise";
 import isTextMatched from "../../utils/isTextMatched";
-
-
 import axios from "axios";
 import React from "react";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
-var  slideImg = ["/img/hotels/2.png", "/img/hotels/1.png", "/img/hotels/3.png"]
 
 export default function TopGolfs() {
   const [golfs, setGols] = React.useState(null);
@@ -92,10 +88,10 @@ export default function TopGolfs() {
             data-aos-delay={item?.animation}
           >
             <Link
-              href={`/tour-single/${item.id}`}
-              className="tourCard -type-1 rounded-4 hover-inside-slider"
+              href={`/golf/cruise-single/${item.id}`}
+              className="cruiseCard -type-1 rounded-4 hover-inside-slider"
             >
-              <div className="tourCard__image position-relative">
+              <div className="cruiseCard__image position-relative">
                 <div className="inside-slider">
                   <Slider
                     {...itemSettings}
@@ -103,14 +99,14 @@ export default function TopGolfs() {
                     nextArrow={<Arrow type="next" />}
                     prevArrow={<Arrow type="prev" />}
                   >
-                    {slideImg?.map((slide, i) => (
-                      <div className="cardImage ratio ratio-1:1" key={i}>
-                        <div className="cardImage__content ">
+                    {item?.SlideImages?.map((slide, i) => (
+                      <div className="cardImage ratio ratio-6:5" key={i}>
+                        <div className="cardImage__content">
                           <Image
                             width={300}
                             height={300}
-                            className="col-12 js-lazy"
-                            src={slide}
+                            className="rounded-4 col-12 js-lazy"
+                            src={slide.slide_img}
                             alt="image"
                           />
                         </div>
@@ -127,7 +123,7 @@ export default function TopGolfs() {
                   <div className="cardImage__leftBadge">
                     <div
                       className={`py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase ${
-                        isTextMatched(item?.tag, "likely to sell out*")
+                        isTextMatched(item?.tag, "cruise only")
                           ? "bg-dark-1 text-white"
                           : ""
                       } ${
@@ -147,48 +143,58 @@ export default function TopGolfs() {
               </div>
               {/* End .tourCard__image */}
 
-              <div className="tourCard__content mt-10">
-                <div className="d-flex items-center lh-14 mb-5">
-                  <div className="text-14 text-light-1">
-                    {item?.duration}+ hours
-                  </div>
-                  <div className="size-3 bg-light-1 rounded-full ml-10 mr-10" />
-                  <div className="text-14 text-light-1">{item?.title}</div>
+              <div className="cruiseCard__content mt-10">
+                <div className="text-14 lh-14 text-light-1 mb-5">
+                  {item?.ship}
                 </div>
-                <h4 className="tourCard__title text-dark-1 text-18 lh-16 fw-500">
-                  <span>{item?.name}</span>
+                <h4 className="cruiseCard__title text-dark-1 text-18 lh-16 fw-500">
+                  <span>{item?.title}</span>
                 </h4>
-                <p className="text-light-1 lh-14 text-14 mt-5">
-                  {item?.location}
-                </p>
+                <p className="text-light-1 lh-14 text-14 mt-5" />
+                <div className="row y-gap-10 justify-between items-center">
+                  <div className="col-auto">
+                    <div className="text-14 text-dark-1 fw-500">
+                      Sailing Date
+                    </div>
+                    <div className="text-14 text-light-1">{item?.date}</div>
+                  </div>
+                  <div className="col-auto">
+                    <div className="text-14 text-dark-1 fw-500">Departs</div>
+                    <div className="text-14 text-light-1">{item.departs}</div>
+                  </div>
+                  <div className="col-auto">
+                    <div className="text-14 text-dark-1 fw-500">
+                      Ports ({item.portsNumber})
+                    </div>
+                    <div className="text-14 text-light-1">
+                      {item?.portsName}...
+                    </div>
+                  </div>
+                </div>
+                {/* End .row */}
 
-                <div className="row justify-between items-center pt-15">
+                <div className="row y-gap-20 justify-between items-center pt-5">
                   <div className="col-auto">
                     <div className="d-flex items-center">
-                      <div className="d-flex items-center x-gap-5">
-                        <div className="icon-star text-yellow-1 text-10" />
-                        <div className="icon-star text-yellow-1 text-10" />
-                        <div className="icon-star text-yellow-1 text-10" />
-                        <div className="icon-star text-yellow-1 text-10" />
-                        <div className="icon-star text-yellow-1 text-10" />
-                      </div>
-                      {/* End ratings */}
-
-                      <div className="text-14 text-light-1 ml-10">
+                      <div className="icon-star text-yellow-1 text-10 mr-5" />
+                      <div className="text-14 text-light-1">
+                        <span className="text-15 text-dark-1 fw-500">
+                          {item?.ratings}
+                        </span>
                         {item?.reviews} reviews
                       </div>
                     </div>
                   </div>
                   <div className="col-auto">
                     <div className="text-14 text-light-1">
-                      From
+                      From{" "}
                       <span className="text-16 fw-500 text-dark-1">
-                        {" "}
-                        US${item.price}
+                        US${item?.price}
                       </span>
                     </div>
                   </div>
                 </div>
+                {/* End .row */}
               </div>
             </Link>
           </div>
@@ -196,5 +202,5 @@ export default function TopGolfs() {
       </Slider>
     </>
   );
- 
-}
+};
+

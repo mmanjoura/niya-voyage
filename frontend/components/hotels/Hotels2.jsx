@@ -1,14 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
-// import { hotelsData } from "../../data/hotels";
 import isTextMatched from "../../utils/isTextMatched";
-
 import axios from "axios";
 import React from "react";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
-var  slideImg = ["/img/hotels/new/2.png", "/img/hotels/new/1.png", "/img/hotels/new/3.png", "/img/hotels/new/4.png"]
+
 
 export default function TopHotels() {
   const [hotels, setHotels] = React.useState(null);
@@ -18,7 +16,7 @@ export default function TopHotels() {
       setHotels(response.data);
     });
   }, []);
-console.log(hotels);
+
   if (!hotels) return null;
 
   var settings = {
@@ -104,14 +102,14 @@ console.log(hotels);
                     nextArrow={<ArrowSlick type="next" />}
                     prevArrow={<ArrowSlick type="prev" />}
                   >
-                    {slideImg?.map((slide, i) => (
+                    {item?.SlideImages?.map((slide, i) => (
                       <div className="cardImage ratio ratio-1:1" key={i}>
                         <div className="cardImage__content ">
                           <Image
                             width={300}
                             height={300}
                             className="rounded-4 col-12 js-lazy"
-                            src={slide}
+                            src={slide.slide_img}
                             alt="image"
                           />
                         </div>

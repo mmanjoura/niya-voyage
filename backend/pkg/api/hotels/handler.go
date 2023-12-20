@@ -72,11 +72,7 @@ func FindHotels(c *gin.Context) {
 
 	// If cache missed, fetch data from the database
 	dB := database.Database.DB
-	// dB.Joins("JOIN hotel_images ON hotel_id = hotels.id").Offset(offset).Limit(limit).Find(&hotels)
-	// dB.Joins("JOIN hotel_images").Offset(offset).Limit(limit).Find(&hotels)
-	// database.Database.DB.Offset(offset).Limit(limit).Find(&hotels)
-	// Raw SQL
-	dB.Model(&models.Hotel{}).Preload("SlideImages").Offset(offset).Limit(limit).Find(&hotels)
+	dB.Model(&models.Hotel{}).Preload("GalleryImages").Preload("SlideImages").Offset(offset).Limit(limit).Find(&hotels)
 	// dB.Raw("Select * from slide_images hi inner join hotels h on hi.hotel_id = h.id").Offset(offset).Limit(limit).Scan(&hotels)
 
 	// Serialize hotels object and store it in Redis

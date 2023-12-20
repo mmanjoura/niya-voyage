@@ -71,7 +71,8 @@ func FindActivities(c *gin.Context) {
 	// }
 
 	// If cache missed, fetch data from the database
-	database.Database.DB.Offset(offset).Limit(limit).Find(&activities)
+	dB := database.Database.DB
+	dB.Model(&models.Activity{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&activities)
 
 	// Serialize activities object and store it in Redis
 	//serializedActivities, err := json.Marshal(activities)
@@ -89,15 +90,15 @@ func FindActivities(c *gin.Context) {
 }
 
 // CreateActivity godoc
-// @Summary Create a new tour
-// @Description Create a new tour with the given input data
+// @Summary Create a new activity
+// @Description Create a new activity with the given input data
 // @Tags activities
 // @Security ApiKeyAuth
 // @Security JwtAuth
 // @Accept  json
 // @Produce  json
-// @Param   input     body   models.CreateActivity   true   "Create tour object"
-// @Success 201 {object} models.Activity "Successfully created tour"
+// @Param   input     body   models.CreateActivity   true   "Create activity object"
+// @Success 201 {object} models.Activity "Successfully created activity"
 // @Failure 400 {string} string "Bad Request"
 // @Failure 401 {string} string "Unauthorized"
 // @Router /activities [post]
@@ -109,7 +110,7 @@ func CreateActivity(c *gin.Context) {
 		return
 	}
 
-	tour := models.Activity{
+	activity := models.Activity{
 
 		Tag:       input.Tag,
 		Title:     input.Title,
@@ -121,7 +122,7 @@ func CreateActivity(c *gin.Context) {
 		Animation: input.Animation,
 	}
 
-	database.Database.DB.Create(&tour)
+	database.Database.DB.Create(&activity)
 
 	// Invalidate cache
 	keysPattern := "activities_offset_*"
@@ -132,49 +133,53 @@ func CreateActivity(c *gin.Context) {
 		}
 	}
 
-	c.JSON(http.StatusCreated, gin.H{"data": tour})
+	c.JSON(http.StatusCreated, gin.H{"data": activity})
 }
 
 // FindActivity godoc
-// @Summary Find a tour by ID
-// @Description Get details of a tour by its ID
+// @Summary Find a activity by ID
+// @Description Get details of a activity by its ID
 // @Tags activities
 // @Security ApiKeyAuth
 // @Produce json
 // @Param id path string true "Activity ID"
-// @Success 200 {object} models.Activity "Successfully retrieved tour"
+// @Success 200 {object} models.Activity "Successfully retrieved activity"
 // @Failure 404 {string} string "Activity not found"
 // @Router /activities/{id} [get]
 func FindActivity(c *gin.Context) {
-	var tour models.Activity
+	var activity models.Activity
 
-	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&tour).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "tour not found"})
+	if err := database.Database.DB.Where("id = ?", c.Param("id")).
+		Preload("SlideImages").
+		Preload("GalleryImages").
+		First(&activity).
+		Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "activity not found"})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": tour})
+	c.JSON(http.StatusOK, gin.H{"data": activity})
 }
 
 // UpdateActivity godoc
-// @Summary Update a tour by ID
-// @Description Update the tour details for the given ID
+// @Summary Update a activity by ID
+// @Description Update the activity details for the given ID
 // @Tags activities
 // @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
 // @Param id path string true "Activity ID"
-// @Param input body models.UpdateActivity true "Update tour object"
-// @Success 200 {object} models.Activity "Successfully updated tour"
+// @Param input body models.UpdateActivity true "Update activity object"
+// @Success 200 {object} models.Activity "Successfully updated activity"
 // @Failure 400 {string} string "Bad Request"
-// @Failure 404 {string} string "tour not found"
+// @Failure 404 {string} string "activity not found"
 // @Router /activities/{id} [put]
 func UpdateActivity(c *gin.Context) {
-	var tour models.Activity
+	var activity models.Activity
 	var input models.UpdateActivity
 
-	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&tour).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "tour not found"})
+	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&activity).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "activity not found"})
 		return
 	}
 
@@ -183,7 +188,7 @@ func UpdateActivity(c *gin.Context) {
 		return
 	}
 
-	database.Database.DB.Model(&tour).Updates(models.Activity{
+	database.Database.DB.Model(&activity).Updates(models.Activity{
 		Tag:       input.Tag,
 		Title:     input.Title,
 		Price:     input.Price,
@@ -194,28 +199,28 @@ func UpdateActivity(c *gin.Context) {
 		Animation: input.Animation,
 	})
 
-	c.JSON(http.StatusOK, gin.H{"data": tour})
+	c.JSON(http.StatusOK, gin.H{"data": activity})
 }
 
 // DeleteActivity godoc
-// @Summary Delete a tour by ID
-// @Description Delete the tour with the given ID
+// @Summary Delete a activity by ID
+// @Description Delete the activity with the given ID
 // @Tags activities
 // @Security ApiKeyAuth
 // @Produce json
 // @Param id path string true "Activity ID"
-// @Success 204 {string} string "Successfully deleted tour"
-// @Failure 404 {string} string "tour not found"
+// @Success 204 {string} string "Successfully deleted activity"
+// @Failure 404 {string} string "activity not found"
 // @Router /activities/{id} [delete]
 func DeleteActivity(c *gin.Context) {
-	var tour models.Activity
+	var activity models.Activity
 
-	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&tour).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "tour not found"})
+	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&activity).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "activity not found"})
 		return
 	}
 
-	database.Database.DB.Delete(&tour)
+	database.Database.DB.Delete(&activity)
 
 	c.JSON(http.StatusNoContent, gin.H{"data": true})
 }

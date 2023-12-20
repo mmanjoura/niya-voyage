@@ -71,7 +71,8 @@ func FindRentals(c *gin.Context) {
 	// }
 
 	// If cache missed, fetch data from the database
-	database.Database.DB.Offset(offset).Limit(limit).Find(&rentals)
+	dB := database.Database.DB
+	dB.Model(&models.Rental{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&rentals)
 
 	// Serialize rentals object and store it in Redis
 	//serializedRentals, err := json.Marshal(rentals)

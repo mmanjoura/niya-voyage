@@ -71,7 +71,8 @@ func FindCars(c *gin.Context) {
 	// }
 
 	// If cache missed, fetch data from the database
-	database.Database.DB.Offset(offset).Limit(limit).Find(&cars)
+	dB := database.Database.DB
+	dB.Model(&models.Car{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&cars)
 
 	// Serialize cars object and store it in Redis
 	//serializedCars, err := json.Marshal(cars)
