@@ -35,7 +35,7 @@ const Header1 = () => {
                 </Link>
                 {/* End logo */}
 
-                <HeaderSearch />
+                {/* <HeaderSearch /> */}
                 {/* End logo */}
 
                 <div className="header-menu">

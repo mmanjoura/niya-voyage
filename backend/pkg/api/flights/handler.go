@@ -76,7 +76,8 @@ func FindFlights(c *gin.Context) {
 	// dB.Joins("JOIN flight_images").Offset(offset).Limit(limit).Find(&flights)
 	// database.Database.DB.Offset(offset).Limit(limit).Find(&flights)
 	// Raw SQL
-	dB.Raw("Select * from Flight_List fl inner join flights f on fl.flight_id = f.id").Offset(offset).Limit(limit).Scan(&flights)
+
+	dB.Model(&models.Flight{}).Offset(offset).Limit(limit).Find(&flights)
 
 	// Serialize flights object and store it in Redis
 	//serializedBooks, err := json.Marshal(flights)

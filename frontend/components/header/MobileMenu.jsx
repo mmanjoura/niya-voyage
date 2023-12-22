@@ -49,7 +49,10 @@ const MobileMenu = () => {
       <ProSidebarProvider>
         <Sidebar width="400" backgroundColor="#fff">
           <Menu>
+
+        {      
             <SubMenu label="Home">
+            
               {homeItems.map((item, i) => (
                 <MenuItem
                   key={i}
@@ -67,7 +70,8 @@ const MobileMenu = () => {
                   {item.name}
                 </MenuItem>
               ))}
-            </SubMenu>
+            </SubMenu> }
+      
             {/* End  All Home Menu */}
 
             <SubMenu label="Categories">

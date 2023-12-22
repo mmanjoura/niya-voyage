@@ -72,15 +72,13 @@ func FindMerchants(c *gin.Context) {
 	}
 
 	// If cache missed, fetch data from the database
-	database.Database.DB.Offset(offset).Limit(limit).Find(&merchants)
+	database.Database.DB.Offset(offset).Limit(limit).Preload("Address").Find(&merchants)
 
 	for i, v := range merchants {
 		locationInfo := models.LocationInfo{}
 		passwordChan := models.ChangePass{}
 		database.Database.DB.Find(&locationInfo, "merchant_id = ?", v.ID)
 		database.Database.DB.Find(&passwordChan, "merchant_id = ?", v.ID)
-		// v.LocationInformation = locationInfo
-		// v.ChangePassword = passwordChan
 		merchants[i].LocationInfo = locationInfo
 		merchants[i].ChangePass = passwordChan
 

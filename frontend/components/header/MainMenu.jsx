@@ -20,13 +20,23 @@ const MainMenu = ({ style = "" }) => {
   return (
     <nav className="menu js-navList">
       <ul className={`menu__nav ${style} -is-active`}>
+      <li className="menu-item-has-children -has-mega-menu">
+          <a href="#">
+            <span className="mr-10">Activites</span>
+            <i className="icon icon-chevron-sm-down" />
+          </a>
+          <div className="mega">
+            <CategoriesMegaMenu />
+          </div>
+        </li>
+        {/* End categories menu items */}
         <li
           className={`${
             isActiveParentChaild(homeItems, router.asPath) ? "current" : ""
           } menu-item-has-children`}
         >
           <a href="#">
-            <span className="mr-10">Home</span>
+            <span className="mr-10">Holidays</span>
             <i className="icon icon-chevron-sm-down" />
           </a>
           <ul className="subnav">
@@ -44,92 +54,20 @@ const MainMenu = ({ style = "" }) => {
         </li>
         {/* End home page menu */}
 
-        <li className="menu-item-has-children -has-mega-menu">
-          <a href="#">
-            <span className="mr-10">Categories</span>
-            <i className="icon icon-chevron-sm-down" />
-          </a>
-          <div className="mega">
-            <CategoriesMegaMenu />
-          </div>
+        <li className={router.pathname === "tour/tour-list-v1" ? "current" : ""}>
+          <Link href="/tour/tour-list-v1">Tours</Link>
         </li>
-        {/* End categories menu items */}
+        {/* End Tours single menu */}
+        <li className={router.pathname === "/car/car-list-v1" ? "current" : ""}>
+          <Link href="/car/car-list-v1">Cars</Link>
+        </li>
+  
+        {/* End Cars single menu */}
+        <li className={router.pathname === "/flight/flight-list-v1" ? "current" : ""}>
+          <Link href="/flight/flight-list-v1">Flights</Link>
+        </li>
+        {/* End Flights single menu */}
 
-        <li className={router.pathname === "/destinations" ? "current" : ""}>
-          <Link href="/destinations">Destinations</Link>
-        </li>
-        {/* End Destinatinos single menu */}
-
-        <li
-          className={`${
-            isActiveParentChaild(blogItems, router.asPath) ? "current" : ""
-          } menu-item-has-children`}
-        >
-          <a href="#">
-            <span className="mr-10">Blog</span>
-            <i className="icon icon-chevron-sm-down" />
-          </a>
-          <ul className="subnav">
-            {blogItems.map((menu, i) => (
-              <li
-                key={i}
-                className={
-                  isActiveLink(menu.routePath, router.asPath) ? "current" : ""
-                }
-              >
-                <Link href={menu.routePath}>{menu.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </li>
-        {/* End blogIems */}
-
-        <li
-          className={`${
-            isActiveParentChaild(pageItems, router.asPath) ? "current" : ""
-          } menu-item-has-children`}
-        >
-          <a href="#">
-            <span className="mr-10">Pages</span>
-            <i className="icon icon-chevron-sm-down" />
-          </a>
-          <ul className="subnav">
-            {pageItems.map((menu, i) => (
-              <li
-                key={i}
-                className={
-                  isActiveLink(menu.routePath, router.asPath) ? "current" : ""
-                }
-              >
-                <Link href={menu.routePath}>{menu.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </li>
-        {/* End pages items */}
-
-        <li
-          className={`${
-            isActiveParentChaild(dashboardItems, router.asPath) ? "current" : ""
-          } menu-item-has-children`}
-        >
-          <a href="#">
-            <span className="mr-10">Dashboard</span>
-            <i className="icon icon-chevron-sm-down" />
-          </a>
-          <ul className="subnav ">
-            {dashboardItems.map((menu, i) => (
-              <li
-                key={i}
-                className={
-                  isActiveLink(menu.routePath, router.asPath) ? "current" : ""
-                }
-              >
-                <Link href={menu.routePath}>{menu.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </li>
 
         <li className={router.pathname === "/contact" ? "current" : ""}>
           <Link href="/contact">Contact</Link>
