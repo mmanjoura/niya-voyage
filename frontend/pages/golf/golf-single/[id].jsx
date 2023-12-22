@@ -16,9 +16,9 @@ import Facilities from "../../../components/cruise-single/Facilities";
 import CallToActions from "../../../components/common/CallToActions";
 import DefaultFooter from "../../../components/footer/default";
 import MapPropertyFinder from "../../../components/cruise-single/MapPropertyFinder";
-import GalleryCruiseSlider from "../../../components/golf-single/GalleryCruiseSlider";
+import GalleryGolfSlider from "../../../components/golf-single/GalleryGolfSlider";
 
-const CruiseSingleV1Dynamic = () => {
+const GolfSingleV1Dynamic = () => {
   const router = useRouter();
   const [cruise, setCruise] = useState({});
   const id = router.query.id;
@@ -94,7 +94,7 @@ const CruiseSingleV1Dynamic = () => {
         <div className="container">
           <div className="row y-gap-30">
             <div className="col-xl-8">
-              <GalleryCruiseSlider />
+              <GalleryGolfSlider />
               {/* End gallery grid wrapper */}
 
               <Overview />
@@ -207,6 +207,6 @@ const CruiseSingleV1Dynamic = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(CruiseSingleV1Dynamic), {
+export default dynamic(() => Promise.resolve(GolfSingleV1Dynamic), {
   ssr: false,
 });

@@ -102,4 +102,4 @@ const GalleryGolfSlider = () => {
   );
 };
 
-export default GalleryCruiseSlider;
+export default GalleryGolfSlider;

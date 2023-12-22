@@ -6,16 +6,16 @@ import (
 	"niya-voyage/backend/pkg/api/blogs"
 	"niya-voyage/backend/pkg/api/books"
 	"niya-voyage/backend/pkg/api/cars"
+	"niya-voyage/backend/pkg/api/changePasses"
 	"niya-voyage/backend/pkg/api/customers"
 	"niya-voyage/backend/pkg/api/destinations"
 	"niya-voyage/backend/pkg/api/flights"
 	"niya-voyage/backend/pkg/api/golfs"
 	"niya-voyage/backend/pkg/api/hotels"
-	"niya-voyage/backend/pkg/api/locations"
+	"niya-voyage/backend/pkg/api/locationInfos"
 	"niya-voyage/backend/pkg/api/merchants"
 	"niya-voyage/backend/pkg/api/orderDetails"
 	"niya-voyage/backend/pkg/api/orders"
-	"niya-voyage/backend/pkg/api/passwords"
 	"niya-voyage/backend/pkg/api/payments"
 	"niya-voyage/backend/pkg/api/products"
 	"niya-voyage/backend/pkg/api/rentals"
@@ -102,18 +102,18 @@ func InitRouter() *gin.Engine {
 		v1.DELETE("/merchants/:id", middleware.APIKeyAuth(), merchants.DeleteMerchant)
 
 		//location routes
-		v1.GET("/locations", middleware.APIKeyAuth(), locations.FindLocations)
-		v1.POST("/locations", middleware.APIKeyAuth(), middleware.JWTAuth(), locations.CreateLocation)
-		v1.GET("/locations/:id", middleware.APIKeyAuth(), locations.FindLocation)
-		v1.PUT("/locations/:id", middleware.APIKeyAuth(), locations.UpdateLocation)
-		v1.DELETE("/locations/:id", middleware.APIKeyAuth(), locations.DeleteLocation)
+		v1.GET("/locationInfos", middleware.APIKeyAuth(), locationInfos.FindLocations)
+		v1.POST("/locationInfos", middleware.APIKeyAuth(), middleware.JWTAuth(), locationInfos.CreateLocation)
+		v1.GET("/locationInfos/:id", middleware.APIKeyAuth(), locationInfos.FindLocation)
+		v1.PUT("/locationInfos/:id", middleware.APIKeyAuth(), locationInfos.UpdateLocation)
+		v1.DELETE("/locationInfos/:id", middleware.APIKeyAuth(), locationInfos.DeleteLocation)
 
 		//password routes
-		v1.GET("/passwords", middleware.APIKeyAuth(), passwords.FindPasswords)
-		v1.POST("/passwords", middleware.APIKeyAuth(), middleware.JWTAuth(), passwords.CreatePassword)
-		v1.GET("/passwords/:id", middleware.APIKeyAuth(), passwords.FindPassword)
-		v1.PUT("/passwords/:id", middleware.APIKeyAuth(), passwords.UpdatePassword)
-		v1.DELETE("/passwords/:id", middleware.APIKeyAuth(), passwords.DeletePassword)
+		v1.GET("/changePasses", middleware.APIKeyAuth(), changePasses.FindPasswords)
+		v1.POST("/changePasses", middleware.APIKeyAuth(), middleware.JWTAuth(), changePasses.CreatePassword)
+		v1.GET("/changePasses/:id", middleware.APIKeyAuth(), changePasses.FindPassword)
+		v1.PUT("/changePasses/:id", middleware.APIKeyAuth(), changePasses.UpdatePassword)
+		v1.DELETE("/changePasses/:id", middleware.APIKeyAuth(), changePasses.DeletePassword)
 
 		//product routes
 		v1.GET("/products", middleware.APIKeyAuth(), products.FindProducts)

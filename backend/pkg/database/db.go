@@ -2,9 +2,8 @@ package database
 
 import (
 	"log"
+	"niya-voyage/pkg/models"
 	"os"
-
-	"niya-voyage/backend/pkg/models"
 
 	//"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
@@ -51,8 +50,9 @@ func ConnectDatabase() {
 	db.Logger = logger.Default.LogMode(logger.Info)
 	log.Println("Running Migrations")
 
-	db.AutoMigrate(&models.Book{})
-	db.AutoMigrate(&models.User{})
+	// db.AutoMigrate(&models.Book{})
+	// db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.User{}, &models.Product{}, &models.Order{})
 
 	//DB = database
 	Database = DbInstance{

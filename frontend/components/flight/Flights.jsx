@@ -37,7 +37,7 @@ export default function TopFlights() {
       setFlights(response.data);
     });
   }, []);
-
+console.log(flights)
   if (!flights) return null;
 
   return (

@@ -45,7 +45,8 @@ const HotelSingleV1Dynamic = () => {
     if (!id) {<h1>Loading...</h1>;}
     else 
     {
-      axios.get(baseURL+'/hotels/'+{id}).then((response) => {
+      
+      axios.get(`${baseURL}/hotels/${id}`).then((response) => {
         setHotel(response.data);
       });
      
@@ -53,7 +54,7 @@ const HotelSingleV1Dynamic = () => {
 
     return () => {};
   }, [id]);
-
+console.log(hotel.data)
   return (
     <>
       <ModalVideo
@@ -76,7 +77,7 @@ const HotelSingleV1Dynamic = () => {
       <TopBreadCrumb />
       {/* End top breadcrumb */}
 
-      <StickyHeader hotel={hotel} />
+      <StickyHeader hotel={hotel.data} />
       {/* sticky single header for hotel single */}
 
       <section className="pt-40">
@@ -85,7 +86,7 @@ const HotelSingleV1Dynamic = () => {
             <div className="col-auto">
               <div className="row x-gap-20  items-center">
                 <div className="col-auto">
-                  <h1 className="text-30 sm:text-25 fw-600">{hotel?.title}</h1>
+                  <h1 className="text-30 sm:text-25 fw-600">{hotel?.data?.title}</h1>
                 </div>
                 {/* End .col */}
                 <div className="col-auto">
@@ -102,7 +103,7 @@ const HotelSingleV1Dynamic = () => {
                 <div className="col-auto">
                   <div className="d-flex items-center text-15 text-light-1">
                     <i className="icon-location-2 text-16 mr-5" />
-                    {hotel?.location}
+                    {hotel?.data?.title}
                   </div>
                 </div>
                 <div className="col-auto">
@@ -124,7 +125,7 @@ const HotelSingleV1Dynamic = () => {
                   <div className="text-14">
                     From{" "}
                     <span className="text-22 text-dark-1 fw-500">
-                      US${hotel?.price}
+                      US${hotel?.data?.price}
                     </span>
                   </div>
                 </div>
@@ -146,14 +147,14 @@ const HotelSingleV1Dynamic = () => {
             <div className="galleryGrid -type-1 pt-30">
               <div className="galleryGrid__item relative d-flex">
                 <Item
-                  original={hotel?.img}
-                  thumbnail={hotel?.img}
+                  original={hotel?.data?.img}
+                  thumbnail={hotel?.data?.img}
                   width={660}
                   height={660}
                 >
                   {({ ref, open }) => (
                     <img
-                      src={hotel?.img}
+                      src={hotel?.data?.img}
                       ref={ref}
                       onClick={open}
                       alt="image"

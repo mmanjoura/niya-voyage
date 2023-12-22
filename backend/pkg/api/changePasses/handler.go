@@ -1,4 +1,4 @@
-package passwords
+package changePasses
 
 import (
 	"encoding/json"
@@ -37,7 +37,7 @@ func Healthcheck(g *gin.Context) {
 // @Success 200 {array} models.Password "Successfully retrieved list of Passwords"
 // @Router /Passwords [get]
 func FindPasswords(c *gin.Context) {
-	var Passwords []models.Password
+	var Passwords []models.ChangePass
 
 	// Get query params
 	offsetQuery := c.DefaultQuery("offset", "0")
@@ -110,7 +110,7 @@ func CreatePassword(c *gin.Context) {
 		return
 	}
 
-	Password := models.Password{
+	Password := models.ChangePass{
 		MerchantID:      input.MerchantID,
 		CurrentPassword: input.CurrentPassword,
 		NewPassword:     input.NewPassword,
@@ -141,7 +141,7 @@ func CreatePassword(c *gin.Context) {
 // @Failure 404 {string} string "Password not found"
 // @Router /Passwords/{id} [get]
 func FindPassword(c *gin.Context) {
-	var Password models.Password
+	var Password models.ChangePass
 
 	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&Password).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Password not found"})
@@ -165,7 +165,7 @@ func FindPassword(c *gin.Context) {
 // @Failure 404 {string} string "Password not found"
 // @Router /Passwords/{id} [put]
 func UpdatePassword(c *gin.Context) {
-	var Password models.Password
+	var Password models.ChangePass
 	var input models.UpdatePassword
 
 	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&Password).Error; err != nil {
@@ -178,7 +178,7 @@ func UpdatePassword(c *gin.Context) {
 		return
 	}
 
-	database.Database.DB.Model(&Password).Updates(models.Password{
+	database.Database.DB.Model(&Password).Updates(models.ChangePass{
 		MerchantID:      input.MerchantID,
 		CurrentPassword: input.CurrentPassword,
 		NewPassword:     input.NewPassword,
@@ -198,7 +198,7 @@ func UpdatePassword(c *gin.Context) {
 // @Failure 404 {string} string "Password not found"
 // @Router /Passwords/{id} [delete]
 func DeletePassword(c *gin.Context) {
-	var Password models.Password
+	var Password models.ChangePass
 
 	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&Password).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Password not found"})

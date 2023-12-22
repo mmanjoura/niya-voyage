@@ -253,7 +253,7 @@ const home_3 = () => {
           {/* End .row */}
 
           <div className="row y-gap-30 pt-40 sm:pt-20 item_gap-x30">
-            <TopCars />
+            {/* <TopCars /> */}
           </div>
           {/* End .row */}
         </div>

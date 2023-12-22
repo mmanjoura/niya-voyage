@@ -525,7 +525,7 @@ VALUES
     ('Green Grocers', 'green_user', 'Sarah', 'Lee', 'sarah@example.com', '777-888-9999', '1980-11-30', 'About Green Grocers...');
 
 
-CREATE TABLE Location_Information (
+CREATE TABLE LocationInfos (
     id INTEGER PRIMARY KEY,
     Merchant_id INTEGER, 
     addressLine1 TEXT,
@@ -538,7 +538,7 @@ CREATE TABLE Location_Information (
 );
 
 -- Location_Information table inserts
-INSERT INTO Location_Informations (Merchant_id, addressLine1, addressLine2, city, state, country, zipCode)
+INSERT INTO LocationInfos(Merchant_id, addressLine1, addressLine2, city, state, country, zipCode)
 VALUES 
     (1, '123 Main St', 'Suite 101', 'Anytown', 'CA', 'USA', '12345'),
     (2, '456 Elm St', NULL, 'Sometown', 'NY', 'USA', '54321'),
@@ -546,7 +546,7 @@ VALUES
     (4, '101 Pine St', 'Apt 3B', 'TechCity', 'WA', 'USA', '98765'),
     (5, '222 Maple St', NULL, 'Greenville', 'FL', 'USA', '13579');
 
-CREATE TABLE Change_Passwords (
+CREATE TABLE ChangePasses (
     id INTEGER PRIMARY KEY,
     Merchant_id INTEGER, 
     currentPassword TEXT,
@@ -556,7 +556,7 @@ CREATE TABLE Change_Passwords (
 );
 
 -- Change_Password table inserts
-INSERT INTO Change_Password (Merchant_id, currentPassword, newPassword, newPasswordAgain)
+INSERT INTO ChangePasses (Merchant_id, currentPassword, newPassword, newPasswordAgain)
 VALUES 
     (1, 'old_password', 'new_password', 'new_password'),
     (2, 'pass123', 'securePass456', 'securePass456'),

@@ -37,7 +37,7 @@ func Healthcheck(g *gin.Context) {
 // @Success 200 {array} models.Merchant "Successfully retrieved list of Merchants"
 // @Router /Merchants [get]
 func FindMerchants(c *gin.Context) {
-	var Merchants []models.Merchant
+	var merchants []models.Merchant
 
 	// Get query params
 	offsetQuery := c.DefaultQuery("offset", "0")
@@ -62,19 +62,29 @@ func FindMerchants(c *gin.Context) {
 	// Try fetching the data from Redis first
 	cachedMerchants, err := cache.Rdb.Get(cache.Ctx, cacheKey).Result()
 	if err == nil {
-		err := json.Unmarshal([]byte(cachedMerchants), &Merchants)
+		err := json.Unmarshal([]byte(cachedMerchants), &merchants)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to unmarshal cached data"})
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{"data": Merchants})
+		c.JSON(http.StatusOK, gin.H{"data": merchants})
 		return
 	}
 
 	// If cache missed, fetch data from the database
-	//database.Database.DB.Offset(offset).Limit(limit).Find(&Merchants)
+	database.Database.DB.Offset(offset).Limit(limit).Find(&merchants)
 
-	database.Database.DB.Offset(offset).Limit(limit).Model(&models.Merchant{}).Preload("ChangePassword").Find(&Merchants)
+	for i, v := range merchants {
+		locationInfo := models.LocationInfo{}
+		passwordChan := models.ChangePass{}
+		database.Database.DB.Find(&locationInfo, "merchant_id = ?", v.ID)
+		database.Database.DB.Find(&passwordChan, "merchant_id = ?", v.ID)
+		// v.LocationInformation = locationInfo
+		// v.ChangePassword = passwordChan
+		merchants[i].LocationInfo = locationInfo
+		merchants[i].ChangePass = passwordChan
+
+	}
 
 	// for i, v := range Merchants {
 	// 	// Serialize each Merchant object and store it in Redis
@@ -96,7 +106,7 @@ func FindMerchants(c *gin.Context) {
 	// 	return
 	// }
 
-	c.JSON(http.StatusOK, gin.H{"data": Merchants})
+	c.JSON(http.StatusOK, gin.H{"data": merchants})
 }
 
 // CreateMerchant godoc

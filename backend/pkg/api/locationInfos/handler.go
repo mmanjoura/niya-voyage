@@ -1,4 +1,4 @@
-package locations
+package locationInfos
 
 import (
 	"encoding/json"
@@ -37,7 +37,7 @@ func Healthcheck(g *gin.Context) {
 // @Success 200 {array} models.Location "Successfully retrieved list of Locations"
 // @Router /Locations [get]
 func FindLocations(c *gin.Context) {
-	var Locations []models.Location
+	var Locations []models.LocationInfo
 
 	// Get query params
 	offsetQuery := c.DefaultQuery("offset", "0")
@@ -110,7 +110,7 @@ func CreateLocation(c *gin.Context) {
 		return
 	}
 
-	Location := models.Location{
+	Location := models.LocationInfo{
 		MerchantID:   input.MerchantID,
 		AddressLine1: input.AddressLine1,
 		AddressLine2: input.AddressLine2,
@@ -145,7 +145,7 @@ func CreateLocation(c *gin.Context) {
 // @Failure 404 {string} string "Location not found"
 // @Router /Locations/{id} [get]
 func FindLocation(c *gin.Context) {
-	var Location models.Location
+	var Location models.LocationInfo
 
 	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&Location).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Location not found"})
@@ -169,7 +169,7 @@ func FindLocation(c *gin.Context) {
 // @Failure 404 {string} string "Location not found"
 // @Router /Locations/{id} [put]
 func UpdateLocation(c *gin.Context) {
-	var Location models.Location
+	var Location models.LocationInfo
 	var input models.UpdateLocation
 
 	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&Location).Error; err != nil {
@@ -182,7 +182,7 @@ func UpdateLocation(c *gin.Context) {
 		return
 	}
 
-	database.Database.DB.Model(&Location).Updates(models.Location{
+	database.Database.DB.Model(&Location).Updates(models.LocationInfo{
 		MerchantID:   input.MerchantID,
 		AddressLine1: input.AddressLine1,
 		AddressLine2: input.AddressLine2,
@@ -206,7 +206,7 @@ func UpdateLocation(c *gin.Context) {
 // @Failure 404 {string} string "Location not found"
 // @Router /Locations/{id} [delete]
 func DeleteLocation(c *gin.Context) {
-	var Location models.Location
+	var Location models.LocationInfo
 
 	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&Location).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Location not found"})

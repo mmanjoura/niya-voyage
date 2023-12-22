@@ -88,7 +88,7 @@ export default function TopGolfs() {
             data-aos-delay={item?.animation}
           >
             <Link
-              href={`/golf/cruise-single/${item.id}`}
+              href={`/golf/golf-single/${item.id}`}
               className="cruiseCard -type-1 rounded-4 hover-inside-slider"
             >
               <div className="cruiseCard__image position-relative">
