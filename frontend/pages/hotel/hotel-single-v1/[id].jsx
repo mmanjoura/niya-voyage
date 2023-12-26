@@ -142,9 +142,12 @@ console.log(hotel.data)
             {/* End .col */}
           </div>
           {/* End .row */}
-
+      
           <Gallery>
+         
             <div className="galleryGrid -type-1 pt-30">
+            { hotel?.data?.GalleryImages?.slice(0, 8).map((item) => (
+              <>
               <div className="galleryGrid__item relative d-flex">
                 <Item
                   original={hotel?.data?.img}
@@ -169,12 +172,12 @@ console.log(hotel.data)
                   </button>
                 </div>
               </div>
-              {/* End .galleryGrid__item */}
-
+     
+             
               <div className="galleryGrid__item">
                 <Item
-                  original="/img/gallery/1/2.png"
-                  thumbnail="/img/gallery/1/2.png"
+                  original={item?.gallery_img}
+                  thumbnail={item?.gallery_img}
                   width={450}
                   height={375}
                 >
@@ -182,7 +185,7 @@ console.log(hotel.data)
                     <img
                       ref={ref}
                       onClick={open}
-                      src="/img/gallery/1/2.png"
+                      src={item?.gallery_img}
                       alt="image"
                       className="rounded-4"
                       role="button"
@@ -190,77 +193,13 @@ console.log(hotel.data)
                   )}
                 </Item>
               </div>
-              {/* End .galleryGrid__item */}
-
-              <div className="galleryGrid__item relative d-flex">
-                <img
-                  src="/img/gallery/1/3.png"
-                  alt="image"
-                  className="rounded-4"
-                  role="button"
-                />
-                <div className="absolute h-full col-12 flex-center">
-                  <div
-                    className="button -blue-1 size-40 rounded-full flex-center bg-white text-dark-1 js-gallery"
-                    role="button"
-                    onClick={() => setOpen(true)}
-                  >
-                    <i className="icon-play text-16" />
-                  </div>
-                </div>
-              </div>
-              {/* End .galleryGrid__item */}
-
-              <div className="galleryGrid__item">
-                <Item
-                  original="/img/gallery/1/4.png"
-                  thumbnail="/img/gallery/1/4.png"
-                  width={450}
-                  height={375}
-                >
-                  {({ ref, open }) => (
-                    <img
-                      ref={ref}
-                      onClick={open}
-                      src="/img/gallery/1/4.png"
-                      alt="image"
-                      className="rounded-4"
-                      role="button"
-                    />
-                  )}
-                </Item>
-              </div>
-              {/* End .galleryGrid__item */}
-
-              <div className="galleryGrid__item relative d-flex">
-                <img
-                  src="/img/gallery/1/5.png"
-                  alt="image"
-                  className="rounded-4"
-                />
-                <div className="absolute px-10 py-10 col-12 h-full d-flex justify-end items-end">
-                  <Item
-                    original="/img/gallery/1/5.png"
-                    thumbnail="/img/gallery/1/5.png"
-                    width={450}
-                    height={375}
-                  >
-                    {({ ref, open }) => (
-                      <div
-                        className="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery"
-                        ref={ref}
-                        onClick={open}
-                        role="button"
-                      >
-                        See All Photos
-                      </div>
-                    )}
-                  </Item>
-                </div>
-              </div>
-              {/* End .galleryGrid__item */}
+              </>
+              ))}
+      
             </div>
+           
           </Gallery>
+         
         </div>
         {/* End .container */}
       </section>

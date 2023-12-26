@@ -16,7 +16,7 @@ export default function TopHotels() {
       setHotels(response.data);
     });
   }, []);
-
+console.log("Hotels", hotels?.data)
   if (!hotels) return null;
 
   var settings = {
@@ -83,7 +83,7 @@ export default function TopHotels() {
   return (
     <>
       <Slider {...settings}>
-        {hotels.data.slice(0, 4).map((item) => (
+        {hotels?.data.slice(0, 4).map((item) => (
           <div
             className="col-xl-3 col-lg-3 col-sm-6"
             key={item?.id}
@@ -109,12 +109,13 @@ export default function TopHotels() {
                             width={300}
                             height={300}
                             className="rounded-4 col-12 js-lazy"
-                            src={slide.slide_img}
+                            src={decodeURI(`${slide?.slide_img}`)}
                             alt="image"
                           />
                         </div>
                       </div>
                     ))}
+      
                   </Slider>
 
                   <div className="cardImage__wishlist">

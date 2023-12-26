@@ -30,7 +30,7 @@ INSERT INTO Destinations (class, img, name, properties, animation) VALUES
 
 -- Hotels Table
 
-CREATE TABLE hotels (
+CREATE TABLE Hotels (
     id INTEGER PRIMARY KEY,
     category_id INTEGER,
     tag TEXT,
@@ -47,7 +47,7 @@ CREATE TABLE hotels (
      FOREIGN KEY (category_id) REFERENCES Categories(id)
 );
 
-INSERT INTO hotels (id, category_id, tag, img, title, location, ratings, Reviews, price, Animation, city)
+INSERT INTO Hotels (id, category_id, tag, img, title, location, ratings, Reviews, price, Animation, city)
 VALUES
 (1, 3, 'Breakfast Included', '/img/hotels/new/1.png', 'The Montcalm At Brewery London City', 'Westminster Borough, London', 4.7, 3014, 72.0, 100, 'new_york'),
 (2, 3,'', '/img/hotels/new/2.png', 'Staycity Aparthotels Deptford Bridge Station', 'Ciutat Vella, Barcelona', 4.8, 2345, 85.0, 200, 'london'),
@@ -65,6 +65,24 @@ VALUES
 (14, 3,'-25% today', '/img/hotels/new/14.png', 'The Montcalm At Brewery London City', 'Westminster Borough, London', 4.7, 3467, 79.0, 600, 'istanbul'),
 (15, 3,'best seller', '/img/hotels/new/15.png', 'Staycity Aparthotels Deptford Bridge Station', 'Ciutat Vella, Barcelona', 4.8, 3014, 88.0, 700, 'istanbul'),
 (16, 3,'top rated', '/img/hotels/new/16.png', 'The Westin New York at Times Square West', 'Manhattan, New York', 4.9, 7654, 68.0, 800, 'new_york');
+
+
+Property_Highlights
+CREATE TABLE Property_Highlights (
+    id INTEGER PRIMARY KEY,
+    category_id INTEGER,
+    property_id INTEGER, 
+    higlight TEXT,
+    overview TEXT,
+    popular_facilities TEXT,
+    available_rooms TEXT,
+    review_id TEXT,
+    Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES Categories(id),
+    FOREIGN KEY (property_id) REFERENCES Hotels(id),
+    FOREIGN KEY (review_id) REFERENCES reviews(id)
+);
 
 ------------------Slide Images Table ------------------------------
 CREATE TABLE slide_images (

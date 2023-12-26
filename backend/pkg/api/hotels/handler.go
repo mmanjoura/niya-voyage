@@ -71,9 +71,19 @@ func FindHotels(c *gin.Context) {
 	// }
 
 	// If cache missed, fetch data from the database
-	dB := database.Database.DB
-	dB.Model(&models.Hotel{}).Preload("GalleryImages").Preload("SlideImages").Offset(offset).Limit(limit).Find(&hotels)
-	// dB.Raw("Select * from slide_images hi inner join hotels h on hi.hotel_id = h.id").Offset(offset).Limit(limit).Scan(&hotels)
+	// dB := database.Database.DB
+
+	database.Database.DB.Offset(offset).Limit(limit).Find(&hotels)
+	galleryImages := []models.GalleryImage{}
+	slideImages := []models.SlideImage{}
+
+	for i, v := range hotels {
+		database.Database.DB.Find(&galleryImages, "hotel_id = ?", v.ID)
+		database.Database.DB.Find(&slideImages, "hotel_id = ?", v.ID)
+		hotels[i].GalleryImages = galleryImages
+		hotels[i].SlideImages = slideImages
+
+	}
 
 	// Serialize hotels object and store it in Redis
 	//serializedBooks, err := json.Marshal(hotels)
@@ -147,14 +157,31 @@ func CreateHotel(c *gin.Context) {
 // @Failure 404 {string} string "Hotel not found"
 // @Router /hotels/{id} [get]
 func FindHotel(c *gin.Context) {
-	var Hotel models.Hotel
+	var hotel models.Hotel
+	galleryImages := []models.GalleryImage{}
+	slideImages := []models.SlideImage{}
+	hotel_Id := c.Param("id")
 
-	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&Hotel).Error; err != nil {
+	// get list of hotels, for this id
+	if err := database.Database.DB.Where("id = ?", hotel_Id).First(&hotel).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel not found"})
+
+		return
+	}
+	if err := database.Database.DB.Find(&galleryImages, "hotel_id = ?", hotel_Id).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel Gallery images not found"})
+
+		return
+	}
+	if err := database.Database.DB.Find(&slideImages, "hotel_id = ?", hotel_Id).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel Gallery images not found"})
+
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": Hotel})
+	hotel.GalleryImages = galleryImages
+	hotel.SlideImages = slideImages
+	c.JSON(http.StatusOK, gin.H{"data": hotel})
 }
 
 // UpdateHotel godoc

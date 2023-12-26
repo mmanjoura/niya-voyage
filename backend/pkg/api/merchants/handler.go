@@ -72,7 +72,7 @@ func FindMerchants(c *gin.Context) {
 	}
 
 	// If cache missed, fetch data from the database
-	database.Database.DB.Offset(offset).Limit(limit).Preload("Address").Find(&merchants)
+	database.Database.DB.Offset(offset).Limit(limit).Find(&merchants)
 
 	for i, v := range merchants {
 		locationInfo := models.LocationInfo{}
