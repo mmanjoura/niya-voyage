@@ -212,12 +212,12 @@ console.log(hotel.data)
               <div className="row y-gap-40">
                 <div className="col-12">
                   <h3 className="text-22 fw-500">Property highlights</h3>
-                  <PropertyHighlights />
+                  <PropertyHighlights hotel={hotel.data} />
                 </div>
                 {/* End .col-12 Property highlights */}
 
                 <div id="overview" className="col-12">
-                  <Overview />
+                  <Overview hotel={hotel.data} />
                 </div>
                 {/* End .col-12  Overview */}
 
@@ -226,7 +226,7 @@ console.log(hotel.data)
                     Most Popular Facilities
                   </h3>
                   <div className="row y-gap-10 pt-20">
-                    <PopularFacilities />
+                    <PopularFacilities hotel={hotel.data} />
                   </div>
                 </div>
                 {/* End .col-12 Most Popular Facilities */}

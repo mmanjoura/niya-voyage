@@ -160,11 +160,19 @@ func FindHotel(c *gin.Context) {
 	var hotel models.Hotel
 	galleryImages := []models.GalleryImage{}
 	slideImages := []models.SlideImage{}
+	hotelBenefits := []models.HotelBenefit{}
+	hotelFacilities := []models.HotelFacility{}
+	hotelInfo := models.HotelInfo{}
 	hotel_Id := c.Param("id")
 
 	// get list of hotels, for this id
 	if err := database.Database.DB.Where("id = ?", hotel_Id).First(&hotel).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel not found"})
+
+		return
+	}
+	if err := database.Database.DB.Where("id = ?", hotel_Id).First(&hotelInfo).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel Info not found"})
 
 		return
 	}
@@ -178,7 +186,18 @@ func FindHotel(c *gin.Context) {
 
 		return
 	}
+	if err := database.Database.DB.Find(&hotelBenefits, "hotel_id = ?", hotel_Id).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel Benefits not found"})
+		return
+	}
+	if err := database.Database.DB.Find(&hotelFacilities, "hotel_id = ?", hotel_Id).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel Facilities not found"})
+		return
+	}
 
+	hotelInfo.HotelBenefits = hotelBenefits
+	hotelInfo.HotelFacilities = hotelFacilities
+	hotel.HotelInfo = hotelInfo
 	hotel.GalleryImages = galleryImages
 	hotel.SlideImages = slideImages
 	c.JSON(http.StatusOK, gin.H{"data": hotel})

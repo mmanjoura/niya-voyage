@@ -1,47 +1,28 @@
-const PopularFacilities = () => {
+import { useEffect, useState } from "react";
+
+const PopularFacilities = ({ hotel }) => {
+  const [facilities, setFacilities] = useState([]);
+
+  useEffect(() => {
+    setFacilities(hotel);
+  }, []);
+
+  
+
+  if (!hotel) return null;
+console.log(hotel);
   return (
     <>
-      <div className="col-md-5">
-        <div className="d-flex x-gap-15 y-gap-15 items-center">
-          <i className="icon-no-smoke"></i>
-          <div className="text-15">Non-smoking rooms</div>
-        </div>
-      </div>
+      {hotel?.hotel_info?.hotel_facility.map((item) => (
 
-      <div className="col-md-5">
-        <div className="d-flex x-gap-15 y-gap-15 items-center">
-          <i className="icon-wifi"></i>
-          <div className="text-15">Free WiFi</div>
+        <div className="col-md-5" key={item.id}>
+          <div className="d-flex x-gap-15 y-gap-15 items-center">
+            <i className={`${item?.class_name} text-24 text-blue-1`}></i>
+            <div className="text-15">{item?.facility_name}</div>
+          </div>
         </div>
-      </div>
 
-      <div className="col-md-5">
-        <div className="d-flex x-gap-15 y-gap-15 items-center">
-          <i className="icon-parking"></i>
-          <div className="text-15">Parking</div>
-        </div>
-      </div>
-
-      <div className="col-md-5">
-        <div className="d-flex x-gap-15 y-gap-15 items-center">
-          <i className="icon-kitchen"></i>
-          <div className="text-15">Kitchen</div>
-        </div>
-      </div>
-
-      <div className="col-md-5">
-        <div className="d-flex x-gap-15 y-gap-15 items-center">
-          <i className="icon-living-room"></i>
-          <div className="text-15">Living Area</div>
-        </div>
-      </div>
-
-      <div className="col-md-5">
-        <div className="d-flex x-gap-15 y-gap-15 items-center">
-          <i className="icon-shield"></i>
-          <div className="text-15">Safety &amp; security</div>
-        </div>
-      </div>
+      ))}
     </>
   );
 };

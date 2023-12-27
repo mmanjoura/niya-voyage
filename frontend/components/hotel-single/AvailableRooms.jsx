@@ -1,6 +1,15 @@
 import Image from "next/image";
 
+import { useEffect, useState } from "react";
+
 const AvailableRooms = ({ hotel }) => {
+  const [facilities, setAvailability] = useState([]);
+
+  useEffect(() => {
+    setAvailability(hotel);
+  }, []);
+  if (!hotel) return null;
+  console.log("Hotel:", hotel);
   return (
     <>
       <div className="border-light rounded-4 px-30 py-30 sm:px-20 sm:py-20">
@@ -24,30 +33,24 @@ const AvailableRooms = ({ hotel }) => {
                     <Image
                       width={180}
                       height={180}
-                      src="/img/backgrounds/1.png"
+                       src={hotel?.data?.hotel_info?.img}
                       alt="image"
                       className="img-ratio rounded-4"
                     />
                   </div>
                   {/* End image */}
-                  <div className="y-gap-5 mt-20">
+                  {hotel?.data?.hotel_info?.hotel_facility.map((item) => (
+
+                  <div className="y-gap-5 mt-20" key={item.id}>
                     <div className="d-flex items-center">
-                      <i className="icon-no-smoke text-20 mr-10" />
-                      <div className="text-15">Non-smoking rooms</div>
-                    </div>
-                    <div className="d-flex items-center">
-                      <i className="icon-wifi text-20 mr-10" />
-                      <div className="text-15">Free WiFi</div>
-                    </div>
-                    <div className="d-flex items-center">
-                      <i className="icon-parking text-20 mr-10" />
-                      <div className="text-15">Parking</div>
-                    </div>
-                    <div className="d-flex items-center">
-                      <i className="icon-kitchen text-20 mr-10" />
-                      <div className="text-15">Kitchen</div>
+                      <i className={`${item?.class_name} text-20 mr-10`}></i>
+                      <div className="text-15">{item?.facility_name}</div>
                     </div>
                   </div>
+
+                  ))}
+
+
                   {/* End room features */}
                   <a
                     href="#"

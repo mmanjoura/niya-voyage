@@ -66,23 +66,103 @@ VALUES
 (15, 3,'best seller', '/img/hotels/new/15.png', 'Staycity Aparthotels Deptford Bridge Station', 'Ciutat Vella, Barcelona', 4.8, 3014, 88.0, 700, 'istanbul'),
 (16, 3,'top rated', '/img/hotels/new/16.png', 'The Westin New York at Times Square West', 'Manhattan, New York', 4.9, 7654, 68.0, 800, 'new_york');
 
+----Hotel Infos Table -------
 
-Property_Highlights
-CREATE TABLE Property_Highlights (
+
+CREATE TABLE Hotel_Infos (
     id INTEGER PRIMARY KEY,
-    category_id INTEGER,
-    property_id INTEGER, 
-    higlight TEXT,
+    hotel_id INTEGER,
+    Room_Type TEXT, 
     overview TEXT,
-    popular_facilities TEXT,
-    available_rooms TEXT,
-    review_id TEXT,
+    img TEXT,
+    price TEXT,
     Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
     Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (category_id) REFERENCES Categories(id),
-    FOREIGN KEY (property_id) REFERENCES Hotels(id),
-    FOREIGN KEY (review_id) REFERENCES reviews(id)
+    FOREIGN KEY (hotel_id) REFERENCES Hotels(id)
 );
+
+INSERT INTO Hotel_Infos (hotel_id, Room_Type, overview, img, price)
+VALUES (1, 'Standard Twin Room', '
+        You can directly book the best price if your travel dates are available,
+        all discounts are already included. In the following house description
+        you will find all information about our listing.
+        <br />
+        <br />
+        2-room terraced house on 2 levels. Comfortable and cosy furnishings: 1
+        room with 1 french bed and radio. Shower, sep. WC. Upper floor: (steep
+        stair) living/dining room with 1 sofabed (110 cm, length 180 cm), TV.
+        Exit to the balcony. Small kitchen (2 hot plates, oven,
+      ', '/img/hotels/new/1.png', '$200 per night');
+
+INSERT INTO Hotel_Infos (hotel_id, Room_Type, overview, img, price)
+VALUES (1, 'Deluxe King Room', '
+        You can directly book the best price if your travel dates are available,
+        all discounts are already included. In the following house description
+        you will find all information about our listing.
+        <br />
+        <br />
+        2-room terraced house on 2 levels. Comfortable and cosy furnishings: 1
+        room with 1 french bed and radio. Shower, sep. WC. Upper floor: (steep
+        stair) living/dining room with 1 sofabed (110 cm, length 180 cm), TV.
+        Exit to the balcony. Small kitchen (2 hot plates, oven,
+      ', '/img/hotels/new/2.png', '$200 per night');
+
+
+
+
+---Room Types Table
+
+CREATE TABLE Room_Types (
+    id INTEGER PRIMARY KEY,
+    RoomType TEXT
+   
+);
+INSERT INTO Room_Types (RoomType) VALUES ('Standard Twin Room');
+INSERT INTO Room_Types (RoomType) VALUES ('Deluxe King Room');
+
+CREATE TABLE Hotel_Facilities (
+    id INTEGER PRIMARY KEY,
+    hotel_id INTEGER,
+    class_name TEXT,
+    facility_name TEXT,
+    exist INTEGER,
+    isHilight INTEGER,
+    FOREIGN KEY (hotel_id) REFERENCES Hotels(id)
+);
+-- Example INSERTs for Hotel_Facilities
+INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (1, 'icon-no-smoke', 'Non-smoking rooms', 1, 0);
+INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (1, 'icon-wifi', 'Free WiFi', 1, 0);
+INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (1, 'icon-parking', 'Parking', 1, 0);
+INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-kitchen', 'Kitchen', 1, 0);
+INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-living-room', 'Living Area', 1, 0);
+INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-shield', 'Safety & security', 1, 0);
+
+INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (1, 'icon-city', 'In London City Centre', 1, 1);
+INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-airplane', 'Airport transfer', 1, 1);
+INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-bell-ring', 'Front desk [24-hour]', 1, 1);
+INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-tv', 'Premium TV channels', 1, 1);
+
+CREATE TABLE Hotel_Benefits (
+    id INTEGER PRIMARY KEY,
+    hotel_id INTEGER,
+    class_name TEXT,
+    Benefit_name TEXT,
+    exist INTEGER,
+    FOREIGN KEY (hotel_id) REFERENCES Hotels(id)
+);
+
+-- Example INSERTs for Hotel_Benefits
+INSERT INTO Hotel_Benefits (hotel_id, class_name, Benefit_name, exist) VALUES (1, 'icon-check', 'Pay at the hotel', 1);
+INSERT INTO Hotel_Benefits (hotel_id, class_name, Benefit_name, exist) VALUES (1, 'icon-check', 'Pay nothing until March 30, 2022', 1);
+INSERT INTO Hotel_Benefits (hotel_id, class_name, Benefit_name, exist) VALUES (1, 'icon-check', 'Free cancellation before April 1, 2022', 1);
+
+INSERT INTO Hotel_Benefits (hotel_id, class_name, Benefit_name, exist) VALUES (2, 'icon-check', 'Pay at the hotel', 1);
+INSERT INTO Hotel_Benefits (hotel_id, class_name, Benefit_name, exist) VALUES (2, 'icon-check', 'Pay nothing until March 30, 2022', 1);
+INSERT INTO Hotel_Benefits (hotel_id, class_name, Benefit_name, exist) VALUES (2, 'icon-check', 'Free cancellation before April 1, 2022', 1);
+
+
+
+
 
 ------------------Slide Images Table ------------------------------
 CREATE TABLE slide_images (
