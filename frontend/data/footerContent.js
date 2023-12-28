@@ -5,15 +5,14 @@ module.exports = [
     menuList: [
       { name: "About Us", routerPath: "/static/about" },    
       { name: "Become Expert", routerPath: "/static/expert"  },
-      { name: "Blog", routerPath: "/static/blog" },
-      // { name: "Gift Cards", routerPath: "/" },
+      { name: "Blog", routerPath: "/blog/blog-list-v1" },
     ],
   },
   {
     id: 2,
     title: "Support",
     menuList: [
-      { name: "Contact", routerPath: "static/contact" },
+      { name: "Contact", routerPath: "/static/contact" },
       { name: "Terms and Conditions", routerPath: "/static/terms" },
       { name: "Help Center", routerPath: "/static/help-center" },
     ],

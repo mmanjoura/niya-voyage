@@ -10,19 +10,19 @@ const Block2 = () => {
       id: 1,
       icon: "/img/featureIcons/1/1.svg",
       title: "Best Price Guarantee",
-      text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+      text: `Our Best Price Guarantee ensures you get the most competitive prices, offering peace of mind that you're receiving the best deal available`,
     },
     {
       id: 2,
       icon: "/img/featureIcons/1/2.svg",
       title: "Easy & Quick Booking",
-      text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+      text: `Experience hassle-free and swift booking with our user-friendly platform, making your reservation process effortless and efficient.`,
     },
     {
       id: 3,
       icon: "/img/featureIcons/1/3.svg",
       title: "Customer Care 24/7",
-      text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+      text: `Count on our round-the-clock customer care, ensuring assistance and support whenever you need it, day or night, for a seamless and reliable experience`,
     },
   ];
 

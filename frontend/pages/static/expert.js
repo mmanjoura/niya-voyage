@@ -61,7 +61,7 @@ const BecomeExpert = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">How does it work?</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  These popular destinations have a lot to offer
+                  All you need is, to register, add your services and start taking bookings;
                 </p>
               </div>
             </div>
@@ -91,7 +91,8 @@ const BecomeExpert = () => {
                   Frequently Asked Questions
                 </h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  Interdum et malesuada fames
+                  We&apos;re here to help. Find the answers to your questions
+                  here.
                 </p>
               </div>
             </div>

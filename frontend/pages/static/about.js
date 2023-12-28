@@ -43,7 +43,7 @@ const About = () => {
                 Looking for joy?
               </h1>
               <div className="text-white mt-15">
-                Your trusted trip companion
+                Your trusted trip companion. Niya Voyage
               </div>
             </div>
           </div>
@@ -59,7 +59,7 @@ const About = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">Why Choose Us</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  These popular destinations have a lot to offer
+                Choosing us ensures quality, reliability, and satisfaction every step of the way
                 </p>
               </div>
             </div>
@@ -88,7 +88,7 @@ const About = () => {
         <div className="container">
           <div className="border-bottom-light pb-40">
             <div className="row y-gap-30 justify-center text-center">
-              <Counter />
+              {/* <Counter /> */}
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@ const About = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">Our Team</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  Lorem ipsum dolor sit amet
+                We have a team with driving energy that empowers us and turn our customers dreams into reality and overcome obstacles along the way.
                 </p>
               </div>
             </div>
@@ -146,13 +146,13 @@ const About = () => {
 
           <div className="row y-gap-30 items-center pt-40 sm:pt-20">
             <div className="col-xl-4">
-              <Counter2 />
+              {/* <Counter2 /> */}
             </div>
             {/* End .col */}
 
             <div className="col-xl-8">
               <div className="row y-gap-30 justify-between items-center">
-                <Brand />
+                {/* <Brand /> */}
               </div>
             </div>
             {/* End .col */}

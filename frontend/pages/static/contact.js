@@ -1,13 +1,13 @@
 import dynamic from "next/dynamic";
-import CallToActions from "../components/common/CallToActions";
-import Seo from "../components/common/Seo";
-import DefaultHeader from "../components/header/header";
-import DefaultFooter from "../components/footer/default";
-import WhyChoose from "../components/block/BlockGuide";
-import Address from "../components/block/Address";
-import Social from "../components/common/social/Social";
-import ContactForm from "../components/common/ContactForm";
-import LocationTopBar from "../components/common/LocationTopBar";
+import CallToActions from "../../components/common/CallToActions";
+import Seo from "../../components/common/Seo";
+import DefaultHeader from "../../components/header/header";
+import DefaultFooter from "../../components/footer/default";
+import WhyChoose from "../../components/block/BlockGuide";
+import Address from "../../components/block/Address";
+import Social from "../../components/common/social/Social";
+import ContactForm from "../../components/common/ContactForm";
+import LocationTopBar from "../../components/common/LocationTopBar";
 
 const Contact = () => {
   return (
