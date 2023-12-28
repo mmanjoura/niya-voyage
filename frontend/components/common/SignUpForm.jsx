@@ -7,7 +7,7 @@ const SignUpForm = () => {
         <h1 className="text-22 fw-500">Welcome back</h1>
         <p className="mt-10">
           Already have an account yet?{" "}
-          <Link href="/others-pages/login" className="text-blue-1">
+          <Link href="/static/login" className="text-blue-1">
             Log in
           </Link>
         </p>

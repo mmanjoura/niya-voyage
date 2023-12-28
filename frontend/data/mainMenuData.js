@@ -33,35 +33,35 @@ export const pageItems = [
   },
   {
     name: "About",
-    routePath: "/others-pages/about",
+    routePath: "/static/about",
   },
   {
     name: "Become Expert",
-    routePath: "/others-pages/become-expert",
+    routePath: "/static/become-expert",
   },
   {
     name: "Help Center",
-    routePath: "/others-pages/help-center",
+    routePath: "/static/help-center",
   },
   {
     name: "Login",
-    routePath: "/others-pages/login",
+    routePath: "/static/login",
   },
   {
     name: "Register",
-    routePath: "/others-pages/signup",
+    routePath: "/static/signup",
   },
   {
     name: "Terms",
-    routePath: "/others-pages/terms",
+    routePath: "/static/terms",
   },
   {
     name: "Invoice",
-    routePath: "/others-pages/invoice",
+    routePath: "/static/invoice",
   },
   {
     name: "UI Elements",
-    routePath: "/others-pages/ui-elements",
+    routePath: "/static/ui-elements",
   },
 ];
 export const dashboardItems = [
@@ -103,7 +103,7 @@ export const dashboardItems = [
   },
   {
     name: "Logout",
-    routePath: "/others-pages/login",
+    routePath: "/static/login",
   },
 ];
 

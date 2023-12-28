@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import cruiseData from "../../data/cruise";
 import isTextMatched from "../../utils/isTextMatched";
 
-const Cruise2 = () => {
+const Golf2 = () => {
   var settings = {
     dots: true,
     infinite: true,
@@ -192,4 +192,4 @@ const Cruise2 = () => {
   );
 };
 
-export default Cruise2;
+export default Golf2;

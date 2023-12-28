@@ -5,7 +5,7 @@ import { Navigation, Pagination } from "swiper";
 import cruiseData from "../../data/cruise";
 import isTextMatched from "../../utils/isTextMatched";
 
-const Cruise3 = () => {
+const Golf3 = () => {
   return (
     <>
       <Swiper
@@ -205,4 +205,4 @@ const Cruise3 = () => {
   );
 };
 
-export default Cruise3;
+export default Golf3;

@@ -2,11 +2,11 @@ import CallToActions from "../../../components/common/CallToActions";
 import Seo from "../../../components/common/Seo";
 import Header from "../../../components/header/header";
 import DefaultFooter from "../../../components/footer/default";
-import MainFilterSearchBox from "../../../components/cruise-list/cruise-list-v1/MainFilterSearchBox";
-import TopHeaderFilter from "../../../components/cruise-list/cruise-list-v1/TopHeaderFilter";
-import CruiseProperties from "../../../components/cruise-list/cruise-list-v1/CruiseProperties";
-import Pagination from "../../../components/cruise-list/common/Pagination";
-import Sidebar from "../../../components/cruise-list/cruise-list-v1/Sidebar";
+import MainFilterSearchBox from "../../../components/golf-list/golf-list-v1/MainFilterSearchBox";
+import TopHeaderFilter from "../../../components/golf-list/golf-list-v1/TopHeaderFilter";
+import GolfProperties from "../../../components/golf-list/golf-list-v1/GolfProperties";
+import Pagination from "../../../components/golf-list/common/Pagination";
+import Sidebar from "../../../components/golf-list/golf-list-v1/Sidebar";
 
 const index = () => {
   return (
@@ -79,7 +79,7 @@ const index = () => {
               <div className="mt-30"></div>
               {/* End mt--30 */}
               <div className="row y-gap-30">
-                <CruiseProperties />
+                <GolfProperties />
               </div>
               {/* End .row */}
               <Pagination />

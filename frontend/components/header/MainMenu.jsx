@@ -70,7 +70,7 @@ const MainMenu = ({ style = "" }) => {
 
 
         <li className={router.pathname === "/contact" ? "current" : ""}>
-          <Link href="/contact">Contact</Link>
+          <Link href="static/contact">Contact</Link>
         </li>
       </ul>
     </nav>

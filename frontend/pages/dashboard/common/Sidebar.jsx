@@ -35,7 +35,7 @@ const Sidebar = () => {
       id: 5,
       icon: "/img/dashboard/sidebar/log-out.svg",
       name: " Logout",
-      routePath: "/others-pages/login",
+      routePath: "/static/login",
     },
   ];
   return (

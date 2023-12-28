@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Seo from "../../components/common/Seo";
 import Header from "../../components/header/header";
-import Hero3 from "../../components/hero/hero-3";
+import Hero from "../../components/hero/hero";
 import TopDestinations from "../../components/destinations/TopDestinations";
 import TopHotels from "../../components/hotels/Hotels2";
 import Link from "next/link";
@@ -9,7 +9,7 @@ import TopTours from "../../components/tours/Tours";
 import TopActivities from "../../components/activity/Activity";
 import TopRentals from "../../components/rentals/Rentals";
 import TopCars from "../../components/cars/Cars";
-import TopGolfs from "../../components/golf/Golf";
+import TopGolfs from "../../components/golfs/Golfs";
 import TopFlights from "../../components/flight/Flights";
 import Footer from "../../components/footer/footer";
 import AddBanner from "../../components/home/home-3/AddBanner";
@@ -24,7 +24,7 @@ const index = () => {
       <Header />
       {/* End Header 3 */}
 
-      <Hero3 />
+      <Hero />
       {/* End Hero 3 */}
 
       <section className="layout-pt-lg layout-pb-md">

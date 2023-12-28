@@ -4,7 +4,7 @@ import { Navigation, Pagination } from "swiper";
 import cruiseData from "../../../data/cruise";
 import Link from "next/link";
 
-const CruiseProperties = () => {
+const GolfProperties = () => {
   return (
     <>
       {cruiseData.slice(0, 5).map((item) => (
@@ -121,4 +121,4 @@ const CruiseProperties = () => {
   );
 };
 
-export default CruiseProperties;
+export default GolfProperties;

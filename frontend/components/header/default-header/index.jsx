@@ -64,13 +64,13 @@ const Header = () => {
                 {/* Start btn-group */}
                 <div className="d-flex items-center ml-20 is-menu-opened-hide md:d-none">
                   <Link
-                    href="/others-pages/login"
+                    href="/static/login"
                     className="button px-30 fw-400 text-14 -blue-1 bg-blue-1 h-50 text-white"
                   >
                     Become An Expert
                   </Link>
                   <Link
-                    href="/others-pages/signup"
+                    href="/static/signup"
                     className="button px-30 fw-400 text-14 -outline-blue-1 h-50 text-blue-1 ml-20"
                   >
                     Sign In / Register
@@ -82,7 +82,7 @@ const Header = () => {
                 <div className="d-none xl:d-flex x-gap-20 items-center pl-30 text-dark-1">
                   <div>
                     <Link
-                      href="/others-pages/login"
+                      href="/static/login"
                       className="d-flex items-center icon-user text-inherit text-22"
                     />
                   </div>

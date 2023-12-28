@@ -1,6 +1,6 @@
 import CallToActions from "../../../components/common/CallToActions";
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header";
+import Header from "../../../components/header/header";
 import DefaultFooter from "../../../components/footer/default";
 import MainFilterSearchBox from "../../../components/activity-list/activity-list-v1/MainFilterSearchBox";
 import TopHeaderFilter from "../../../components/activity-list/activity-list-v1/TopHeaderFilter";
@@ -17,7 +17,7 @@ const index = () => {
       <div className="header-margin"></div>
       {/* header top margin */}
 
-      <Header11 />
+      <Header />
       {/* End Header 1 */}
 
       <section className="pt-40 pb-40 bg-light-2">
