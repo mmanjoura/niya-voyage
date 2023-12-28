@@ -68,22 +68,18 @@ const AvailableRooms = ({ hotel }) => {
                         Your price includes:
                       </div>
                       <div className="y-gap-8">
-                        <div className="d-flex items-center text-green-2">
-                          <i className="icon-check text-12 mr-10" />
-                          <div className="text-15">Pay at the hotel</div>
-                        </div>
-                        <div className="d-flex items-center text-green-2">
-                          <i className="icon-check text-12 mr-10" />
-                          <div className="text-15">
-                            Pay nothing until March 30, 2022
-                          </div>
-                        </div>
-                        <div className="d-flex items-center text-green-2">
-                          <i className="icon-check text-12 mr-10" />
-                          <div className="text-15">
-                            Free cancellation before April 1, 2022
-                          </div>
-                        </div>
+
+                      {hotel?.data?.hotel_info?.hotel_benefit.map((item) => (
+
+                      <div className="d-flex items-center text-green-2" key={item.id}>
+                     
+                      <i className={`${item?.class_name} text-12 mr-10`}></i>
+                      <div className="text-15">{item?.benefit_name}</div>
+                      </div>
+                  
+
+                      ))}
+
                       </div>
                     </div>
 

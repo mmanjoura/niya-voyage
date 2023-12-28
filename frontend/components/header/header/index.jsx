@@ -6,7 +6,7 @@ import LanguageMegaMenu from "../LanguageMegaMenu";
 
 import MobileMenu from "../MobileMenu";
 
-const Header = () => {
+const index = () => {
   const [navbar, setNavbar] = useState(false);
 
   const changeBackground = () => {
@@ -23,19 +23,20 @@ const Header = () => {
 
   return (
     <>
-      <header className={`header bg-white ${navbar ? "is-sticky" : ""}`}>
+      <header className={`header bg-dark-3 ${navbar ? "is-sticky" : ""}`}>
         <div className="header__container px-30 sm:px-20">
           <div className="row justify-between items-center">
             <div className="col-auto">
               <div className="d-flex items-center">
                 <Link href="/" className="">
-                  <img src="/img/general/logo.png" alt="logo icon" />
-              </Link>
+                  <img src="/img/general/logo.png " alt="logo icon"/>
+
+                </Link>
                 {/* End logo */}
 
                 <div className="header-menu">
                   <div className="header-menu__content">
-                    <MainMenu style="text-dark-1" />
+                    <MainMenu style="text-white" />
                   </div>
                 </div>
                 {/* End header-menu */}
@@ -47,7 +48,7 @@ const Header = () => {
             <div className="col-auto">
               <div className="d-flex items-center">
                 <div className="row x-gap-20 items-center xxl:d-none">
-                  {/* <CurrenctyMegaMenu textClass="text-dark-1" /> */}
+                  {/* <CurrenctyMegaMenu textClass="text-white" /> */}
                   {/* End Megamenu for Currencty */}
 
                   {/* Start vertical devider*/}
@@ -56,7 +57,7 @@ const Header = () => {
                   </div>
                   {/* End vertical devider*/}
 
-                  {/* <LanguageMegaMenu textClass="text-dark-1" /> */}
+                  {/* <LanguageMegaMenu textClass="text-white" /> */}
                   {/* End Megamenu for Language */}
                 </div>
                 {/* End language and currency selector */}
@@ -65,13 +66,13 @@ const Header = () => {
                 <div className="d-flex items-center ml-20 is-menu-opened-hide md:d-none">
                   <Link
                     href="/others-pages/login"
-                    className="button px-30 fw-400 text-14 -blue-1 bg-blue-1 h-50 text-white"
+                    className="button px-30 fw-400 text-14 -white bg-white h-50 text-dark-1"
                   >
                     Become An Expert
                   </Link>
                   <Link
                     href="/others-pages/signup"
-                    className="button px-30 fw-400 text-14 -outline-blue-1 h-50 text-blue-1 ml-20"
+                    className="button px-30 fw-400 text-14 border-white -outline-white h-50 text-white ml-20"
                   >
                     Sign In / Register
                   </Link>
@@ -79,7 +80,7 @@ const Header = () => {
                 {/* End btn-group */}
 
                 {/* Start mobile menu icon */}
-                <div className="d-none xl:d-flex x-gap-20 items-center pl-30 text-dark-1">
+                <div className="d-none xl:d-flex x-gap-20 items-center pl-30 text-white">
                   <div>
                     <Link
                       href="/others-pages/login"
@@ -119,4 +120,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default index;

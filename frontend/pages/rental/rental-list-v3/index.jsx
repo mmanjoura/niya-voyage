@@ -1,5 +1,5 @@
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header-11";
+import Header11 from "../../../components/header/header";
 import MainFilterSearchBox from "../../../components/rental-list/rental-list-v3/MainFilterSearchBox";
 import TopHeaderFilter from "../../../components/rental-list/rental-list-v3/TopHeaderFilter";
 import DropdownSelelctBar from "../../../components/rental-list/common/DropdownSelelctBar";

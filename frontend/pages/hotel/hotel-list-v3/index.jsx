@@ -1,5 +1,5 @@
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header-11";
+import Header11 from "../../../components/header/header";
 import DropdownSelelctBar from "../../../components/hotel-list/common/DropdownSelelctBar";
 import MapPropertyFinder from "../../../components/hotel-list/common/MapPropertyFinder";
 import Pagination from "../../../components/hotel-list/common/Pagination";

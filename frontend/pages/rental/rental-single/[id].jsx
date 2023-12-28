@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "photoswipe/dist/photoswipe.css";
 import rentalsData from "../../../data/rentals";
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header-11";
+import Header11 from "../../../components/header/header";
 import Overview from "../../../components/rental-single/Overview";
 import PropertyHighlights from "../../../components/rental-single/PropertyHighlights";
 import TopBreadCrumb from "../../../components/rental-single/TopBreadCrumb";

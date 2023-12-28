@@ -1,4 +1,4 @@
-import Social from "../../common/social/Social";
+import Social from "../../../components/common/social/Social";
 
 const Copyright = () => {
   return (
@@ -23,8 +23,9 @@ const Copyright = () => {
 
           <div className="col-auto">
             <div className="d-flex x-gap-15">
-              <a href="#">Privacy</a>
-              <a href="#">Terms</a>
+              <a href="Privacy">Privacy</a>
+              <a href="Terms">Terms</a>
+
             </div>
           </div>
           {/* End .col */}
@@ -39,7 +40,7 @@ const Copyright = () => {
             <div className="d-flex items-center">
               <button className="d-flex items-center text-14 fw-500 text-dark-1 mr-10">
                 <i className="icon-globe text-16 mr-10" />
-                <span className="underline">English (UK)</span>
+                <span className="underline">English (US)</span>
               </button>
               <button className="d-flex items-center text-14 fw-500 text-dark-1">
                 <i className="icon-usd text-16 mr-10" />
@@ -47,14 +48,6 @@ const Copyright = () => {
               </button>
             </div>
           </div>
-          {/* End .col */}
-
-          <div className="col-auto">
-            <div className="d-flex x-gap-20 items-center">
-              <Social />
-            </div>
-          </div>
-          {/* End .col */}
         </div>
       </div>
       {/* End .col */}

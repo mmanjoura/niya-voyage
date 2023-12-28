@@ -1,5 +1,5 @@
 import Wrapper from "./layout/wrapper";
-import Home3 from "./home/home_3";
+import Home3 from "./home/index";
 
 const MainRoot = () => {
   return (

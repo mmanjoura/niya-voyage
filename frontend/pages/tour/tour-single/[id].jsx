@@ -8,7 +8,7 @@ import "photoswipe/dist/photoswipe.css";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import toursData from "../../../data/tours";
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header-11";
+import Header11 from "../../../components/header/header";
 import Overview from "../../../components/tour-single/Overview";
 import TourSnapShot from "../../../components/tour-single/TourSnapShot";
 import TopBreadCrumb from "../../../components/tour-single/TopBreadCrumb";

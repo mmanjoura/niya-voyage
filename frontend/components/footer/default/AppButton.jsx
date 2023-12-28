@@ -3,7 +3,7 @@ const AppButton = () => {
     {
       id: 1,
       icon: "icon-apple",
-      link: "https://www.apple.com/app-store/",
+      link: "#",
       text: "Download on the",
       market: "Apple Store",
       colClass: "",
@@ -11,7 +11,7 @@ const AppButton = () => {
     {
       id: 2,
       icon: "icon-play-market",
-      link: "https://play.google.com/store/apps/?hl=en&gl=US",
+      link: "#",
       text: "Get in on",
       market: "Google Play",
       colClass: "mt-20",

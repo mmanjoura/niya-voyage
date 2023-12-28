@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import CallToActions from "../components/common/CallToActions";
 import Seo from "../components/common/Seo";
-import DefaultHeader from "../components/header/default-header";
+import DefaultHeader from "../components/header/header";
 import DefaultFooter from "../components/footer/default";
 import WhyChoose from "../components/block/BlockGuide";
 import Address from "../components/block/Address";
@@ -27,7 +27,7 @@ const Contact = () => {
       <div className="map-outer">
         <div className="map-canvas">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d182586.0420340798!2d-73.99038430252834!3d40.749936548349346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1670824458615!5m2!1sen!2sbd"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4040.385653877176!2d-8.012740714018356!3d31.61890287773208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafef0148ae6b7d%3A0xd2b058e0dcba655c!2sBertrand%20Shoes%20Menara%20Mall!5e0!3m2!1sen!2sie!4v1703764234725!5m2!1sen!2sie"
             loading="lazy"
           ></iframe>
         </div>
@@ -79,7 +79,8 @@ const Contact = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">Why Choose Us</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  These popular destinations have a lot to offer
+                  We are a team of professionals who are passionate about
+                  delivering quality service to our customers.
                 </p>
               </div>
             </div>

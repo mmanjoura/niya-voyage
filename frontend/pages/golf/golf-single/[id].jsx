@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "photoswipe/dist/photoswipe.css";
 import cruiseData from "../../../data/cruise";
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header-11";
+import Header11 from "../../../components/header/header";
 import Overview from "../../../components/cruise-single/Overview";
 import TopBreadCrumb from "../../../components/cruise-single/TopBreadCrumb";
 import SidebarRight from "../../../components/cruise-single/SidebarRight";

@@ -6,7 +6,7 @@ import "photoswipe/dist/photoswipe.css";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import { hotelsData } from "../../../data/hotels";
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header-11";
+import Header11 from "../../../components/header/header";
 import Overview from "../../../components/hotel-single/Overview";
 import PopularFacilities from "../../../components/hotel-single/PopularFacilities";
 import PropertyHighlights from "../../../components/hotel-single/PropertyHighlights";

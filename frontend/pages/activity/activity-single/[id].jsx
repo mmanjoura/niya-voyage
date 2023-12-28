@@ -5,7 +5,7 @@ import ModalVideo from "react-modal-video";
 import "photoswipe/dist/photoswipe.css";
 import activityData from "../../../data/activity";
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header-11";
+import Header11 from "../../../components/header/header";
 import Overview from "../../../components/activity-single/Overview";
 import TourSnapShot from "../../../components/activity-single/TourSnapShot";
 import TopBreadCrumb from "../../../components/activity-single/TopBreadCrumb";

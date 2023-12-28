@@ -1,6 +1,6 @@
 import CallToActions from "../../../components/common/CallToActions";
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header-11";
+import Header11 from "../../../components/header/header";
 import DefaultFooter from "../../../components/footer/default";
 import TopHeaderFilter from "../../../components/tour-list/tour-list-v2/TopHeaderFilter";
 import TourProperties from "../../../components/tour-list/tour-list-v2/TourProperties";
