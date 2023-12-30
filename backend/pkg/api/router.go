@@ -3,6 +3,7 @@ package api
 import (
 	"niya-voyage/backend/docs"
 	"niya-voyage/backend/pkg/api/activities"
+	"niya-voyage/backend/pkg/api/addBanners"
 	"niya-voyage/backend/pkg/api/blogs"
 	"niya-voyage/backend/pkg/api/books"
 	"niya-voyage/backend/pkg/api/cars"
@@ -191,6 +192,13 @@ func InitRouter() *gin.Engine {
 		v1.GET("/reviewRatings/:id", middleware.APIKeyAuth(), reviewRatings.FindReviewRating)
 		v1.PUT("/reviewRatings/:id", middleware.APIKeyAuth(), reviewRatings.UpdateReviewRating)
 		v1.DELETE("/reviewRatings/:id", middleware.APIKeyAuth(), reviewRatings.DeleteReviewRating)
+
+		// addBanner routes
+		v1.GET("/addBanners", middleware.APIKeyAuth(), addBanners.FindAddBanners)
+		v1.POST("/addBanners", middleware.APIKeyAuth(), middleware.JWTAuth(), addBanners.CreateAddBanner)
+		v1.GET("/addBanners/:id", middleware.APIKeyAuth(), addBanners.FindAddBanner)
+		v1.PUT("/addBanners/:id", middleware.APIKeyAuth(), addBanners.UpdateAddBanner)
+		v1.DELETE("/addBanners/:id", middleware.APIKeyAuth(), addBanners.DeleteAddBanner)
 	}
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 

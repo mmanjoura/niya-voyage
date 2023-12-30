@@ -3,7 +3,7 @@ import Seo from "../../components/common/Seo";
 import Header from "../../components/header/header";
 import Hero from "../../components/hero/hero";
 import TopDestinations from "../../components/destinations/TopDestinations";
-import TopHotels from "../../components/hotels/Hotels2";
+import TopHotels from "../../components/hotels/Hotels";
 import Link from "next/link";
 import TopTours from "../../components/tours/Tours";
 import TopActivities from "../../components/activity/Activity";

@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import ModalVideo from "react-modal-video";
 import "photoswipe/dist/photoswipe.css";
 import { Gallery, Item } from "react-photoswipe-gallery";
-import { hotelsData } from "../../../data/hotels";
+// import { hotelsData } from "../../../data/hotels";
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header";
+import Header from "../../../components/header/header";
 import Overview from "../../../components/hotel-single/Overview";
 import PopularFacilities from "../../../components/hotel-single/PopularFacilities";
 import PropertyHighlights from "../../../components/hotel-single/PropertyHighlights";
@@ -24,7 +24,7 @@ import Image from "next/image";
 import Surroundings from "../../../components/hotel-single/Surroundings";
 import HelpfulFacts from "../../../components/hotel-single/HelpfulFacts";
 import Faq from "../../../components/faq/Faq";
-import Hotels2 from "../../../components/hotels/Hotels2";
+import Hotels2 from "../../../components/hotels/Hotels";
 import CallToActions from "../../../components/common/CallToActions";
 import DefaultFooter from "../../../components/footer/default";
 import Link from "next/link";
@@ -54,7 +54,8 @@ const HotelSingleV1Dynamic = () => {
 
     return () => {};
   }, [id]);
-console.log(hotel.data)
+    console.log("hotel/hotel-single-v1/1", hotel.data)
+if (!hotel) return null;
   return (
     <>
       <ModalVideo
@@ -71,7 +72,7 @@ console.log(hotel.data)
       <div className="header-margin"></div>
       {/* header top margin */}
 
-      <Header11 />
+      <Header />
       {/* End Header 1 */}
 
       <TopBreadCrumb />
@@ -146,9 +147,9 @@ console.log(hotel.data)
           <Gallery>
          
             <div className="galleryGrid -type-1 pt-30">
-            { hotel?.data?.GalleryImages?.slice(0, 8).map((item) => (
+            { hotel?.data?.GalleryImages?.slice(0, 8).map((item, id) => (
               <>
-              <div className="galleryGrid__item relative d-flex">
+              <div className="galleryGrid__item relative d-flex" key={id}>
                 <Item
                   original={hotel?.data?.img}
                   thumbnail={hotel?.data?.img}

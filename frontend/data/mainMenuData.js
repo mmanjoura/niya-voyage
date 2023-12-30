@@ -253,62 +253,6 @@ export const categorieMegaMenuItems = [
     ],
   },
 
-  {
-    id: 6,
-    menuCol: [
-      {
-        id: 1,
-        megaBanner: "/img/backgrounds/new/6.png",
-        title: "Things to do in this trip",
-        btnText: "See Sand Boarding",
-        btnRoute: "/golf/golf-list-v1",
-        menuItems: [
-          {
-            id: 1,
-            title: "Sand Boarding List",
-            menuList: [
-              {
-                name: "Agadir Desert",
-                routePath: "/golf/golf-list-v1",
-              },
-              {
-                name: "Merzouga Desert",
-                routePath: "/golf/golf-list-v1",
-              },
-            ],
-          }
-        ],
-      },
-    ],
-  },
-  {
-    id: 7,
-    menuCol: [
-      {
-        id: 1,
-        megaBanner: "/img/backgrounds/new/6.png",
-        title: "Things to do in this trip",
-        btnText: "See Sand Boarding",
-        btnRoute: "/cruise/cruise-list-v1",
-        menuItems: [
-          {
-            id: 1,
-            title: "Sand Boarding List",
-            menuList: [
-              {
-                name: "Agadir Desert",
-                routePath: "/cruise/cruise-list-v1",
-              },
-              {
-                name: "Merzouga Desert",
-                routePath: "/cruise/cruise-list-v2",
-              },
-            ],
-          }
-        ],
-      },
-    ],
-  },
 ];
 
 export const categorieMobileItems = [

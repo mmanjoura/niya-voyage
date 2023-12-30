@@ -18,6 +18,7 @@ type Car struct {
 	Speed         string         `json:"speed"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:CarID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
+	SlideImg      []string       `json:"slide_img"`
 	CreatedAt     time.Time      `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt     time.Time      `json:"updated_at" gorm:"autoUpdateTime"`
 }
@@ -37,6 +38,7 @@ type CreateCar struct {
 	Speed         string         `json:"speed"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:CarID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
+	SlideImg      []string       `json:"slide_img"`
 }
 
 type UpdateCar struct {
@@ -54,4 +56,5 @@ type UpdateCar struct {
 	Speed         string         `json:"speed"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:CarID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
+	SlideImg      []string       `json:"slide_img"`
 }

@@ -71,9 +71,31 @@ func FindGolfs(c *gin.Context) {
 	// }
 
 	// If cache missed, fetch data from the database
-	dB := database.Database.DB
 
-	dB.Model(&models.Golf{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&golfs)
+	database.Database.DB.Offset(offset).Limit(limit).Raw(`SELECT ID,
+			tag,
+			title,
+			price,
+			location,
+			reviews,
+			ratings,
+			animation,
+			holes,
+			duration,
+			name,
+			Created_At,
+			Updated_At
+		FROM Golfs`).Scan(&golfs)
+	galleryImages := []models.GalleryImage{}
+	slideImages := []models.SlideImage{}
+
+	for i, v := range golfs {
+		database.Database.DB.Find(&galleryImages, "hotel_id = ?", v.ID)
+		database.Database.DB.Find(&slideImages, "hotel_id = ?", v.ID)
+		golfs[i].GalleryImages = galleryImages
+		golfs[i].SlideImages = slideImages
+
+	}
 
 	// Serialize golfs object and store it in Redis
 	//serializedGolfs, err := json.Marshal(golfs)

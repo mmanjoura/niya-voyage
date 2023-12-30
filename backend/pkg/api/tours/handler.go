@@ -71,8 +71,35 @@ func FindTours(c *gin.Context) {
 	// }
 
 	// If cache missed, fetch data from the database
-	dB := database.Database.DB
-	dB.Model(&models.Tour{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&tours)
+	// dB := database.Database.DB
+	// dB.Model(&models.Tour{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&tours)
+
+	database.Database.DB.Offset(offset).Limit(limit).Raw(`SELECT ID,
+															tag,
+															title,
+															location,
+															duration,
+															reviews,
+															price,
+															tourType,
+															animation,
+															Created_At,
+															Updated_At
+														FROM Tours`).Scan(&tours)
+
+	galleryImages := []models.GalleryImage{}
+	slideImages := []models.SlideImage{}
+
+	for i, v := range tours {
+		database.Database.DB.Find(&galleryImages, "tour_id = ?", v.ID)
+		database.Database.DB.Find(&slideImages, "tour_id = ?", v.ID)
+		tours[i].GalleryImages = galleryImages
+		tours[i].SlideImages = slideImages
+		for _, v := range slideImages {
+			tours[i].SlideImg = append(tours[i].SlideImg, v.Img)
+		}
+
+	}
 
 	// Serialize tours object and store it in Redis
 	//serializedTours, err := json.Marshal(tours)

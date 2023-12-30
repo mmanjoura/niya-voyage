@@ -40,7 +40,7 @@ func FindHotels(c *gin.Context) {
 
 	// Get query params
 	offsetQuery := c.DefaultQuery("offset", "0")
-	limitQuery := c.DefaultQuery("limit", "10")
+	limitQuery := c.DefaultQuery("limit", "4")
 
 	// Convert query params to integers
 	offset, err := strconv.Atoi(offsetQuery)
@@ -73,7 +73,21 @@ func FindHotels(c *gin.Context) {
 	// If cache missed, fetch data from the database
 	// dB := database.Database.DB
 
-	database.Database.DB.Offset(offset).Limit(limit).Find(&hotels)
+	database.Database.DB.Offset(offset).Limit(limit).Raw(`SELECT id,
+															category_id,
+															tag,
+															img,
+															title,
+															location,
+															ratings,
+															Reviews,
+															price,
+															Animation,
+															city,
+															Created_At,
+															Updated_At
+														FROM hotels`).Scan(&hotels)
+
 	galleryImages := []models.GalleryImage{}
 	slideImages := []models.SlideImage{}
 
@@ -82,6 +96,9 @@ func FindHotels(c *gin.Context) {
 		database.Database.DB.Find(&slideImages, "hotel_id = ?", v.ID)
 		hotels[i].GalleryImages = galleryImages
 		hotels[i].SlideImages = slideImages
+		for _, v := range slideImages {
+			hotels[i].SlideImg = append(hotels[i].SlideImg, v.Img)
+		}
 
 	}
 

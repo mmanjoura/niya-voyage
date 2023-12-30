@@ -9,7 +9,7 @@ const AvailableRooms = ({ hotel }) => {
     setAvailability(hotel);
   }, []);
   if (!hotel) return null;
-  console.log("Hotel:", hotel);
+  console.log("hotel-single-v1/1 Available Rooms:", hotel);
   return (
     <>
       <div className="border-light rounded-4 px-30 py-30 sm:px-20 sm:py-20">
@@ -39,9 +39,9 @@ const AvailableRooms = ({ hotel }) => {
                     />
                   </div>
                   {/* End image */}
-                  {hotel?.data?.hotel_info?.hotel_facility.map((item) => (
+                  {hotel?.data?.hotel_info?.hotel_facility.map((item, id) => (
 
-                  <div className="y-gap-5 mt-20" key={item.id}>
+                  <div className="y-gap-5 mt-20" key={id}>
                     <div className="d-flex items-center">
                       <i className={`${item?.class_name} text-20 mr-10`}></i>
                       <div className="text-15">{item?.facility_name}</div>
@@ -69,9 +69,9 @@ const AvailableRooms = ({ hotel }) => {
                       </div>
                       <div className="y-gap-8">
 
-                      {hotel?.data?.hotel_info?.hotel_benefit.map((item) => (
+                      {hotel?.data?.hotel_info?.hotel_benefit.map((item, id) => (
 
-                      <div className="d-flex items-center text-green-2" key={item.id}>
+                      <div className="d-flex items-center text-green-2" key={id}>
                      
                       <i className={`${item?.class_name} text-12 mr-10`}></i>
                       <div className="text-15">{item?.benefit_name}</div>

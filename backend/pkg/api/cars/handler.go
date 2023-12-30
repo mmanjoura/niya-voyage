@@ -71,8 +71,38 @@ func FindCars(c *gin.Context) {
 	// }
 
 	// If cache missed, fetch data from the database
-	dB := database.Database.DB
-	dB.Model(&models.Car{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&cars)
+	// dB := database.Database.DB
+	// dB.Model(&models.Car{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&cars)
+	database.Database.DB.Offset(offset).Limit(limit).Raw(`SELECT ID,
+															tag,
+															title,
+															price,
+															location,
+															reviews,
+															ratings,
+															animation,
+															seat,
+															type,
+															luggage,
+															transmission,
+															speed,
+															Created_At,
+															Updated_At
+														FROM Cars`).Scan(&cars)
+
+	galleryImages := []models.GalleryImage{}
+	slideImages := []models.SlideImage{}
+
+	for i, v := range cars {
+		database.Database.DB.Find(&galleryImages, "car_id = ?", v.ID)
+		database.Database.DB.Find(&slideImages, "car_id = ?", v.ID)
+		cars[i].GalleryImages = galleryImages
+		cars[i].SlideImages = slideImages
+		for _, v := range slideImages {
+			cars[i].SlideImg = append(cars[i].SlideImg, v.Img)
+		}
+
+	}
 
 	// Serialize cars object and store it in Redis
 	//serializedCars, err := json.Marshal(cars)

@@ -12,7 +12,7 @@ type SlideImage struct {
 	GolfID     int       `json:"GolfID"`
 	RentalID   int       `json:"RentalID"`
 	TourID     int       `json:"TourID"`
-	SlideImg   string    `json:"slide_img"`
+	Img        string    `json:"img"`
 	CreatedAt  time.Time `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt  time.Time `json:"updated_at" gorm:"autoUpdateTime"`
 }
@@ -24,7 +24,7 @@ type CreateSlideImage struct {
 	GolfID     int    `json:"GolfID"`
 	RentalID   int    `json:"RentalID"`
 	TourID     int    `json:"TourID"`
-	SlideImg   string `json:"slide_img"`
+	Img        string `json:"img"`
 }
 
 type UpdateSlideImage struct {
@@ -34,5 +34,5 @@ type UpdateSlideImage struct {
 	GolfID     int    `json:"GolfID"`
 	RentalID   int    `json:"RentalID"`
 	TourID     int    `json:"TourID"`
-	SlideImg   string `json:"slide_img"`
+	Img        string `json:"img"`
 }

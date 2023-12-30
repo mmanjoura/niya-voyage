@@ -6,7 +6,7 @@ import axios from "axios";
 import React from "react";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
-var  slideImg = ["/img/hotels/2.png", "/img/hotels/1.png", "/img/hotels/3.png"]
+// var  slideImg = ["/img/hotels/2.png", "/img/hotels/1.png", "/img/hotels/3.png"]
 
 export default function TopTours() {
   const [tours, setTours] = React.useState(null);
@@ -18,6 +18,7 @@ export default function TopTours() {
   }, []);
 
   if (!tours) return null;
+  console.log("Most Popular Tours", tours.data)
   var settings = {
     dots: true,
     infinite: true,
@@ -100,14 +101,14 @@ export default function TopTours() {
                     nextArrow={<Arrow type="next" />}
                     prevArrow={<Arrow type="prev" />}
                   >
-                    {item?.SlideImages?.map((slide, i) => (
+                    {item?.slide_img?.map((slide, i) => (
                       <div className="cardImage ratio ratio-1:1" key={i}>
                         <div className="cardImage__content ">
                           <Image
                             width={300}
                             height={300}
                             className="col-12 js-lazy"
-                            src={slide.slide_img}
+                            src={slide}
                             alt="image"
                           />
                         </div>

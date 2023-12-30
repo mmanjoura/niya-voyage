@@ -19,6 +19,7 @@ type Hotel struct {
 	HotelInfo     HotelInfo      `json:"hotel_info" gorm:"foreignKey:HotelID"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:HotelID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
+	SlideImg      []string       `json:"slide_img"`
 	CreatedAt     time.Time      `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt     time.Time      `json:"updated_at" gorm:"autoUpdateTime"`
 }
@@ -35,6 +36,7 @@ type CreateHotel struct {
 	City          string         `json:"city"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:HotelID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
+	SlideImg      []string       `json:"slide_img"`
 }
 
 type UpdateHotel struct {
@@ -51,6 +53,7 @@ type UpdateHotel struct {
 	City          string         `json:"city"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:HotelID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
+	SlideImg      []string       `json:"slide_img"`
 }
 
 // HotelInfo represents the Hotel_Infos table

@@ -1,49 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const AddBanner = () => {
-  const addContent = [
-    {
-      id: 1,
-      img: "/img/backgrounds/new/1.png",
-      title: (
-        <>
-          {" "}
-          Things To Do On
-          <br /> Your Trip
-        </>
-      ),
-      meta: "",
-      routerPath: "/",
-      delayAnimation: "100",
-    },
-    {
-      id: 2,
-      img: "/img/backgrounds/new/3.png",
-      title: (
-        <>
-          Let Your Curiosity
-          <br />
-          Do The Booking
-        </>
-      ),
-      meta: "",
-      routerPath: "/",
-      delayAnimation: "200",
-    },
-    {
-      id: 3,
-      img: "/img/backgrounds/new/2.png",
-      title: "Up to 70% Discount!",
-      meta: "Enjoy Summer Deals",
-      routerPath: "/",
-      delayAnimation: "300",
-    },
-  ];
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+
+
+export default function AddBanner() {
+  const [addContent, setAddContent] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL+'/addBanners').then((response) => {
+      setAddContent(response.data);
+    });
+  }, []);
+console.log("Home, AddBanner: ", addContent?.data)
+  if (!addContent) return null;
 
   return (
     <>
-      {addContent.map((item) => (
+      {addContent.data.map((item) => (
         <div
           className="col-lg-4 col-sm-6"
           data-aos="fade"
@@ -88,4 +65,4 @@ const AddBanner = () => {
   );
 };
 
-export default AddBanner;
+

@@ -15,11 +15,9 @@ const CategoriesMegaMenu = () => {
   const itemList = [
     "Golfing",
     "Hiking",
-    "",
     "Kating / Surfing",
-    "",
     "Sand Boarding",
-    ""
+    
   ];
 
   return (

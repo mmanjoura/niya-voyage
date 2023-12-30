@@ -17,6 +17,8 @@ export default function TopRentals() {
   }, []);
 
   if (!rentals) return null;
+  console.log("Recommended Rentals: ", rentals?.data)
+
   var settings = {
     dots: true,
     infinite: true,
@@ -98,14 +100,14 @@ export default function TopRentals() {
                     nextArrow={<Arrow type="next" />}
                     prevArrow={<Arrow type="prev" />}
                   >
-                    {item?.SlideImages?.map((slide, i) => (
+                    {item?.slide_img?.map((slide, i) => (
                       <div className="cardImage ratio ratio-1:1" key={i}>
                         <div className="cardImage__content ">
                           <Image
                             width={300}
                             height={300}
                             className="rounded-4 col-12 js-lazy"
-                            src={slide.slide_img}
+                            src={slide}
                             alt="image"
                           />
                         </div>

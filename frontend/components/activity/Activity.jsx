@@ -17,6 +17,7 @@ export default function TopActivities() {
   }, []);
 
   if (!activities) return null;
+  console.log("Recommended Activities: ", activities?.data)
   var settings = {
     dots: true,
     infinite: true,
@@ -99,14 +100,14 @@ export default function TopActivities() {
                     nextArrow={<Arrow type="next" />}
                     prevArrow={<Arrow type="prev" />}
                   >
-                    {item?.SlideImages?.map((slide, i) => (
+                    {item?.slide_img?.map((slide, i) => (
                       <div className="cardImage ratio ratio-1:1" key={i}>
                         <div className="cardImage__content ">
                           <Image
                             width={300}
                             height={300}
                             className="col-12 js-lazy"
-                            src={slide.slide_img}
+                            src={slide}
                             alt="image"
                           />
                         </div>

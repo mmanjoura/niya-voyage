@@ -1,107 +1,148 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
-import { hotelsData } from "../../data/hotels";
+import Slider from "react-slick";
 import isTextMatched from "../../utils/isTextMatched";
+import axios from "axios";
+import React from "react";
 
-const Hotels = () => {
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+
+
+export default function TopHotels() {
+  const [hotels, setHotels] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL+'/hotels').then((response) => {
+      setHotels(response.data);
+    });
+  }, []);
+
+  if (!hotels) return null;
+  console.log("Recommended Hotels: ", hotels?.data)
+
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 520,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
+  var itemSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  // custom navigation
+  function ArrowSlick(props) {
+    let className =
+      props.type === "next"
+        ? "slick_arrow-between slick_arrow -next arrow-md flex-center button -blue-1 bg-white shadow-1 size-30 rounded-full sm:d-none js-next"
+        : "slick_arrow-between slick_arrow -prev arrow-md flex-center button -blue-1 bg-white shadow-1 size-30 rounded-full sm:d-none js-prev";
+    className += " arrow";
+    const char =
+      props.type === "next" ? (
+        <>
+          <i className="icon icon-chevron-right text-12"></i>
+        </>
+      ) : (
+        <>
+          <span className="icon icon-chevron-left text-12"></span>
+        </>
+      );
+    return (
+      <button className={className} onClick={props.onClick}>
+        {char}
+      </button>
+    );
+  }
+
   return (
     <>
-      <Swiper
-        spaceBetween={30}
-        modules={[Navigation, Pagination]}
-        navigation={{
-          nextEl: ".js-hotels-next",
-          prevEl: ".js-hotels-prev",
-        }}
-        pagination={{
-          el: ".js-hotels-pag",
-          clickable: true,
-        }}
-        breakpoints={{
-          540: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 22,
-          },
-          1024: {
-            slidesPerView: 3,
-          },
-          1200: {
-            slidesPerView: 4,
-          },
-        }}
-      >
-        {hotelsData.slice(0, 8).map((item) => (
-          <SwiperSlide key={item?.id}>
+      <Slider {...settings}>
+        {hotels?.data.slice(0, 4).map((item, id) => (
+          <div 
+            className="col-xl-3 col-lg-3 col-sm-6"
+            key={id}
+            data-aos="fade"
+            data-aos-delay={item.animation}
+          >
             <Link
               href={`/hotel/hotel-single-v1/${item.id}`}
               className="hotelsCard -type-1 hover-inside-slider"
-              data-aos="fade"
-              data-aos-delay={item.delayAnimation}
             >
               <div className="hotelsCard__image">
-                <div className="cardImage ratio ratio-1:1">
-                  <div className="cardImage__content">
-                    <div className="cardImage-slider rounded-4 overflow-hidden custom_inside-slider">
-                      <Swiper
-                        className="mySwiper"
-                        modules={[Pagination, Navigation]}
-                        pagination={{
-                          clickable: true,
-                        }}
-                        navigation={true}
-                      >
-                        {item?.slideImg?.map((slide, i) => (
-                          <SwiperSlide key={i}>
-                            <Image
-                              width={300}
-                              height={300}
-                              className="rounded-4 col-12 js-lazy"
-                              src={slide}
-                              alt="image"
-                            />
-                          </SwiperSlide>
-                        ))}
-                      </Swiper>
-                    </div>
-                  </div>
-                </div>
-                {/* End .cardImage */}
-
-                <div className="cardImage__wishlist">
-                  <button className="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                    <i className="icon-heart text-12" />
-                  </button>
-                </div>
-
-                <div className="cardImage__leftBadge">
-                  <div
-                    className={`py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase ${
-                      isTextMatched(item?.tag, "breakfast included")
-                        ? "bg-dark-1 text-white"
-                        : ""
-                    } ${
-                      isTextMatched(item?.tag, "best seller")
-                        ? "bg-blue-1 text-white"
-                        : ""
-                    } 
-                    ${
-                      isTextMatched(item?.tag, "-25% today")
-                        ? "bg-brown-1 text-white"
-                        : ""
-                    } 
-                     ${
-                       isTextMatched(item?.tag, "top rated")
-                         ? "bg-yellow-1 text-dark-1"
-                         : ""
-                     }`}
+                <div className="cardImage inside-slider">
+                  <Slider
+                    {...itemSettings}
+                    arrows={true}
+                    nextArrow={<ArrowSlick type="next" />}
+                    prevArrow={<ArrowSlick type="prev" />}
                   >
-                    {item?.tag}
+                    {item?.slide_img?.map((slide, i) => (
+                      <div className="cardImage ratio ratio-1:1" key={i}>
+                        <div className="cardImage__content ">
+                          <Image
+                            width={300}
+                            height={300}
+                            className="rounded-4 col-12 js-lazy"
+                            src={decodeURI(`${slide}`)}
+                            alt="image"
+                          />
+                        </div>
+                      </div>
+                    ))}
+      
+                  </Slider>
+
+                  <div className="cardImage__wishlist">
+                    <button className="button -blue-1 bg-white size-30 rounded-full shadow-2">
+                      <i className="icon-heart text-12" />
+                    </button>
+                  </div>
+
+                  <div className="cardImage__leftBadge">
+                    <div
+                      className={`py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase ${
+                        isTextMatched(item?.tag, "breakfast included")
+                          ? "bg-dark-1 text-white"
+                          : ""
+                      } ${
+                        isTextMatched(item?.tag, "best seller")
+                          ? "bg-blue-1 text-white"
+                          : ""
+                      }  ${
+                        isTextMatched(item?.tag, "top rated")
+                          ? "bg-yellow-1 text-dark-1"
+                          : ""
+                      }`}
+                    >
+                      {item?.tag}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -120,7 +161,7 @@ const Hotels = () => {
                     Exceptional
                   </div>
                   <div className="text-14 text-light-1 ml-10">
-                    {item?.numberOfReviews} reviews
+                    {item?.reviews} reviews
                   </div>
                 </div>
                 <div className="mt-5">
@@ -131,33 +172,9 @@ const Hotels = () => {
                 </div>
               </div>
             </Link>
-          </SwiperSlide>
+          </div>
         ))}
-      </Swiper>
-
-      <div className="d-flex x-gap-15 items-center justify-center sm:justify-start pt-40 sm:pt-20">
-        <div className="col-auto">
-          <button className="d-flex items-center text-24 arrow-left-hover js-hotels-prev">
-            <i className="icon icon-arrow-left" />
-          </button>
-        </div>
-        {/* End .prev */}
-
-        <div className="col-auto">
-          <div className="pagination -dots text-border js-hotels-pag" />
-        </div>
-        {/* End .pagination */}
-
-        <div className="col-auto">
-          <button className="d-flex items-center text-24 arrow-right-hover js-hotels-next">
-            <i className="icon icon-arrow-right" />
-          </button>
-        </div>
-        {/* End .next */}
-      </div>
-      {/* End navigation and pagination */}
+      </Slider>
     </>
   );
-};
-
-export default Hotels;
+}

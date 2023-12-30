@@ -71,8 +71,38 @@ func FindRentals(c *gin.Context) {
 	// }
 
 	// If cache missed, fetch data from the database
-	dB := database.Database.DB
-	dB.Model(&models.Rental{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&rentals)
+	// dB := database.Database.DB
+	// dB.Model(&models.Rental{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&rentals)
+
+	database.Database.DB.Offset(offset).Limit(limit).Raw(`SELECT ID,
+															tag,
+															title,
+															price,
+															location,
+															duration,
+															reviews,
+															ratings,
+															animation,
+															guest,
+															bedroom,
+															bed,
+															Created_At,
+															Updated_At
+														FROM Rentals`).Scan(&rentals)
+
+	galleryImages := []models.GalleryImage{}
+	slideImages := []models.SlideImage{}
+
+	for i, v := range rentals {
+		database.Database.DB.Find(&galleryImages, "rental_id = ?", v.ID)
+		database.Database.DB.Find(&slideImages, "rental_id = ?", v.ID)
+		rentals[i].GalleryImages = galleryImages
+		rentals[i].SlideImages = slideImages
+		for _, v := range slideImages {
+			rentals[i].SlideImg = append(rentals[i].SlideImg, v.Img)
+		}
+
+	}
 
 	// Serialize rentals object and store it in Redis
 	//serializedRentals, err := json.Marshal(rentals)

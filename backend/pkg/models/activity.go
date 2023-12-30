@@ -14,6 +14,7 @@ type Activity struct {
 	Animation     string         `json:"animation"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:ActivityID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
+	SlideImg      []string       `json:"slide_img"`
 	CreatedAt     time.Time      `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt     time.Time      `json:"updated_at" gorm:"autoUpdateTime"`
 }
@@ -27,6 +28,7 @@ type CreateActivity struct {
 	Reviews       string         `json:"reviews"`
 	Ratings       string         `json:"ratings"`
 	Animation     string         `json:"animation"`
+	SlideImg      []string       `json:"slide_img"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:ActivityID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
 }
@@ -40,6 +42,7 @@ type UpdateActivity struct {
 	Reviews       string         `json:"reviews"`
 	Ratings       string         `json:"ratings"`
 	Animation     string         `json:"animation"`
+	SlideImg      []string       `json:"slide_img"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:ActivityID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
 }

@@ -2,6 +2,26 @@
 PRAGMA foreign_keys = OFF;
 PRAGMA foreign_keys = ON;
 
+------------------- Add Banner Table -------------------------
+CREATE TABLE Add_Banners (
+    id INTEGER PRIMARY KEY,
+    img TEXT,
+    title TEXT,
+    meta TEXT,
+    routerPath TEXT,
+    delayAnimation TEXT
+);
+
+INSERT INTO Add_Banners (id, img, title, meta, routerPath, delayAnimation)
+VALUES (1, '/img/backgrounds/new/1.png', 'Hiking', '', '/', '100');
+
+INSERT INTO Add_Banners (id, img, title, meta, routerPath, delayAnimation)
+VALUES (2, '/img/backgrounds/new/3.png', 'Quads', '', '/', '200');
+
+INSERT INTO Add_Banners (id, img, title, meta, routerPath, delayAnimation)
+VALUES (3, '/img/backgrounds/new/2.png', 'Golfing', 'Enjoy Summer Deals', '/', '300');
+
+
 -------------- Destinations Table--------------------
 CREATE TABLE Destinations (
     id INTEGER PRIMARY KEY,
@@ -67,6 +87,52 @@ VALUES
 (16, 3,'top rated', '/img/hotels/new/16.png', 'The Westin New York at Times Square West', 'Manhattan, New York', 4.9, 7654, 68.0, 800, 'new_york');
 
 ----Hotel Infos Table -------
+
+CREATE TABLE Images (
+    ID          INTEGER  PRIMARY KEY,
+    hotel_id    INTEGER,
+    activity_id INTEGER,
+    car_id      INTEGER,
+    golf_id     INTEGER,
+    rental_id   INTEGER,
+    tour_id     INTEGER,
+    Name        TEXT,
+    Created_At  DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Updated_At  DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (
+        hotel_id
+    )
+    REFERENCES hotels (id),
+    FOREIGN KEY (
+        activity_id
+    )
+    REFERENCES Activities (id),
+    FOREIGN KEY (
+        car_id
+    )
+    REFERENCES Cars (id),
+    FOREIGN KEY (
+        golf_id
+    )
+    REFERENCES Golfs (id),
+    FOREIGN KEY (
+        rental_id
+    )
+    REFERENCES Rentals (id),
+    FOREIGN KEY (
+        tour_id
+    )
+    REFERENCES Tours (id) 
+);
+
+
+INSERT INTO Images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  name) VALUES 
+-- Insert Hotels Slide Images
+(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/1.png'),
+(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/2.png'),
+(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/1.png'),
+(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/3.png');
+
 
 
 CREATE TABLE Hotel_Infos (
@@ -173,7 +239,7 @@ CREATE TABLE slide_images (
     golf_id INTEGER,
     rental_id INTEGER,
     tour_id INTEGER,
-    slide_img TEXT, 
+    img TEXT, 
     Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
     Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (hotel_id) REFERENCES hotels(id),
@@ -184,7 +250,7 @@ CREATE TABLE slide_images (
     FOREIGN KEY (tour_id) REFERENCES Tours(id)
 );
 
-INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  slide_img) VALUES 
+INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
 -- Insert Hotels Slide Images
 (1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/1.png'),
 (2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/1.png'),
@@ -209,19 +275,23 @@ INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tou
 (15, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/15.png'),
 (16, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/16.png'),
 ----Insert Acitivities Slide Images
+INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
 (NULL,  1, NULL, NULL, NULL, NULL,'/img/activities/new/1.png'),
-(NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/2.png'),
-(NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/1.png'),
-(NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/3.png'),
-(NULL,  3, NULL, NULL, NULL, NULL,'/img/activities/new/3.png'),
-(NULL,  4, NULL, NULL, NULL, NULL,'/img/activities/new/4.png'),
-(NULL,  5, NULL, NULL, NULL, NULL,'/img/activities/new/5.png'),
-(NULL,  6, NULL, NULL, NULL, NULL,'/img/activities/new/6.png'),
-(NULL,  7, NULL, NULL, NULL, NULL,'/img/activities/new/7.png'),
-(NULL,  7, NULL, NULL, NULL, NULL,'/img/activities/new/8.png'),
-(NULL,  7, NULL, NULL, NULL, NULL,'/img/activities/new/9.png'),
-(NULL,  8, NULL, NULL, NULL, NULL,'/img/activities/new/8.png'),
-(NULL,  9, NULL, NULL, NULL, NULL,'/img/activities/new/9.png'),
+(NULL,  1, NULL, NULL, NULL, NULL,'/img/activities/new/2.png'),
+(NULL,  1, NULL, NULL, NULL, NULL,'/img/activities/new/3.png'),
+(NULL,  1, NULL, NULL, NULL, NULL,'/img/activities/new/4.png'),
+(NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/5.png'),
+(NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/6.png'),
+(NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/7.png'),
+(NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/8.png'),
+(NULL,  3, NULL, NULL, NULL, NULL,'/img/activities/new/9.png'),
+(NULL,  3, NULL, NULL, NULL, NULL,'/img/activities/new/10.png'),
+(NULL,  3, NULL, NULL, NULL, NULL,'/img/activities/new/11.png'),
+(NULL,  3, NULL, NULL, NULL, NULL,'/img/activities/new/12.png'),
+(NULL,  4, NULL, NULL, NULL, NULL,'/img/activities/new/13.png'),
+(NULL,  4, NULL, NULL, NULL, NULL,'/img/activities/new/14.png'),
+(NULL,  4, NULL, NULL, NULL, NULL,'/img/activities/new/15.png'),
+(NULL,  4, NULL, NULL, NULL, NULL,'/img/activities/new/16.png'),
 ----Insert Cars Slide Images
 (NULL,  NULL, 1, NULL, NULL, NULL,'/img/cars/new/1.png'),
 (NULL,  NULL, 2, NULL, NULL, NULL,'/img/cars/new/2.png'),
@@ -259,19 +329,24 @@ INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tou
 (NULL,  NULL, NULL, 8, NULL, NULL,'/img/golfs/new/4.png'),
 (NULL,  NULL, NULL, 9, NULL, NULL,'/img/golfs/new/5.png'),
 ----Insert Rentals Slide Images
+INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
 (NULL,  NULL, NULL, NULL, 1, NULL,'/img/rentals/new/1.png'),
-(NULL,  NULL, NULL, NULL, 2, NULL,'/img/rentals/new/2.png'),
+(NULL,  NULL, NULL, NULL, 1, NULL,'/img/rentals/new/2.png'),
+(NULL,  NULL, NULL, NULL, 1, NULL,'/img/rentals/new/3.png'),
+(NULL,  NULL, NULL, NULL, 1, NULL,'/img/rentals/new/4.png'),
 (NULL,  NULL, NULL, NULL, 2, NULL,'/img/rentals/new/5.png'),
 (NULL,  NULL, NULL, NULL, 2, NULL,'/img/rentals/new/6.png'),
-(NULL,  NULL, NULL, NULL, 3, NULL,'/img/rentals/new/3.png'),
-(NULL,  NULL, NULL, NULL, 4, NULL,'/img/rentals/new/4.png'),
-(NULL,  NULL, NULL, NULL, 5, NULL,'/img/rentals/new/5.png'),
-(NULL,  NULL, NULL, NULL, 6, NULL,'/img/rentals/new/6.png'),
-(NULL,  NULL, NULL, NULL, 6, NULL,'/img/rentals/new/7.png'),
-(NULL,  NULL, NULL, NULL, 6, NULL,'/img/rentals/new/8.png'),
-(NULL,  NULL, NULL, NULL, 7, NULL,'/img/rentals/new/7.png'),
-(NULL,  NULL, NULL, NULL, 8, NULL,'/img/rentals/new/8.png'),
-(NULL,  NULL, NULL, NULL, 9, NULL,'/img/rentals/new/9.png'),
+(NULL,  NULL, NULL, NULL, 2, NULL,'/img/rentals/new/7.png'),
+(NULL,  NULL, NULL, NULL, 2, NULL,'/img/rentals/new/8.png'),
+(NULL,  NULL, NULL, NULL, 3, NULL,'/img/rentals/new/9.png'),
+(NULL,  NULL, NULL, NULL, 3, NULL,'/img/rentals/new/10.png'),
+(NULL,  NULL, NULL, NULL, 3, NULL,'/img/rentals/new/11.png'),
+(NULL,  NULL, NULL, NULL, 3, NULL,'/img/rentals/new/12.png'),
+(NULL,  NULL, NULL, NULL, 4, NULL,'/img/rentals/new/13.png'),
+(NULL,  NULL, NULL, NULL, 4, NULL,'/img/rentals/new/14.png'),
+(NULL,  NULL, NULL, NULL, 4, NULL,'/img/rentals/new/15.png'),
+(NULL,  NULL, NULL, NULL, 4, NULL,'/img/rentals/new/16.png')
+
 ----Insert Tours Slide Images
 (NULL,  NULL, NULL, NULL, NULL, 1,'/img/tours/new/1.png'),
 (NULL,  NULL, NULL, NULL, NULL, 2,'/img/tours/new/2.png'),
@@ -516,7 +591,7 @@ VALUES
 
 
 ------------------Golf Table---------------------------------
-CREATE TABLE Golves (
+CREATE TABLE Golfs (
     ID INTEGER PRIMARY KEY,
     tag TEXT,
     title TEXT,
@@ -773,7 +848,14 @@ CREATE TABLE Categories (
     REFERENCES Categories (ID) 
 );
 
-
+INSERT INTO Categories (ID, Name, Description) VALUES (1, 'Flights', 'Flights Category');
+INSERT INTO Categories (ID, Name, Description) VALUES (2, 'Tours', 'Tours Category');
+INSERT INTO Categories (ID, Name, Description) VALUES (3, 'Hotels', 'Hotels Category');
+INSERT INTO Categories (ID, Name, Description) VALUES (4, 'Rentals', 'Rentals Category');
+INSERT INTO Categories (ID, Name, Description) VALUES (5, 'Cars', 'Cars Category');
+INSERT INTO Categories (ID, Name, Description) VALUES (6, 'Golfs', 'Golfs Category');
+INSERT INTO Categories (ID, Name, Description) VALUES (7, 'Flights', 'Flights Category');
+INSERT INTO Categories (ID, Name, Description) VALUES (8, 'Activities', 'Activities Category');
 
 
 

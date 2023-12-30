@@ -38,8 +38,8 @@ console.log(hotel);
 
   return (
     <div className="row y-gap-20 pt-30">
-      {hotel?.hotel_info?.hotel_facility.map((item) => (
-        <div className="col-lg-3 col-6" key={item?.id}>
+      {hotel?.hotel_info?.hotel_facility.map((item, id) => (
+        <div className="col-lg-3 col-6" key={id}>
           <div className="text-center">
             <i className={`${item?.class_name} text-24 text-blue-1`} />
             <div className="text-15 lh-1 mt-10">{item?.facility_name}</div>

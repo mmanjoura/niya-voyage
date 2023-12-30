@@ -49,3 +49,7 @@ type UpdateGolf struct {
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:GolfID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
 }
+
+func (Golf) TableName() string {
+	return "Golfs"
+}

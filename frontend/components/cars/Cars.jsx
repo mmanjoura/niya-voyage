@@ -17,6 +17,8 @@ export default function TopCars() {
   }, []);
 
   if (!cars) return null;
+  console.log("Popular Cars: ", cars.data);
+
   var settings = {
     dots: true,
     infinite: true,
@@ -100,14 +102,14 @@ export default function TopCars() {
                       nextArrow={<Arrow type="next" />}
                       prevArrow={<Arrow type="prev" />}
                     >
-                      {item?.SlideImages?.map((slide, i) => (
+                      {item?.slide_img?.map((slide, i) => (
                         <div className="cardImage ratio ratio-6:5" key={i}>
                           <div className="cardImage__content ">
                             <Image
                               width={300}
                               height={300}
                               className="col-12 js-lazy"
-                              src={slide.slide_img}
+                              src={slide}
                               alt="image"
                             />
                           </div>

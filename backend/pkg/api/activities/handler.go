@@ -71,8 +71,35 @@ func FindActivities(c *gin.Context) {
 	// }
 
 	// If cache missed, fetch data from the database
-	dB := database.Database.DB
-	dB.Model(&models.Activity{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&activities)
+	// dB := database.Database.DB
+	// dB.Model(&models.Activity{}).Preload("SlideImages").Preload("GalleryImages").Offset(offset).Limit(limit).Find(&activities)
+
+	database.Database.DB.Offset(offset).Limit(limit).Raw(`SELECT ID,
+														tag,
+														title,
+														price,
+														location,
+														duration,
+														reviews,
+														ratings,
+														animation,
+														Created_At,
+														Updated_At
+													FROM Activities`).Scan(&activities)
+
+	galleryImages := []models.GalleryImage{}
+	slideImages := []models.SlideImage{}
+
+	for i, v := range activities {
+		database.Database.DB.Find(&galleryImages, "activity_id = ?", v.ID)
+		database.Database.DB.Find(&slideImages, "activity_id = ?", v.ID)
+		activities[i].GalleryImages = galleryImages
+		activities[i].SlideImages = slideImages
+		for _, v := range slideImages {
+			activities[i].SlideImg = append(activities[i].SlideImg, v.Img)
+		}
+
+	}
 
 	// Serialize activities object and store it in Redis
 	//serializedActivities, err := json.Marshal(activities)

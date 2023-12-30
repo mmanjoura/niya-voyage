@@ -40,7 +40,7 @@ func FindDestinations(c *gin.Context) {
 
 	// Get query params
 	offsetQuery := c.DefaultQuery("offset", "0")
-	limitQuery := c.DefaultQuery("limit", "10")
+	limitQuery := c.DefaultQuery("limit", "3")
 
 	// Convert query params to integers
 	offset, err := strconv.Atoi(offsetQuery)
