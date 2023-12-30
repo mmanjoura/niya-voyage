@@ -250,30 +250,26 @@ CREATE TABLE slide_images (
     FOREIGN KEY (tour_id) REFERENCES Tours(id)
 );
 
-INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
+
 -- Insert Hotels Slide Images
+
+INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
 (1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/1.png'),
-(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/1.png'),
-(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/2.png'),
-(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/3.png'),
-(3, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/3.png'),
-(2, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/3.png'),
-(3, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/3.png'),
-(4, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/4.png'),
-(5, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/5.png'),
-(6, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/6.png'),
-(7, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/7.png'),
-(8, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/8.png'),
-(9, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/9.png'),
-(10, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/10.png'),
-(10, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/11.png'),
-(10, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/12.png'),
-(11, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/11.png'),
-(12, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/12.png'),
-(13, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/13.png'),
-(14, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/14.png'),
-(15, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/15.png'),
-(16, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/16.png'),
+(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/2.png'),
+(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/3.png'),
+(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/4.png'),
+(2, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/5.png'),
+(2, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/6.png'),
+(2, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/7.png'),
+(2, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/8.png'),
+(3, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/9.png'),
+(3, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/10.png'),
+(3, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/11.png'),
+(3, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/12.png'),
+(4, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/13.png'),
+(4, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/14.png'),
+(4, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/15.png'),
+(4, NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/16.png');
 ----Insert Acitivities Slide Images
 INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
 (NULL,  1, NULL, NULL, NULL, NULL,'/img/activities/new/1.png'),
