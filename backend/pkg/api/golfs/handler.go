@@ -90,10 +90,13 @@ func FindGolfs(c *gin.Context) {
 	slideImages := []models.SlideImage{}
 
 	for i, v := range golfs {
-		database.Database.DB.Find(&galleryImages, "hotel_id = ?", v.ID)
-		database.Database.DB.Find(&slideImages, "hotel_id = ?", v.ID)
+		database.Database.DB.Find(&galleryImages, "golf_id = ?", v.ID)
+		database.Database.DB.Find(&slideImages, "golf_id = ?", v.ID)
 		golfs[i].GalleryImages = galleryImages
 		golfs[i].SlideImages = slideImages
+		for _, v := range slideImages {
+			golfs[i].SlideImg = append(golfs[i].SlideImg, v.Img)
+		}
 
 	}
 

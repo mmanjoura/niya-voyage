@@ -315,19 +315,23 @@ INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tou
 (NULL,  NULL, 14, NULL, NULL, NULL,'/img/cars/new/4.png'),
 (NULL,  NULL, 15, NULL, NULL, NULL,'/img/cars/new/1.png'),
 ----Insert Golf Slide Images
+INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
 (NULL,  NULL, NULL, 1, NULL, NULL,'/img/golfs/new/1.png'),
-(NULL,  NULL, NULL, 2, NULL, NULL,'/img/golfs/new/2.png'),
+(NULL,  NULL, NULL, 1, NULL, NULL,'/img/golfs/new/2.png'),
+(NULL,  NULL, NULL, 1, NULL, NULL,'/img/golfs/new/3.png'),
+(NULL,  NULL, NULL, 1, NULL, NULL,'/img/golfs/new/4.png'),
 (NULL,  NULL, NULL, 2, NULL, NULL,'/img/golfs/new/1.png'),
+(NULL,  NULL, NULL, 2, NULL, NULL,'/img/golfs/new/2.png'),
 (NULL,  NULL, NULL, 2, NULL, NULL,'/img/golfs/new/3.png'),
+(NULL,  NULL, NULL, 2, NULL, NULL,'/img/golfs/new/4.png'),
+(NULL,  NULL, NULL, 3, NULL, NULL,'/img/golfs/new/1.png'),
+(NULL,  NULL, NULL, 3, NULL, NULL,'/img/golfs/new/2.png'),
 (NULL,  NULL, NULL, 3, NULL, NULL,'/img/golfs/new/3.png'),
-(NULL,  NULL, NULL, 4, NULL, NULL,'/img/golfs/new/4.png'),
-(NULL,  NULL, NULL, 5, NULL, NULL,'/img/golfs/new/5.png'),
-(NULL,  NULL, NULL, 6, NULL, NULL,'/img/golfs/new/2.png'),
-(NULL,  NULL, NULL, 6, NULL, NULL,'/img/golfs/new/1.png'),
-(NULL,  NULL, NULL, 6, NULL, NULL,'/img/golfs/new/3.png'),
-(NULL,  NULL, NULL, 7, NULL, NULL,'/img/golfs/new/3.png'),
-(NULL,  NULL, NULL, 8, NULL, NULL,'/img/golfs/new/4.png'),
-(NULL,  NULL, NULL, 9, NULL, NULL,'/img/golfs/new/5.png'),
+(NULL,  NULL, NULL, 3, NULL, NULL,'/img/golfs/new/4.png'),
+(NULL,  NULL, NULL, 4, NULL, NULL,'/img/golfs/new/1.png'),
+(NULL,  NULL, NULL, 4, NULL, NULL,'/img/golfs/new/2.png'),
+(NULL,  NULL, NULL, 4, NULL, NULL,'/img/golfs/new/3.png'),
+(NULL,  NULL, NULL, 4, NULL, NULL,'/img/golfs/new/4.png');
 ----Insert Rentals Slide Images
 INSERT INTO slide_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
 (NULL,  NULL, NULL, NULL, 1, NULL,'/img/rentals/new/1.png'),

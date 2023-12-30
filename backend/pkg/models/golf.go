@@ -16,6 +16,7 @@ type Golf struct {
 	Animation     string         `json:"animation"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:GolfID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
+	SlideImg      []string       `json:"slide_img"`
 	CreatedAt     time.Time      `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt     time.Time      `json:"updated_at" gorm:"autoUpdateTime"`
 }
@@ -33,6 +34,7 @@ type CreateGolf struct {
 	Animation     string         `json:"animation"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:GolfID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
+	SlideImg      []string       `json:"slide_img"`
 }
 
 type UpdateGolf struct {
@@ -48,6 +50,7 @@ type UpdateGolf struct {
 	Animation     string         `json:"animation"`
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:GolfID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
+	SlideImg      []string       `json:"slide_img"`
 }
 
 func (Golf) TableName() string {

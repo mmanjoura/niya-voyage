@@ -17,6 +17,7 @@ export default function TopGolfs() {
   }, []);
 
   if (!golfs) return null;
+  console.log("Popular Golfs: ", golfs.data);
   var settings = {
     dots: true,
     infinite: true,
@@ -99,14 +100,14 @@ export default function TopGolfs() {
                     nextArrow={<Arrow type="next" />}
                     prevArrow={<Arrow type="prev" />}
                   >
-                    {item?.SlideImages?.map((slide, i) => (
+                    {item?.slide_img?.map((slide, i) => (
                       <div className="cardImage ratio ratio-6:5" key={i}>
                         <div className="cardImage__content">
                           <Image
                             width={300}
                             height={300}
                             className="rounded-4 col-12 js-lazy"
-                            src={slide.slide_img}
+                            src={slide}
                             alt="image"
                           />
                         </div>
