@@ -39,7 +39,7 @@ const AvailableRooms = ({ hotel }) => {
                     />
                   </div>
                   {/* End image */}
-                  {hotel?.data?.hotel_info?.hotel_facility.map((item, id) => (
+                  {hotel?.data?.hotel_info?.hotel_facility?.map((item, id) => (
 
                   <div className="y-gap-5 mt-20" key={id}>
                     <div className="d-flex items-center">
@@ -69,7 +69,7 @@ const AvailableRooms = ({ hotel }) => {
                       </div>
                       <div className="y-gap-8">
 
-                      {hotel?.data?.hotel_info?.hotel_benefit.map((item, id) => (
+                      {hotel?.data?.hotel_info?.hotel_benefit?.map((item, id) => (
 
                       <div className="d-flex items-center text-green-2" key={id}>
                      

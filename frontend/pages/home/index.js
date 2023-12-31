@@ -98,7 +98,7 @@ const index = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">Recommended Hotels</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  Interdum et malesuada fames ac ante ipsum
+                Suggested Stay Options
                 </p>
               </div>
             </div>
@@ -130,7 +130,7 @@ const index = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">Most Popular Tours</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  Interdum et malesuada fames ac ante ipsum
+                Highly Visited Destinations
                 </p>
               </div>
             </div>
@@ -164,7 +164,7 @@ const index = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">Trending Activity</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  Interdum et malesuada fames ac ante ipsum
+                Highly Sought-after Activities
                 </p>
               </div>
             </div>
@@ -200,7 +200,7 @@ const index = () => {
                   Featured Holiday Rentals
                 </h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  Interdum et malesuada fames ac ante ipsum
+                Handpicked Rental Escapes
                 </p>
               </div>
             </div>
@@ -234,7 +234,7 @@ const index = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">Popular Car Hire</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  Interdum et malesuada fames ac ante ipsum
+                Highly Sought-after Car Hire
                 </p>
               </div>
             </div>
@@ -268,7 +268,7 @@ const index = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">Featured Golf Deals</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  Interdum et malesuada fames ac ante ipsum
+                Favorite Golf Bargains
                 </p>
               </div>
             </div>
@@ -302,7 +302,7 @@ const index = () => {
               <div className="sectionTitle -md">
                 <h2 className="sectionTitle__title">Popular Routes</h2>
                 <p className=" sectionTitle__text mt-5 sm:mt-0">
-                  Interdum et malesuada fames ac ante ipsum
+                
                 </p>
               </div>
             </div>

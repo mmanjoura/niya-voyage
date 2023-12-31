@@ -28,7 +28,7 @@ import React from "react";
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 
-const TourSingleV1Dynamic = () => {
+const ActivitySingleV1Dynamic = () => {
   const [isOpen, setOpen] = useState(false);
   const router = useRouter();
   const [activity, setActivity] = useState({});
@@ -71,7 +71,7 @@ console.log("This is the activity data", activity.data);
 
       <section className="pt-40">
         <div className="container">
-          <SlideGallery  activity={activity.data}/>
+          <SlideGallery  {... activity.data}/>
         </div>
       </section>
       {/* End gallery grid wrapper */}
@@ -315,6 +315,6 @@ console.log("This is the activity data", activity.data);
   );
 };
 
-export default dynamic(() => Promise.resolve(TourSingleV1Dynamic), {
+export default dynamic(() => Promise.resolve(ActivitySingleV1Dynamic), {
   ssr: false,
 });

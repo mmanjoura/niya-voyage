@@ -89,7 +89,7 @@ export default function TopCars() {
             data-aos-delay={item.delayAnimation}
           >
             <Link
-              href={`/car/car-single/5`}
+              href={`/car/car-single/${item.id}`}
               className="carCard -type-1 d-block rounded-4 hover-inside-slider"
             >
               <div className="carCard__image">

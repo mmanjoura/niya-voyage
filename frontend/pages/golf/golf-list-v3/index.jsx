@@ -1,22 +1,22 @@
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header";
-import MainFilterSearchBox from "../../../components/cruise-list/cruise-list-v3/MainFilterSearchBox";
-import TopHeaderFilter from "../../../components/cruise-list/cruise-list-v3/TopHeaderFilter";
-import CruisePropertes from "../../../components/cruise-list/cruise-list-v3/CruisePropertes";
-import Pagination from "../../../components/cruise-list/common/Pagination";
-import DropdownSelelctBar from "../../../components/cruise-list/common/DropdownSelelctBar";
-import MapPropertyFinder from "../../../components/cruise-list/common/MapPropertyFinder";
+import Header from "../../../components/header/header";
+import DropdownSelelctBar from "../../../components/golf-list/common/DropdownSelelctBar";
+import MapPropertyFinder from "../../../components/golf-list/common/MapPropertyFinder";
+import Pagination from "../../../components/golf-list/common/Pagination";
+import MainFilterSearchBox from "../../../components/golf-list/golf-list-v3/MainFilterSearchBox";
+import TopHeaderFilter from "../../../components/golf-list/golf-list-v3/TopHeaderFilter";
+import TourProperties from "../../../components/golf-list/golf-list-v3/TourProperties";
 
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Cruise List v3" />
+      <Seo pageTitle="golf List v3" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>
       {/* header top margin */}
 
-      <Header11 />
+      <Header />
       {/* End Header 1 */}
 
       <section className="halfMap">
@@ -34,7 +34,7 @@ const index = () => {
           {/* End .row */}
 
           <div className="row y-gap-20 pt-20">
-            <CruisePropertes />
+            <TourProperties />
           </div>
           {/* End .row */}
 

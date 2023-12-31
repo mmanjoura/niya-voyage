@@ -55,6 +55,7 @@ const HotelSingleV1Dynamic = () => {
     return () => {};
   }, [id]);
     console.log("hotel/hotel-single-v1/1", hotel.data)
+
 if (!hotel) return null;
   return (
     <>
@@ -147,18 +148,18 @@ if (!hotel) return null;
           <Gallery>
          
             <div className="galleryGrid -type-1 pt-30">
-            { hotel?.data?.GalleryImages?.slice(0, 8).map((item, id) => (
+            { hotel?.data?.gallery_img?.slice(0, 8).map((item, id) => (
               <>
               <div className="galleryGrid__item relative d-flex" key={id}>
                 <Item
-                  original={hotel?.data?.img}
-                  thumbnail={hotel?.data?.img}
+                  original={item}
+                  thumbnail={item}
                   width={660}
                   height={660}
                 >
                   {({ ref, open }) => (
                     <img
-                      src={hotel?.data?.img}
+                      src={item}
                       ref={ref}
                       onClick={open}
                       alt="image"
@@ -177,8 +178,8 @@ if (!hotel) return null;
              
               <div className="galleryGrid__item">
                 <Item
-                  original={item?.gallery_img}
-                  thumbnail={item?.gallery_img}
+                  original={item}
+                  thumbnail={item}
                   width={450}
                   height={375}
                 >
@@ -186,7 +187,7 @@ if (!hotel) return null;
                     <img
                       ref={ref}
                       onClick={open}
-                      src={item?.gallery_img}
+                      src={item}
                       alt="image"
                       className="rounded-4"
                       role="button"
@@ -213,12 +214,12 @@ if (!hotel) return null;
               <div className="row y-gap-40">
                 <div className="col-12">
                   <h3 className="text-22 fw-500">Property highlights</h3>
-                  <PropertyHighlights hotel={hotel.data} />
+                  <PropertyHighlights  />
                 </div>
                 {/* End .col-12 Property highlights */}
 
                 <div id="overview" className="col-12">
-                  <Overview hotel={hotel.data} />
+                  <Overview />
                 </div>
                 {/* End .col-12  Overview */}
 
@@ -227,7 +228,7 @@ if (!hotel) return null;
                     Most Popular Facilities
                   </h3>
                   <div className="row y-gap-10 pt-20">
-                    <PopularFacilities hotel={hotel.data} />
+                    <PopularFacilities  />
                   </div>
                 </div>
                 {/* End .col-12 Most Popular Facilities */}

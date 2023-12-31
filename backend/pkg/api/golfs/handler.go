@@ -72,7 +72,7 @@ func FindGolfs(c *gin.Context) {
 
 	// If cache missed, fetch data from the database
 
-	database.Database.DB.Offset(offset).Limit(limit).Raw(`SELECT ID,
+	if err := database.Database.DB.Offset(offset).Limit(limit).Raw(`SELECT ID,
 			tag,
 			title,
 			price,
@@ -85,14 +85,15 @@ func FindGolfs(c *gin.Context) {
 			name,
 			Created_At,
 			Updated_At
-		FROM Golfs`).Scan(&golfs)
-	galleryImages := []models.GalleryImage{}
+		FROM Golfs`).Scan(&golfs).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "golf not found"})
+		return
+	}
+
 	slideImages := []models.SlideImage{}
 
 	for i, v := range golfs {
-		database.Database.DB.Find(&galleryImages, "golf_id = ?", v.ID)
 		database.Database.DB.Find(&slideImages, "golf_id = ?", v.ID)
-		golfs[i].GalleryImages = galleryImages
 		golfs[i].SlideImages = slideImages
 		for _, v := range slideImages {
 			golfs[i].SlideImg = append(golfs[i].SlideImg, v.Img)
@@ -177,11 +178,33 @@ func CreateGolf(c *gin.Context) {
 func FindGolf(c *gin.Context) {
 	var golf models.Golf
 
-	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&golf).Error; err != nil {
+	galleryImages := []models.GalleryImage{}
+	if err := database.Database.DB.Raw(`SELECT ID,
+								tag,
+								title,
+								price,
+								location,
+								reviews,
+								ratings,
+								animation,
+								holes,
+								duration,
+								name,
+								Created_At,
+								Updated_At
+							FROM Golfs where id = ` + c.Param("id")).Scan(&golf).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "golf not found"})
 		return
 	}
 
+	if err := database.Database.DB.Find(&galleryImages, "golf_id = ?", c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "golf not found"})
+		return
+	}
+	for _, v := range galleryImages {
+		golf.GalleryImg = append(golf.GalleryImg, v.Img)
+	}
+	golf.GalleryImages = galleryImages
 	c.JSON(http.StatusOK, gin.H{"data": golf})
 }
 

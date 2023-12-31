@@ -6,7 +6,6 @@ import axios from "axios";
 import React from "react";
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
-// var  slideImg = ["/img/hotels/2.png", "/img/hotels/1.png", "/img/hotels/3.png"]
 
 export default function TopTours() {
   const [tours, setTours] = React.useState(null);

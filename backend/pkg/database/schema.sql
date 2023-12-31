@@ -186,27 +186,36 @@ CREATE TABLE Room_Types (
 INSERT INTO Room_Types (RoomType) VALUES ('Standard Twin Room');
 INSERT INTO Room_Types (RoomType) VALUES ('Deluxe King Room');
 
-CREATE TABLE Hotel_Facilities (
+CREATE TABLE Facilities (
     id INTEGER PRIMARY KEY,
-    hotel_id INTEGER,
+    category_id INTEGER,
+    product_id INTEGER,
     class_name TEXT,
-    facility_name TEXT,
+    facility_title TEXT,
+    facility_meta TEXT,
     exist INTEGER,
     isHilight INTEGER,
-    FOREIGN KEY (hotel_id) REFERENCES Hotels(id)
+    FOREIGN KEY (category_id) REFERENCES Categories(id)
 );
 -- Example INSERTs for Hotel_Facilities
-INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (1, 'icon-no-smoke', 'Non-smoking rooms', 1, 0);
-INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (1, 'icon-wifi', 'Free WiFi', 1, 0);
-INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (1, 'icon-parking', 'Parking', 1, 0);
-INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-kitchen', 'Kitchen', 1, 0);
-INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-living-room', 'Living Area', 1, 0);
-INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-shield', 'Safety & security', 1, 0);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, facility_meta, exist, isHilight) VALUES (3, 1, 'icon-no-smoke', "", 'Non-smoking rooms', "", 1, 0);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, facility_meta, exist, isHilight) VALUES (3, 1, 'icon-wifi', "", 'Free WiFi', "", 1, 0);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, facility_meta, exist, isHilight) VALUES (3, 1, 'icon-parking', "", 'Parking', "", 1, 0);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, facility_meta, exist, isHilight) VALUES (3, 1, 'icon-kitchen', "", 'Kitchen', "", 1, 0);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, facility_meta, exist, isHilight) VALUES (3, 1, 'icon-living-room', "", 'Living Area', "", 1, 0);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, facility_meta, value, isHilight) VALUES (3, 1, 'icon-shield', "", 'Safety & security', "", 1, 0);
 
-INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (1, 'icon-city', 'In London City Centre', 1, 1);
-INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-airplane', 'Airport transfer', 1, 1);
-INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-bell-ring', 'Front desk [24-hour]', 1, 1);
-INSERT INTO Hotel_Facilities (hotel_id, class_name, facility_name, exist, isHilight) VALUES (2, 'icon-tv', 'Premium TV channels', 1, 1);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, value, facility_meta, isHilight) VALUES (3, 1, 'icon-city', "", 'In London City Centre', "", 1, 1);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, value, facility_meta, isHilight) VALUES (3, 1, 'icon-airplane', "", 'Airport transfer', "", 1, 1);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, value, facility_meta, isHilight) VALUES (3, 1, 'icon-bell-ring', "", 'Front desk [24-hour]', "", 1, 1);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, value, facility_meta, isHilight) VALUES (3, 1, 'icon-tv', "", 'Premium TV channels', "", 1, 1);
+
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, value, facility_meta, isHilight) VALUES (6, 1, 'icon-clock', "", 'In London City Centre', "", 1, 1);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, value, facility_meta, isHilight) VALUES (6, 1, 'icon-customer', "", 'Airport transfer', "", 1, 1);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, value, facility_meta, isHilight) VALUES (6, 1, 'icon-route', "", 'Front desk [24-hour]', "", 1, 1);
+INSERT INTO Facilities (category_id, product_id, class_name, facility_title, value, facility_meta, isHilight) VALUES (6, 1, 'icon-access-denied', "", 'Premium TV channels', "", 1, 1);
+
+
 
 CREATE TABLE Hotel_Benefits (
     id INTEGER PRIMARY KEY,
@@ -371,30 +380,41 @@ CREATE TABLE gallery_images (
     golf_id INTEGER,
     rental_id INTEGER,
     tour_id INTEGER,
-    gallery_img TEXT,
+    img TEXT,
     Created_At DATETIME DEFAULT CURRENT_TIMESTAMP,
     Updated_At DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (hotel_id) REFERENCES hotels(id),
     FOREIGN KEY (activity_id) REFERENCES Activities(id),
     FOREIGN KEY (car_id) REFERENCES Cars(id),
-    FOREIGN KEY (golf_id) REFERENCES golves(id),
+    FOREIGN KEY (golf_id) REFERENCES golfs(id),
     FOREIGN KEY (rental_id) REFERENCES Rentals(id),
     FOREIGN KEY (tour_id) REFERENCES Tours(id)
 );
 
-INSERT INTO gallery_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  gallery_img) VALUES 
 -- Insert Hotels Slide Images
-(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/single/new/1.png'),
-(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/single/new/2.png'),
-(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/single/new/3.png'),
-(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/single/new/4.png'),
+INSERT INTO gallery_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
+(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/1.png'),
+(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/2.png'),
+(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/3.png'),
+(1,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/4.png'),
 
-(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/single/new/1.png'),
-(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/single/new/2.png'),
-(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/single/new/3.png'),
-(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/single/new/4.png'),
+(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/5.png'),
+(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/6.png'),
+(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/7.png'),
+(2,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/8.png'),
+
+(3,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/9.png'),
+(3,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/10.png'),
+(3,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/11.png'),
+(3,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/12.png'),
+
+(4,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/13.png'),
+(4,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/14.png'),
+(4,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/15.png'),
+(4,  NULL, NULL, NULL, NULL, NULL,'/img/hotels/new/16.png');
 
 
+INSERT INTO gallery_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
 ----Insert Acitivities Slide Images
 (NULL,  1, NULL, NULL, NULL, NULL,'/img/activities/new/10.png'),
 (NULL,  1, NULL, NULL, NULL, NULL,'/img/activities/new/11.png'),
@@ -404,26 +424,48 @@ INSERT INTO gallery_images (hotel_id, activity_id, car_id, golf_id, rental_id, t
 (NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/10.png'),
 (NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/11.png'),
 (NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/12.png'),
-(NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/13.png'),
+(NULL,  2, NULL, NULL, NULL, NULL,'/img/activities/new/13.png');
 
 ----Insert Cars Slide Images
-(NULL,  NULL, 1, NULL, NULL, NULL,'/img/cars/slides/new/1.png'),
-(NULL,  NULL, 1, NULL, NULL, NULL,'/img/cars/slides/new/2.png'),
-(NULL,  NULL, 1, NULL, NULL, NULL,'/img/cars/slides/new/1.png'),
-(NULL,  NULL, 1, NULL, NULL, NULL,'/img/cars/slides/new/3.png'),
+INSERT INTO gallery_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
+(NULL,  NULL, 1, NULL, NULL, NULL,'/img/cars/new/1.png'),
+(NULL,  NULL, 1, NULL, NULL, NULL,'/img/cars/new/2.png'),
+(NULL,  NULL, 1, NULL, NULL, NULL,'/img/cars/new/3.png'),
+(NULL,  NULL, 1, NULL, NULL, NULL,'/img/cars/new/4.png'),
 
-(NULL,  NULL, 2, NULL, NULL, NULL,'/img/cars/slides/new/1.png'),
-(NULL,  NULL, 2, NULL, NULL, NULL,'/img/cars/slides/new/2.png'),
-(NULL,  NULL, 2, NULL, NULL, NULL,'/img/cars/slides/new/1.png'),
-(NULL,  NULL, 2, NULL, NULL, NULL,'/img/cars/slides/new/3.png'),
+(NULL,  NULL, 2, NULL, NULL, NULL,'/img/cars/new/1.png'),
+(NULL,  NULL, 2, NULL, NULL, NULL,'/img/cars/new/2.png'),
+(NULL,  NULL, 2, NULL, NULL, NULL,'/img/cars/new/3.png'),
+(NULL,  NULL, 2, NULL, NULL, NULL,'/img/cars/new/4.png'),
+
+(NULL,  NULL, 3, NULL, NULL, NULL,'/img/cars/new/1.png'),
+(NULL,  NULL, 3, NULL, NULL, NULL,'/img/cars/new/2.png'),
+(NULL,  NULL, 3, NULL, NULL, NULL,'/img/cars/new/3.png'),
+(NULL,  NULL, 3, NULL, NULL, NULL,'/img/cars/new/4.png'),
+
+(NULL,  NULL, 4, NULL, NULL, NULL,'/img/cars/new/1.png'),
+(NULL,  NULL, 4, NULL, NULL, NULL,'/img/cars/new/2.png'),
+(NULL,  NULL, 4, NULL, NULL, NULL,'/img/cars/new/3.png'),
+(NULL,  NULL, 4, NULL, NULL, NULL,'/img/cars/new/4.png');
 
 ----Insert Golf Slide Images
+INSERT INTO gallery_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  gallery_img) VALUES 
 (NULL,  NULL, NULL, 1, NULL, NULL,'/img/golfs/new/1.png'),
 (NULL,  NULL, NULL, 1, NULL, NULL,'/img/golfs/new/2.png'),
 (NULL,  NULL, NULL, 1, NULL, NULL,'/img/golfs/new/3.png'),
 (NULL,  NULL, NULL, 1, NULL, NULL,'/img/golfs/new/4.png'),
-(NULL,  NULL, NULL, 1, NULL, NULL,'/img/golfs/new/5.png'),
-(NULL,  NULL, NULL, 1, NULL, NULL,'/img/golfs/new/6.png'),
+(NULL,  NULL, NULL, 2, NULL, NULL,'/img/golfs/new/5.png'),
+(NULL,  NULL, NULL, 2, NULL, NULL,'/img/golfs/new/6.png'),
+(NULL,  NULL, NULL, 2, NULL, NULL,'/img/golfs/new/7.png'),
+(NULL,  NULL, NULL, 2, NULL, NULL,'/img/golfs/new/8.png'),
+(NULL,  NULL, NULL, 3, NULL, NULL,'/img/golfs/new/9.png'),
+(NULL,  NULL, NULL, 3, NULL, NULL,'/img/golfs/new/10.png'),
+(NULL,  NULL, NULL, 3, NULL, NULL,'/img/golfs/new/11.png'),
+(NULL,  NULL, NULL, 3, NULL, NULL,'/img/golfs/new/12.png'),
+(NULL,  NULL, NULL, 4, NULL, NULL,'/img/golfs/new/13.png'),
+(NULL,  NULL, NULL, 4, NULL, NULL,'/img/golfs/new/14.png'),
+(NULL,  NULL, NULL, 4, NULL, NULL,'/img/golfs/new/15.png'),
+(NULL,  NULL, NULL, 4, NULL, NULL,'/img/golfs/new/16.png')
 
 (NULL,  NULL, NULL, 2, NULL, NULL,'/img/golfs/new/1.png'),
 (NULL,  NULL, NULL, 2, NULL, NULL,'/img/golfs/new/2.png'),
@@ -450,18 +492,29 @@ INSERT INTO gallery_images (hotel_id, activity_id, car_id, golf_id, rental_id, t
 (NULL,  NULL, NULL, NULL, 2, NULL,'/img/rentals/single/new/2.png'),
 (NULL,  NULL, NULL, NULL, 2, NULL,'/img/rentals/single/new/3.png'),
 (NULL,  NULL, NULL, NULL, 2, NULL,'/img/rentals/single/new/4.png'),
-(NULL,  NULL, NULL, NULL, 2, NULL,'/img/rentals/single/new/5.png'),
+(NULL,  NULL, NULL, NULL, 2, NULL,'/img/rentals/single/new/5.png');
 
 ----Insert Tours Slide Images
-(NULL,  NULL, NULL, NULL, NULL, 1,'/img/tours/single/new/1.png'),
-(NULL,  NULL, NULL, NULL, NULL, 1,'/img/tours/single/new/2.png'),
-(NULL,  NULL, NULL, NULL, NULL, 1,'/img/tours/single/new/3.png'),
-(NULL,  NULL, NULL, NULL, NULL, 1,'/img/tours/single/new/4.png'),
+INSERT INTO gallery_images (hotel_id, activity_id, car_id, golf_id, rental_id, tour_id,  img) VALUES 
+(NULL,  NULL, NULL, NULL, NULL, 1,'/img/tours/new/1.png'),
+(NULL,  NULL, NULL, NULL, NULL, 1,'/img/tours/new/2.png'),
+(NULL,  NULL, NULL, NULL, NULL, 1,'/img/tours/new/3.png'),
+(NULL,  NULL, NULL, NULL, NULL, 1,'/img/tours/new/4.png'),
 
-(NULL,  NULL, NULL, NULL, NULL, 2,'/img/tours/single/new/1.png'),
-(NULL,  NULL, NULL, NULL, NULL, 2,'/img/tours/single/new/2.png'),
-(NULL,  NULL, NULL, NULL, NULL, 2,'/img/tours/single/new/3.png'),
-(NULL,  NULL, NULL, NULL, NULL, 2,'/img/tours/single/new/4.png');
+(NULL,  NULL, NULL, NULL, NULL, 2,'/img/tours/new/5.png'),
+(NULL,  NULL, NULL, NULL, NULL, 2,'/img/tours/new/6.png'),
+(NULL,  NULL, NULL, NULL, NULL, 2,'/img/tours/new/7.png'),
+(NULL,  NULL, NULL, NULL, NULL, 2,'/img/tours/new/8.png'),
+
+(NULL,  NULL, NULL, NULL, NULL, 3,'/img/tours/new/9.png'),
+(NULL,  NULL, NULL, NULL, NULL, 3,'/img/tours/new/10.png'),
+(NULL,  NULL, NULL, NULL, NULL, 3,'/img/tours/new/11.png'),
+(NULL,  NULL, NULL, NULL, NULL, 3,'/img/tours/new/12.png'),
+
+(NULL,  NULL, NULL, NULL, NULL, 4,'/img/tours/new/13.png'),
+(NULL,  NULL, NULL, NULL, NULL, 4,'/img/tours/new/14.png'),
+(NULL,  NULL, NULL, NULL, NULL, 4,'/img/tours/new/15.png'),
+(NULL,  NULL, NULL, NULL, NULL, 4,'/img/tours/new/16.png');
 
 ---------------- Tours Table -----------------------------
 CREATE TABLE Tours (

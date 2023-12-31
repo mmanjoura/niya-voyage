@@ -176,15 +176,31 @@ func CreateActivity(c *gin.Context) {
 func FindActivity(c *gin.Context) {
 	var activity models.Activity
 
-	if err := database.Database.DB.Where("id = ?", c.Param("id")).
-		Preload("SlideImages").
-		Preload("GalleryImages").
-		First(&activity).
-		Error; err != nil {
+	galleryImages := []models.GalleryImage{}
+	if err := database.Database.DB.Raw(`SELECT ID,
+											tag,
+											title,
+											price,
+											location,
+											duration,
+											reviews,
+											ratings,
+											animation,
+											Created_At,
+											Updated_At
+										FROM Activities where id = ` + c.Param("id")).Scan(&activity).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "activity not found"})
 		return
 	}
 
+	if err := database.Database.DB.Find(&galleryImages, "activity_id = ?", c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "activity not found"})
+		return
+	}
+	for _, v := range galleryImages {
+		activity.GalleryImg = append(activity.GalleryImg, v.Img)
+	}
+	activity.GalleryImages = galleryImages
 	c.JSON(http.StatusOK, gin.H{"data": activity})
 }
 

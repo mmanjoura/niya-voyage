@@ -2,21 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
-import cruiseData from "../../data/cruise";
+import toursData from "../../data/tours";
 import isTextMatched from "../../utils/isTextMatched";
 
-const Golf3 = () => {
+const Golfs2 = () => {
   return (
     <>
       <Swiper
         spaceBetween={30}
         modules={[Navigation, Pagination]}
         navigation={{
-          nextEl: ".js-popular-car-next",
-          prevEl: ".js-popular-car-prev",
+          nextEl: ".js-populars-tour-next",
+          prevEl: ".js-populars-tour-prev",
         }}
         pagination={{
-          el: ".js-car-pag_active",
+          el: ".js-tour-pag_active",
           clickable: true,
         }}
         breakpoints={{
@@ -36,7 +36,7 @@ const Golf3 = () => {
           },
         }}
       >
-        {cruiseData.map((item) => (
+        {toursData.slice(0, 6).map((item) => (
           <SwiperSlide key={item.id}>
             <div
               key={item?.id}
@@ -44,13 +44,13 @@ const Golf3 = () => {
               data-aos-delay={item?.delayAnimation}
             >
               <Link
-                href={`/cruise/cruise-single/${item.id}`}
-                className="cruiseCard -type-1 rounded-4 "
+                href={`/tour/tour-single/${item.id}`}
+                className="tourCard -type-1 rounded-4"
               >
-                <div className="cruiseCard__image position-relative">
-                  <div className="carCard__image">
-                    <div className="cardImage ratio ratio-6:5">
-                      <div className="cardImage__content custom_inside-slider">
+                <div className="tourCard__image">
+                  <div className="cardImage ratio ratio-1:1">
+                    <div className="cardImage__content">
+                      <div className="cardImage-slider rounded-4 overflow-hidden custom_inside-slider">
                         <Swiper
                           className="mySwiper"
                           modules={[Pagination, Navigation]}
@@ -73,25 +73,6 @@ const Golf3 = () => {
                         </Swiper>
                       </div>
                     </div>
-                    {/* End cartImage */}
-
-                    <div className="cardImage__wishlist">
-                      <button className="button -blue-1 bg-white size-30 rounded-full shadow-2">
-                        <i className="icon-heart text-12" />
-                      </button>
-                    </div>
-
-                    <div className="cardImage__leftBadge">
-                      <div
-                        className={`py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase  ${
-                          isTextMatched(item?.tag, "best seller")
-                            ? "bg-blue-1 text-white"
-                            : ""
-                        }`}
-                      >
-                        {item?.tag}
-                      </div>
-                    </div>
                   </div>
 
                   <div className="cardImage__wishlist">
@@ -103,7 +84,7 @@ const Golf3 = () => {
                   <div className="cardImage__leftBadge">
                     <div
                       className={`py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase ${
-                        isTextMatched(item?.tag, "cruise only")
+                        isTextMatched(item?.tag, "likely to sell out*")
                           ? "bg-dark-1 text-white"
                           : ""
                       } ${
@@ -122,58 +103,48 @@ const Golf3 = () => {
                 </div>
                 {/* End .tourCard__image */}
 
-                <div className="cruiseCard__content mt-10">
-                  <div className="text-14 lh-14 text-light-1 mb-5">
-                    {item?.ship}
+                <div className="tourCard__content mt-10">
+                  <div className="d-flex items-center lh-14 mb-5">
+                    <div className="text-14 text-light-1">
+                      {item?.duration}+ hours
+                    </div>
+                    <div className="size-3 bg-light-1 rounded-full ml-10 mr-10" />
+                    <div className="text-14 text-light-1">{item?.tourType}</div>
                   </div>
-                  <h4 className="cruiseCard__title text-dark-1 text-18 lh-16 fw-500">
+                  <h4 className="tourCard__title text-dark-1 text-18 lh-16 fw-500">
                     <span>{item?.title}</span>
                   </h4>
-                  <p className="text-light-1 lh-14 text-14 mt-5" />
-                  <div className="row y-gap-10 justify-between items-center">
-                    <div className="col-auto">
-                      <div className="text-14 text-dark-1 fw-500">
-                        Sailing Date
-                      </div>
-                      <div className="text-14 text-light-1">{item?.date}</div>
-                    </div>
-                    <div className="col-auto">
-                      <div className="text-14 text-dark-1 fw-500">Departs</div>
-                      <div className="text-14 text-light-1">{item.departs}</div>
-                    </div>
-                    <div className="col-auto">
-                      <div className="text-14 text-dark-1 fw-500">
-                        Ports ({item.portsNumber})
-                      </div>
-                      <div className="text-14 text-light-1">
-                        {item?.portsName}...
-                      </div>
-                    </div>
-                  </div>
-                  {/* End .row */}
+                  <p className="text-light-1 lh-14 text-14 mt-5">
+                    {item?.location}
+                  </p>
 
-                  <div className="row y-gap-20 justify-between items-center pt-5">
+                  <div className="row justify-between items-center pt-15">
                     <div className="col-auto">
                       <div className="d-flex items-center">
-                        <div className="icon-star text-yellow-1 text-10 mr-5" />
-                        <div className="text-14 text-light-1">
-                          <span className="text-15 text-dark-1 fw-500">
-                            {item?.ratings}
-                          </span>
+                        <div className="d-flex items-center x-gap-5">
+                          <div className="icon-star text-yellow-1 text-10" />
+                          <div className="icon-star text-yellow-1 text-10" />
+                          <div className="icon-star text-yellow-1 text-10" />
+                          <div className="icon-star text-yellow-1 text-10" />
+                          <div className="icon-star text-yellow-1 text-10" />
+                        </div>
+                        {/* End ratings */}
+
+                        <div className="text-14 text-light-1 ml-10">
                           {item?.numberOfReviews} reviews
                         </div>
                       </div>
                     </div>
                     <div className="col-auto">
                       <div className="text-14 text-light-1">
-                        From{" "}
+                        From
                         <span className="text-16 fw-500 text-dark-1">
-                          US${item?.price}
+                          {" "}
+                          US${item.price}
                         </span>
                       </div>
                     </div>
                   </div>
-                  {/* End .row */}
                 </div>
               </Link>
             </div>
@@ -183,19 +154,19 @@ const Golf3 = () => {
 
       <div className="d-flex x-gap-15 items-center justify-center pt-40 sm:pt-20">
         <div className="col-auto">
-          <button className="d-flex items-center text-24 arrow-left-hover js-popular-car-prev">
+          <button className="d-flex items-center text-24 arrow-left-hover js-populars-tour-prev">
             <i className="icon icon-arrow-left" />
           </button>
         </div>
         {/* End arrow prev */}
 
         <div className="col-auto">
-          <div className="pagination -dots text-border js-car-pag_active" />
+          <div className="pagination -dots text-border js-tour-pag_active" />
         </div>
         {/* End arrow pagination */}
 
         <div className="col-auto">
-          <button className="d-flex items-center text-24 arrow-right-hover js-popular-car-next">
+          <button className="d-flex items-center text-24 arrow-right-hover js-populars-tour-next">
             <i className="icon icon-arrow-right" />
           </button>
         </div>
@@ -205,4 +176,4 @@ const Golf3 = () => {
   );
 };
 
-export default Golf3;
+export default Golfs2;

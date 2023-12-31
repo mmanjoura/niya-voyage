@@ -2,15 +2,15 @@ import CallToActions from "../../../components/common/CallToActions";
 import Seo from "../../../components/common/Seo";
 import Header11 from "../../../components/header/header";
 import DefaultFooter from "../../../components/footer/default";
-import TopHeaderFilter from "../../../components/cruise-list/cruise-list-v2/TopHeaderFilter";
-import CruiseProperties from "../../../components/cruise-list/cruise-list-v2/CruiseProperties";
-import Pagination from "../../../components/cruise-list/common/Pagination";
-import Sidebar from "../../../components/cruise-list/cruise-list-v2/Sidebar";
+import TopHeaderFilter from "../../../components/golf-list/golf-list-v2/TopHeaderFilter";
+import TourProperties from "../../../components/golf-list/golf-list-v2/TourProperties";
+import Pagination from "../../../components/golf-list/common/Pagination";
+import Sidebar from "../../../components/golf-list/golf-list-v2/Sidebar";
 
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Cruise List v2" />
+      <Seo pageTitle="Tour List v2" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>
@@ -62,7 +62,7 @@ const index = () => {
               <div className="mt-30"></div>
               {/* End mt--30 */}
               <div className="row y-gap-30">
-                <CruiseProperties />
+                <TourProperties />
               </div>
               {/* End .row */}
               <Pagination />

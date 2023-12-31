@@ -183,11 +183,35 @@ func CreateCar(c *gin.Context) {
 func FindCar(c *gin.Context) {
 	var car models.Car
 
-	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&car).Error; err != nil {
+	galleryImages := []models.GalleryImage{}
+	if err := database.Database.DB.Raw(`SELECT ID,
+								tag,
+								title,
+								price,
+								location,
+								reviews,
+								ratings,
+								animation,
+								seat,
+								type,
+								luggage,
+								transmission,
+								speed,
+								Created_At,
+								Updated_At
+							FROM Cars where id = ` + c.Param("id")).Scan(&car).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "car not found"})
 		return
 	}
 
+	if err := database.Database.DB.Find(&galleryImages, "car_id = ?", c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "car not found"})
+		return
+	}
+
+	for _, v := range galleryImages {
+		car.GalleryImg = append(car.GalleryImg, v.Img)
+	}
 	c.JSON(http.StatusOK, gin.H{"data": car})
 }
 

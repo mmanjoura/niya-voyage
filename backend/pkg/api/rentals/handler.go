@@ -181,12 +181,36 @@ func CreateRental(c *gin.Context) {
 func FindRental(c *gin.Context) {
 	var rental models.Rental
 
-	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&rental).Error; err != nil {
+	galleryImages := []models.GalleryImage{}
+	if err := database.Database.DB.Raw(`SELECT ID,
+											tag,
+											title,
+											price,
+											location,
+											duration,
+											reviews,
+											ratings,
+											animation,
+											guest,
+											bedroom,
+											bed,
+											Created_At,
+											Updated_At
+										FROM Rentals where id = ` + c.Param("id")).Scan(&rental).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "rental not found"})
 		return
 	}
 
+	if err := database.Database.DB.Find(&galleryImages, "rental_id = ?", c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "rental not found"})
+		return
+	}
+	for _, v := range galleryImages {
+		rental.GalleryImg = append(rental.GalleryImg, v.Img)
+	}
+	rental.GalleryImages = galleryImages
 	c.JSON(http.StatusOK, gin.H{"data": rental})
+
 }
 
 // UpdateRental godoc

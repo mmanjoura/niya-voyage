@@ -1,10 +1,10 @@
 import Image from "next/image";
 import ReviewGallery from "./ReviewGallery";
 
-const DetailsReview = () => {
+const DetailsReview2 = () => {
   return (
-    <div className="row y-gap-60">
-      <div className="col-lg-6">
+    <div className="row y-gap-40">
+      <div className="col-lg-12">
         <div className="row x-gap-20 y-gap-20 items-center">
           <div className="col-auto">
             <Image
@@ -43,7 +43,7 @@ const DetailsReview = () => {
       </div>
       {/* End .col */}
 
-      <div className="col-lg-6">
+      <div className="col-lg-12">
         <div className="row x-gap-20 y-gap-20 items-center">
           <div className="col-auto">
             <Image
@@ -81,7 +81,7 @@ const DetailsReview = () => {
       </div>
       {/* End .col */}
 
-      <div className="col-lg-6">
+      <div className="col-lg-12">
         <div className="row x-gap-20 y-gap-20 items-center">
           <div className="col-auto">
             <Image
@@ -117,7 +117,7 @@ const DetailsReview = () => {
       </div>
       {/* End .col */}
 
-      <div className="col-lg-6">
+      <div className="col-lg-12">
         <div className="row x-gap-20 y-gap-20 items-center">
           <div className="col-auto">
             <Image
@@ -152,8 +152,16 @@ const DetailsReview = () => {
         </div>
       </div>
       {/* End .col */}
+
+      <div className="col-auto">
+        <a href="#" className="button -md -outline-blue-1 text-blue-1">
+          Show all 116 reviews{" "}
+          <div className="icon-arrow-top-right ml-15"></div>
+        </a>
+      </div>
+      {/* End .col-auto */}
     </div>
   );
 };
 
-export default DetailsReview;
+export default DetailsReview2;

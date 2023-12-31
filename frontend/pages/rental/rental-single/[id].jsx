@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "photoswipe/dist/photoswipe.css";
 import rentalsData from "../../../data/rentals";
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header";
+import Header from "../../../components/header/header";
 import Overview from "../../../components/rental-single/Overview";
 import PropertyHighlights from "../../../components/rental-single/PropertyHighlights";
 import TopBreadCrumb from "../../../components/rental-single/TopBreadCrumb";
@@ -19,17 +19,35 @@ import SlideGallery from "../../../components/rental-single/SlideGallery";
 import MapPropertyFinder from "../../../components/rental-single/MapPropertyFinder";
 import HelpfulFacts from "../../../components/rental-single/HelpfulFacts";
 
-const TourSingleV1Dynamic = () => {
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+
+const RentalSingleV1Dynamic = () => {
+
+  const [isOpen, setOpen] = useState(false);
   const router = useRouter();
   const [rental, setRental] = useState({});
   const id = router.query.id;
 
   useEffect(() => {
-    if (!id) <h1>Loading...</h1>;
-    else setRental(rentalsData.find((item) => item.id == id));
+    if (!id) {<h1>Loading...</h1>;}
+    else 
+    {
+      
+      axios.get(`${baseURL}/rentals/${id}`).then((response) => {
+        setRental(response.data);
+      });
+     
+    }
 
     return () => {};
   }, [id]);
+
+if (!rental) return null;
+
+console.log("rental/Car-single/1", rental.data)
 
   return (
     <>
@@ -39,7 +57,7 @@ const TourSingleV1Dynamic = () => {
       <div className="header-margin"></div>
       {/* header top margin */}
 
-      <Header11 />
+      <Header />
       {/* End Header 1 */}
 
       <TopBreadCrumb />
@@ -51,7 +69,7 @@ const TourSingleV1Dynamic = () => {
             <div className="col-12">
               <div className="row justify-between items-end">
                 <div className="col-auto">
-                  <h1 className="text-26 fw-600">{rental?.title}</h1>
+                  <h1 className="text-26 fw-600">{rental?.data?.title}</h1>
                   <div className="row x-gap-20 y-gap-20 items-center pt-10">
                     <div className="col-auto">
                       <div className="row x-gap-10 items-center">
@@ -59,7 +77,7 @@ const TourSingleV1Dynamic = () => {
                           <div className="d-flex x-gap-5 items-center">
                             <i className="icon-location-2 text-16 text-light-1" />
                             <div className="text-15 text-light-1">
-                              {rental?.location}
+                              {rental?.data?.location}
                             </div>
                           </div>
                         </div>
@@ -111,7 +129,7 @@ const TourSingleV1Dynamic = () => {
 
       <section className="pt-40">
         <div className="container">
-          <SlideGallery rental={rental} />
+          <SlideGallery {... rental} />
         </div>
       </section>
       {/* End gallery grid wrapper */}
@@ -230,6 +248,6 @@ const TourSingleV1Dynamic = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(TourSingleV1Dynamic), {
+export default dynamic(() => Promise.resolve(RentalSingleV1Dynamic), {
   ssr: false,
 });

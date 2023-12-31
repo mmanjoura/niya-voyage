@@ -73,7 +73,7 @@ func FindHotels(c *gin.Context) {
 	// If cache missed, fetch data from the database
 	// dB := database.Database.DB
 
-	database.Database.DB.Offset(offset).Limit(limit).Raw(`SELECT id,
+	if err := database.Database.DB.Offset(offset).Limit(limit).Raw(`SELECT id,
 															category_id,
 															tag,
 															img,
@@ -86,7 +86,11 @@ func FindHotels(c *gin.Context) {
 															city,
 															Created_At,
 															Updated_At
-														FROM hotels`).Scan(&hotels)
+														FROM hotels`).Scan(&hotels).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel not found"})
+
+		return
+	}
 
 	galleryImages := []models.GalleryImage{}
 	slideImages := []models.SlideImage{}
@@ -175,48 +179,34 @@ func CreateHotel(c *gin.Context) {
 // @Router /hotels/{id} [get]
 func FindHotel(c *gin.Context) {
 	var hotel models.Hotel
+
 	galleryImages := []models.GalleryImage{}
-	slideImages := []models.SlideImage{}
-	hotelBenefits := []models.HotelBenefit{}
-	hotelFacilities := []models.HotelFacility{}
-	hotelInfo := models.HotelInfo{}
-	hotel_Id := c.Param("id")
-
-	// get list of hotels, for this id
-	if err := database.Database.DB.Where("id = ?", hotel_Id).First(&hotel).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel not found"})
-
-		return
-	}
-	if err := database.Database.DB.Where("id = ?", hotel_Id).First(&hotelInfo).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel Info not found"})
-
-		return
-	}
-	if err := database.Database.DB.Find(&galleryImages, "hotel_id = ?", hotel_Id).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel Gallery images not found"})
-
-		return
-	}
-	if err := database.Database.DB.Find(&slideImages, "hotel_id = ?", hotel_Id).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel Gallery images not found"})
-
-		return
-	}
-	if err := database.Database.DB.Find(&hotelBenefits, "hotel_id = ?", hotel_Id).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel Benefits not found"})
-		return
-	}
-	if err := database.Database.DB.Find(&hotelFacilities, "hotel_id = ?", hotel_Id).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Hotel Facilities not found"})
+	if err := database.Database.DB.Raw(`SELECT id,
+											category_id,
+											tag,
+											img,
+											title,
+											location,
+											ratings,
+											Reviews,
+											price,
+											Animation,
+											city,
+											Created_At,
+											Updated_At
+										FROM hotels where id = ` + c.Param("id")).Scan(&hotel).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "hotel not found"})
 		return
 	}
 
-	hotelInfo.HotelBenefits = hotelBenefits
-	hotelInfo.HotelFacilities = hotelFacilities
-	hotel.HotelInfo = hotelInfo
+	if err := database.Database.DB.Find(&galleryImages, "hotel_id = ?", c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "hotel not found"})
+		return
+	}
+	for _, v := range galleryImages {
+		hotel.GalleryImg = append(hotel.GalleryImg, v.Img)
+	}
 	hotel.GalleryImages = galleryImages
-	hotel.SlideImages = slideImages
 	c.JSON(http.StatusOK, gin.H{"data": hotel})
 }
 

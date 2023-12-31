@@ -1,4 +1,4 @@
-const ReplyFormReview = () => {
+const ReplyFormReview2 = () => {
   const replyReviewContent = [
     {
       id: 1,
@@ -96,7 +96,7 @@ const ReplyFormReview = () => {
   return (
     <div className="row y-gap-30 pt-30">
       {replyReviewContent.map((item) => (
-        <div className="col-xl-4" key={item.id}>
+        <div className="col-sm-6" key={item.id}>
           <div className="text-15 lh-1 fw-500">{item.reasonOfreview}</div>
           <div className="d-flex x-gap-5 items-center pt-10">
             {item.ratings}
@@ -107,4 +107,4 @@ const ReplyFormReview = () => {
   );
 };
 
-export default ReplyFormReview;
+export default ReplyFormReview2;

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "photoswipe/dist/photoswipe.css";
 import carsData from "../../../data/cars";
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header";
+import Header from "../../../components/header/header";
 import Overview from "../../../components/car-single/Overview";
 import PropertyHighlights from "../../../components/car-single/PropertyHighlights";
 import TopBreadCrumb from "../../../components/car-single/TopBreadCrumb";
@@ -19,17 +19,36 @@ import FilterBox from "../../../components/car-single/filter-box";
 import Faq from "../../../components/faq/Faq";
 import MapPropertyFinder from "../../../components/car-single/MapPropertyFinder";
 
-const TourSingleV1Dynamic = () => {
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+
+const CarSingleV1Dynamic = () => {
+
+  const [isOpen, setOpen] = useState(false);
   const router = useRouter();
   const [car, setCar] = useState({});
   const id = router.query.id;
 
   useEffect(() => {
-    if (!id) <h1>Loading...</h1>;
-    else setCar(carsData.find((item) => item.id == id));
+    if (!id) {<h1>Loading...</h1>;}
+    else 
+    {
+      
+      axios.get(`${baseURL}/cars/${id}`).then((response) => {
+        setCar(response.data);
+      });
+     
+    }
 
     return () => {};
   }, [id]);
+
+if (!car) return null;
+
+console.log("car/Car-single/1", car.data)
+
 
   return (
     <>
@@ -39,7 +58,7 @@ const TourSingleV1Dynamic = () => {
       <div className="header-margin"></div>
       {/* header top margin */}
 
-      <Header11 />
+      <Header />
       {/* End Header 1 */}
 
       <TopBreadCrumb />
@@ -51,13 +70,13 @@ const TourSingleV1Dynamic = () => {
             <div className="col-lg-8">
               <div className="row y-gap-20 justify-between items-end">
                 <div className="col-auto">
-                  <h1 className="text-30 sm:text-24 fw-600">{car?.title}</h1>
+                  <h1 className="text-30 sm:text-24 fw-600">{car?.data?.title}</h1>
                   <div className="row x-gap-10 items-center pt-10">
                     <div className="col-auto">
                       <div className="d-flex x-gap-5 items-center">
                         <i className="icon-location text-16 text-light-1" />
                         <div className="text-15 text-light-1">
-                          {car?.location}
+                          {car?.data?.location}
                         </div>
                       </div>
                     </div>
@@ -96,7 +115,7 @@ const TourSingleV1Dynamic = () => {
               {/* End .row */}
 
               <div className="mt-40">
-                <SlideGallery />
+                <SlideGallery {... car}/>
               </div>
             </div>
             {/* End col-lg-8 left car gallery */}
@@ -120,14 +139,14 @@ const TourSingleV1Dynamic = () => {
                         <div className="text-14 text-right mr-10">
                           <div className="lh-15 fw-500">Exceptional</div>
                           <div className="lh-15 text-light-1">
-                            {car?.numberOfReviews} reviews
+                            {car?.data?.numberOfReviews} reviews
                           </div>
                         </div>
                         {/* End div */}
 
                         <div className="size-40 flex-center bg-yellow-1 rounded-4">
                           <div className="text-14 fw-600 text-dark-1">
-                            {car?.ratings}
+                            {car?.data?.ratings}
                           </div>
                         </div>
                         {/* End div */}
@@ -178,7 +197,7 @@ const TourSingleV1Dynamic = () => {
         <div className="container">
           <h3 className="text-22 fw-500 mb-20">Car Location</h3>
           <div className=" rounded-4 overflow-hidden map-500">
-            <MapPropertyFinder />
+            {/* <MapPropertyFinder /> */}
           </div>
         </div>
       </section>
@@ -271,6 +290,6 @@ const TourSingleV1Dynamic = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(TourSingleV1Dynamic), {
+export default dynamic(() => Promise.resolve(CarSingleV1Dynamic), {
   ssr: false,
 });

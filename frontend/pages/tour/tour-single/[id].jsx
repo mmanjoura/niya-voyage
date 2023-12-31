@@ -8,7 +8,7 @@ import "photoswipe/dist/photoswipe.css";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import toursData from "../../../data/tours";
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header";
+import Header from "../../../components/header/header";
 import Overview from "../../../components/tour-single/Overview";
 import TourSnapShot from "../../../components/tour-single/TourSnapShot";
 import TopBreadCrumb from "../../../components/tour-single/TopBreadCrumb";
@@ -26,6 +26,12 @@ import Itinerary from "../../../components/tour-single/itinerary";
 import ImportantInfo from "../../../components/tour-single/ImportantInfo";
 import Image from "next/image";
 
+import axios from "axios";
+import React from "react";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
+
+
 const TourSingleV1Dynamic = () => {
   const [isOpen, setOpen] = useState(false);
   const router = useRouter();
@@ -33,11 +39,19 @@ const TourSingleV1Dynamic = () => {
   const id = router.query.id;
 
   useEffect(() => {
-    if (!id) <h1>Loading...</h1>;
-    else setTour(toursData.find((item) => item.id == id));
+    if (!id) {<h1>Loading...</h1>;}
+    else 
+    {
+      axios.get(`${baseURL}/tours/${id}`).then((response) => {
+        setTour(response.data);
+      });
+     
+    }
 
     return () => {};
   }, [id]);
+  if (!tour) return null;
+console.log("Tour Single", tour.data);
 
   return (
     <>
@@ -55,7 +69,7 @@ const TourSingleV1Dynamic = () => {
       <div className="header-margin"></div>
       {/* header top margin */}
 
-      <Header11 />
+      <Header />
       {/* End Header 1 */}
 
       <TopBreadCrumb />
@@ -65,7 +79,7 @@ const TourSingleV1Dynamic = () => {
         <div className="container">
           <div className="row y-gap-20 justify-between items-end">
             <div className="col-auto">
-              <h1 className="text-30 fw-600">{tour?.title}</h1>
+              <h1 className="text-30 fw-600">{tour?.data?.title}</h1>
               <div className="row x-gap-20 y-gap-20 items-center pt-10">
                 <div className="col-auto">
                   <div className="d-flex items-center">
@@ -82,7 +96,7 @@ const TourSingleV1Dynamic = () => {
                     </div>
 
                     <div className="text-14 text-light-1 ml-10">
-                      {tour?.numberOfReviews} reviews
+                      {tour?.data?.numberOfReviews} reviews
                     </div>
                   </div>
                 </div>
@@ -93,7 +107,7 @@ const TourSingleV1Dynamic = () => {
                       <div className="d-flex x-gap-5 items-center">
                         <i className="icon-placeholder text-16 text-light-1"></i>
                         <div className="text-15 text-light-1">
-                          {tour?.location}
+                          {tour?.data?.location}
                         </div>
                       </div>
                     </div>
@@ -150,7 +164,7 @@ const TourSingleV1Dynamic = () => {
                     prevEl: ".js-img-prev",
                   }}
                 >
-                  {tour?.slideImg?.map((slide, i) => (
+                  {tour?.data?.gallery_img?.map((slide, i) => (
                     <SwiperSlide key={i}>
                       <Image
                         width={451}
@@ -166,7 +180,7 @@ const TourSingleV1Dynamic = () => {
                 </Swiper>
 
                 <Gallery>
-                  {tour?.slideImg?.map((slide, i) => (
+                  {tour?.data?.gallery_img?.map((slide, i) => (
                     <div
                       className="absolute px-10 py-10 col-12 h-full d-flex justify-end items-end z-2 bottom-0 end-0"
                       key={i}
@@ -247,7 +261,7 @@ const TourSingleV1Dynamic = () => {
       <section className="border-top-light  mt-40 pt-40">
         <div className="container">
           <h3 className="text-22 fw-500 mb-20">Itinerary</h3>
-          <Itinerary />
+          {/* <Itinerary /> */}
         </div>
       </section>
       {/* End Itinerary */}

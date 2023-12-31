@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
-const SlideGallery = ({ activity })  => {
+const SlideGallery = ( activity )  => {
   console.log("this is the activity ", activity);
   // const sliderImg = [
   //   "/img/activities/10.png",
@@ -41,22 +41,22 @@ const SlideGallery = ({ activity })  => {
             },
           }}
         >
-          {activity?.GalleryImages?.map((img, i) => (
+          {activity?.gallery_img?.map((img, i) => (
             <SwiperSlide key={i}>
               <div className="ratio ratio-64:45">
-                <img src={img.gallery_img} alt="image" className="rounded-4 img-ratio" />
+                <img src={img} alt="image" className="rounded-4 img-ratio" />
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
         <Gallery>
-          {activity?.GalleryImages?.map((slide, i) => (
+          {activity?.gallery_img?.map((slide, i) => (
             <div
               className="absolute px-10 py-10 col-12  d-flex justify-end items-end z-2 bottom-0 end-0"
               key={i}
             >
-              <Item width={451} height={450} original={slide.gallery_img} thumbnail={slide.gallery_img}>
+              <Item width={451} height={450} original={slide} thumbnail={slide}>
                 {({ ref, open }) => (
                   <div
                     className="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery"

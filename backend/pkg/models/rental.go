@@ -18,6 +18,7 @@ type Rental struct {
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:RentalID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
 	SlideImg      []string       `json:"slide_img"`
+	GalleryImg    []string       `json:"gallery_img"`
 	CreatedAt     time.Time      `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt     time.Time      `json:"updated_at" gorm:"autoUpdateTime"`
 }
@@ -37,6 +38,7 @@ type CreateRental struct {
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:RentalID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
 	SlideImg      []string       `json:"slide_img"`
+	GalleryImg    []string       `json:"gallery_img"`
 }
 
 type UpdateRental struct {
@@ -54,4 +56,5 @@ type UpdateRental struct {
 	SlideImages   []SlideImage   `json:"SlideImages" gorm:"foreignKey:RentalID"`
 	GalleryImages []GalleryImage `json:"GalleryImages" gorm:"foreignKey:HotelID"`
 	SlideImg      []string       `json:"slide_img"`
+	GalleryImg    []string       `json:"gallery_img"`
 }

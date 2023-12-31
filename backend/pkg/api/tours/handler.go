@@ -176,11 +176,31 @@ func CreateTour(c *gin.Context) {
 func FindTour(c *gin.Context) {
 	var tour models.Tour
 
-	if err := database.Database.DB.Where("id = ?", c.Param("id")).First(&tour).Error; err != nil {
+	galleryImages := []models.GalleryImage{}
+	if err := database.Database.DB.Raw(`SELECT ID,
+											tag,
+											title,
+											location,
+											duration,
+											reviews,
+											price,
+											tourType,
+											animation,
+											Created_At,
+											Updated_At
+										FROM Tours where id = ` + c.Param("id")).Scan(&tour).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "tour not found"})
 		return
 	}
 
+	if err := database.Database.DB.Find(&galleryImages, "tour_id = ?", c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "tour not found"})
+		return
+	}
+	for _, v := range galleryImages {
+		tour.GalleryImg = append(tour.GalleryImg, v.Img)
+	}
+	tour.GalleryImages = galleryImages
 	c.JSON(http.StatusOK, gin.H{"data": tour})
 }
 
