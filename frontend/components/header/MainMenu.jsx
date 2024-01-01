@@ -13,9 +13,11 @@ import {
   isActiveParentChaild,
 } from "../../utils/linkActiveChecker";
 import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const MainMenu = ({ style = "" }) => {
   const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <nav className="menu js-navList">
@@ -68,9 +70,31 @@ const MainMenu = ({ style = "" }) => {
         </li>
         {/* End Flights single menu */}
 
-
         <li className={router.pathname === "/contact" ? "current" : ""}>
           <Link href="/static/contact">Contact</Link>
+        </li>
+        <li
+          className={`${
+            pathname.split('/')[1] == 'dashboard'  || pathname.split('/')[1] == 'vendor-dashboard' ? "current" : ""
+          } menu-item-has-children`}
+        >
+          <a href="#">
+            <span className="mr-10">Admin Dashboard</span>
+            <i className="icon icon-chevron-sm-down" />
+          
+          </a>
+          <ul className="subnav ">
+            {dashboardItems.map((menu, i) => (
+              <li
+                key={i}
+                className={
+                  isActiveLink(menu.routePath, pathname) ? "current" : ""
+                }
+              >
+                <Link href={menu.routePath}>{menu.name}</Link>
+              </li>
+            ))}
+          </ul>
         </li>
       </ul>
     </nav>
