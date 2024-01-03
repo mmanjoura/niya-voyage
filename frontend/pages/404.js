@@ -8,7 +8,7 @@ import NotFound from "../components/common/NotFound";
 const index = () => {
   return (
     <>
-      <Seo pageTitle="404" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

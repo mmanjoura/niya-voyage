@@ -11,7 +11,7 @@ import CarPropertes from "../../../components/car-list/car-list-v2/CarPropertes"
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Car List v2" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

@@ -32,7 +32,7 @@ const CruiseSingleV1Dynamic = () => {
 
   return (
     <>
-      <Seo pageTitle="Cruise Single" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

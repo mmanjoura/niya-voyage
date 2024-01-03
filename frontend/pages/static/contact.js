@@ -12,7 +12,7 @@ import LocationTopBar from "../../components/common/LocationTopBar";
 const Contact = () => {
   return (
     <>
-      <Seo pageTitle="Contact" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

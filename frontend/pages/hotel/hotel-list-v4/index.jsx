@@ -11,7 +11,7 @@ import HotelProperties from "../../../components/hotel-list/hotel-list-v4/HotelP
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Hotel List v5" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

@@ -10,7 +10,7 @@ import DropdownSelelctBar from "../../../components/hotel-list/common/DropdownSe
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Hotel List v5" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

@@ -1,5 +1,5 @@
 import Seo from "../../../components/common/Seo";
-import Header11 from "../../../components/header/header";
+import Header from "../../../components/header/header";
 import DropdownSelelctBar from "../../../components/tour-list/common/DropdownSelelctBar";
 import MapPropertyFinder from "../../../components/tour-list/common/MapPropertyFinder";
 import Pagination from "../../../components/tour-list/common/Pagination";
@@ -10,13 +10,13 @@ import TourProperties from "../../../components/tour-list/tour-list-v3/TourPrope
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Tour List v3" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>
       {/* header top margin */}
 
-      <Header11 />
+      <Header />
       {/* End Header 1 */}
 
       <section className="halfMap">

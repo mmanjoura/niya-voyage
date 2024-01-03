@@ -13,10 +13,10 @@ const CategoriesMegaMenu = () => {
   const router = useRouter();
 
   const itemList = [
-    "Golfing",
+    "Activities",
     "Hiking",
-    "Kating / Surfing",
-    "Sand Boarding",
+    "Surfing",
+    "Skiing",
     
   ];
 

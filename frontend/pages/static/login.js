@@ -9,7 +9,7 @@ import LoginForm from "../../components/common/LoginForm";
 const LogIn = () => {
   return (
     <>
-      <Seo pageTitle="Login" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

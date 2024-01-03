@@ -8,7 +8,7 @@ import Link from "next/link";
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Vendor Recovery" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

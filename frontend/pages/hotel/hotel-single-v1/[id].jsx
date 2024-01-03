@@ -67,7 +67,7 @@ if (!hotel) return null;
         onClose={() => setOpen(false)}
       />
 
-      <Seo pageTitle="Hotel Single v1" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>
@@ -267,36 +267,7 @@ if (!hotel) return null;
       </section>
       {/* End Available Rooms */}
 
-      <section className="pt-40" id="reviews">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h3 className="text-22 fw-500">Guest reviews</h3>
-            </div>
-          </div>
-          {/* End .row */}
-
-          <ReviewProgress />
-          {/* End review with progress */}
-
-          <div className="pt-40">
-            <DetailsReview />
-            {/* End review with details */}
-          </div>
-
-          <div className="row pt-30">
-            <div className="col-auto">
-              <a href="#" className="button -md -outline-blue-1 text-blue-1">
-                Show all 116 reviews{" "}
-                <div className="icon-arrow-top-right ml-15"></div>
-              </a>
-            </div>
-          </div>
-          {/* End .row */}
-        </div>
-        {/* End .container */}
-        {/* End container */}
-      </section>
+ 
       {/* End Review section */}
 
       <section className="pt-40">

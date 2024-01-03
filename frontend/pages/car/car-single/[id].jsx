@@ -52,7 +52,7 @@ console.log("car/Car-single/1", car.data)
 
   return (
     <>
-      <Seo pageTitle="Car Single" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>
@@ -197,7 +197,7 @@ console.log("car/Car-single/1", car.data)
         <div className="container">
           <h3 className="text-22 fw-500 mb-20">Car Location</h3>
           <div className=" rounded-4 overflow-hidden map-500">
-            {/* <MapPropertyFinder /> */}
+            <MapPropertyFinder />
           </div>
         </div>
       </section>
@@ -229,27 +229,6 @@ console.log("car/Car-single/1", car.data)
         {/* End .container */}
       </section>
       {/* End Faq about sections */}
-
-      <section className="mt-40 border-top-light pt-40">
-        <div className="container">
-          <div className="row y-gap-40 justify-between">
-            <div className="col-xl-3">
-              <h3 className="text-22 fw-500">Guest reviews</h3>
-              <ReviewProgress2 />
-              {/* End review with progress */}
-            </div>
-            {/* End col-xl-3 */}
-
-            <div className="col-xl-8">
-              <DetailsReview2 />
-            </div>
-            {/* End col-xl-8 */}
-          </div>
-          {/* End .row */}
-        </div>
-        {/* End .container */}
-        {/* End container */}
-      </section>
       {/* End Review section */}
 
       <section className="mt-40 border-top-light pt-40 layout-pb-lg">

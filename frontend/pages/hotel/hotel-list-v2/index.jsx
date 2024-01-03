@@ -10,7 +10,7 @@ import Sidebar from "../../../components/hotel-list/hotel-list-v2/Sidebar";
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Hotel List v2" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

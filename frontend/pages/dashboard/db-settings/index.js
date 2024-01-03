@@ -7,7 +7,7 @@ import Footer from "../common/Footer";
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Settings" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

@@ -11,7 +11,7 @@ import BlogPagination from "../../components/blog/BlogPagination";
 const BlogListV2 = () => {
   return (
     <>
-      <Seo pageTitle="Blog List V2" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

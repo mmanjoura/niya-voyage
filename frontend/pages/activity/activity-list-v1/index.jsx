@@ -11,7 +11,7 @@ import Sidebar from "../../../components/activity-list/activity-list-v1/Sidebar"
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Activity List v1" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>
@@ -25,7 +25,7 @@ const index = () => {
           <div className="row">
             <div className="col-12">
               <div className="text-center">
-                <h1 className="text-30 fw-600">Activities in London</h1>
+                <h1 className="text-30 fw-600">Activities in Morocco</h1>
               </div>
               {/* End text-center */}
               <MainFilterSearchBox />

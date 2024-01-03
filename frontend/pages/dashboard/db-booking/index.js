@@ -7,7 +7,7 @@ import BookingTable from "./components/BookingTable";
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Booking History" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

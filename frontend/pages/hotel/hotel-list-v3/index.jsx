@@ -10,7 +10,7 @@ import TopHeaderFilter from "../../../components/hotel-list/hotel-list-v3/TopHea
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Hotel List v3" />
+      <Seo pageTitle="Niya Voyage3" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

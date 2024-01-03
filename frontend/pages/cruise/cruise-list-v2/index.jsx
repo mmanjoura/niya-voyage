@@ -10,7 +10,7 @@ import Sidebar from "../../../components/cruise-list/cruise-list-v2/Sidebar";
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Cruise List v2" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

@@ -120,28 +120,12 @@ export const categorieMegaMenuItems = [
         menuItems: [
           {
             id: 1,
-            title: "Golf List",
+            title: "",
             menuList: [
               {
-                name: "Assoufid Golf Club",
+                name: "Golfing",
                 routePath: "/golf/golf-list-v1",
-              },
-              {
-                name: "PalmGolf Marrakech Ourika",
-                routePath: "/golf/golf-list-v1",
-              },
-              {
-                name: "Atlas Golf Marrakech",
-                routePath: "/golf/golf-list-v1",
-              },
-              {
-                name: "Fairmont Royal Palm Golf",
-                routePath: "/golf/golf-list-v1",
-              },
-              {
-                name: "Royal Golf de Marrakech",
-                routePath: "/golf/golf-list-v1",
-              },
+              }
             ],
           }
         ],
@@ -160,7 +144,7 @@ export const categorieMegaMenuItems = [
         menuItems: [
           {
             id: 1,
-            title: "Hiking List",
+            title: "",
             menuList: [
               {
                 name: "5-Day High Atlas",
@@ -169,11 +153,7 @@ export const categorieMegaMenuItems = [
               {
                 name: "4-Day Central Atlas Discovery",
                 routePath: "/golf/golf-list-v1",
-              },
-              {
-                name: "8 Day Mt Toubkal Ascent",
-                routePath: "/golf/golf-list-v1",
-              },
+              }
             ],
           },
       
@@ -186,40 +166,25 @@ export const categorieMegaMenuItems = [
     menuCol: [
       {
         id: 1,
-        megaBanner: "/img/backgrounds/9.png",
+        megaBanner: "/img/backgrounds/new/5.png",
         title: "Things to do on your activity",
         btnText: "See Activity",
         btnRoute: "/activity/activity-list-v1",
         menuItems: [
           {
             id: 1,
-            title: "Activity List",
+            title: "",
             menuList: [
               {
-                name: "Activity List v1",
+                name: "Taghzout",
                 routePath: "/activity/activity-list-v1",
               },
               {
-                name: "Activity List v2",
+                name: "Agadir",
                 routePath: "/activity/activity-list-v2",
               },
             ],
-          },
-          {
-            id: 2,
-            title: "Activity Pages",
-            menuList: [
-              {
-                name: "Activity Map",
-                routePath: "/activity/activity-list-v3",
-              },
-              {
-                name: "Activity Single",
-                routePath: "activity-single",
-                routePath: "/activity/activity-single/3",
-              },
-            ],
-          },
+          }
         ],
       },
     ],

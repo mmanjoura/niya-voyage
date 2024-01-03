@@ -63,7 +63,7 @@ console.log("Tour Single", tour.data);
         onClose={() => setOpen(false)}
       />
 
-      <Seo pageTitle="Tour Single" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>
@@ -258,12 +258,6 @@ console.log("Tour Single", tour.data);
       </section>
       {/* End important info */}
 
-      <section className="border-top-light  mt-40 pt-40">
-        <div className="container">
-          <h3 className="text-22 fw-500 mb-20">Itinerary</h3>
-          {/* <Itinerary /> */}
-        </div>
-      </section>
       {/* End Itinerary */}
 
       <section className="mt-40">
@@ -296,26 +290,7 @@ console.log("Tour Single", tour.data);
       </section>
       {/* End Faq about sections */}
 
-      <section className="mt-40 border-top-light pt-40">
-        <div className="container">
-          <div className="row y-gap-40 justify-between">
-            <div className="col-xl-3">
-              <h3 className="text-22 fw-500">Guest reviews</h3>
-              <ReviewProgress2 />
-              {/* End review with progress */}
-            </div>
-            {/* End col-xl-3 */}
 
-            <div className="col-xl-8">
-              <DetailsReview2 />
-            </div>
-            {/* End col-xl-8 */}
-          </div>
-          {/* End .row */}
-        </div>
-        {/* End .container */}
-        {/* End container */}
-      </section>
       {/* End Review section */}
 
       <section className="mt-40 border-top-light pt-40">

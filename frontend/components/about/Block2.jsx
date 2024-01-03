@@ -32,7 +32,7 @@ const Block2 = () => {
         channel="youtube"
         autoplay
         isOpen={isOpen}
-        videoId="rDYdeq3JW_E"
+        videoId="qr8u0-iwkXI"
         onClose={() => setOpen(false)}
       />
 
@@ -40,7 +40,7 @@ const Block2 = () => {
         <Image
           width={450}
           height={350}
-          src="/img/backgrounds/10.png"
+          src="/img/backgrounds/new/10.png"
           alt="image"
         />
         <div className="absolute col-12 h-full flex-center z-1">

@@ -53,7 +53,7 @@ const HotelSingleV2Dynamic = () => {
         onClose={() => setOpen(false)}
       />
 
-      <Seo pageTitle="Hotel Single v2" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

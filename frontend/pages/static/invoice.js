@@ -5,7 +5,7 @@ import Seo from "../../components/common/Seo";
 const Invoice = () => {
   return (
     <>
-      <Seo pageTitle="Invoice" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <section className="layout-pt-lg layout-pb-lg bg-blue-2">

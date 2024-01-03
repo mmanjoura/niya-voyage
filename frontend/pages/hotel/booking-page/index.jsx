@@ -7,7 +7,7 @@ import StepperBooking from "../../../components/booking-page/stepper-booking";
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Hotel Booking Page" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

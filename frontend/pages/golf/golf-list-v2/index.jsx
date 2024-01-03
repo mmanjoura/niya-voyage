@@ -10,7 +10,7 @@ import Sidebar from "../../../components/golf-list/golf-list-v2/Sidebar";
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Tour List v2" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

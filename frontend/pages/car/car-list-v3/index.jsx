@@ -10,7 +10,7 @@ import MapPropertyFinder from "../../../components/car-list/common/MapPropertyFi
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Car List v3" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

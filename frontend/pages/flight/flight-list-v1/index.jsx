@@ -11,7 +11,7 @@ import Sidebar from "../../../components/flight-list/flight-list-v1/Sidebar";
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Flight List v1" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

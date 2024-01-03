@@ -2,16 +2,16 @@ import CallToActions from "../../../components/common/CallToActions";
 import Seo from "../../../components/common/Seo";
 import Header from "../../../components/header/header";
 import DefaultFooter from "../../../components/footer/default";
-import MainFilterSearchBox from "../../../components/golf-list/tour-golf-v1/MainFilterSearchBox";
+import MainFilterSearchBox from "../../../components/golf-list/golf-list-v1/MainFilterSearchBox";
 import TopHeaderFilter from "../../../components/golf-list/golf-list-v1/TopHeaderFilter";
-import TourProperties from "../../../components/golf-list/golf-list-v1/TourProperties";
+import GolfProperties from "../../../components/golf-list/golf-list-v1/GolfProperties";
 import Pagination from "../../../components/golf-list/common/Pagination";
 import Sidebar from "../../../components/golf-list/golf-list-v1/Sidebar";
 
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Tour List v1" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>
@@ -25,7 +25,7 @@ const index = () => {
           <div className="row">
             <div className="col-12">
               <div className="text-center">
-                <h1 className="text-30 fw-600">Tours in London</h1>
+                <h1 className="text-30 fw-600">Golfs In Morocco</h1>
               </div>
               {/* End text-center */}
               <MainFilterSearchBox />
@@ -79,7 +79,7 @@ const index = () => {
               <div className="mt-30"></div>
               {/* End mt--30 */}
               <div className="row y-gap-30">
-                <TourProperties />
+                <GolfProperties />
               </div>
               {/* End .row */}
               <Pagination />

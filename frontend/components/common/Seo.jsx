@@ -5,7 +5,7 @@ const Seo = ({ pageTitle }) => (
     <Head>
       <title>
         {pageTitle &&
-          `${pageTitle} || Niya Voyage || Best Travel Agency in Morocco || Tours || Golf || Hotels || Transfers || Activities || Events ||}`}
+          `${pageTitle}`}
       </title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>

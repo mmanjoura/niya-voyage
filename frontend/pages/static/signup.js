@@ -9,7 +9,7 @@ import SignUpForm from "../../components/common/SignUpForm";
 const SignUp = () => {
   return (
     <>
-      <Seo pageTitle="Sign Up" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

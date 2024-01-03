@@ -25,7 +25,7 @@ import Hotels from "../components/hotels/Hotels2";
 const Destinations = () => {
   return (
     <>
-      <Seo pageTitle="Destinations" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

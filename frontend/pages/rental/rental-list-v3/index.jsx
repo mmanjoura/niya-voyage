@@ -10,7 +10,7 @@ import RentalProperties from "../../../components/rental-list/rental-list-v3/Ren
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Rental List v3" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

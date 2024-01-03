@@ -10,7 +10,7 @@ import HelpBlock from "../../components/block/HelpBlock";
 const HelpCenter = () => {
   return (
     <>
-      <Seo pageTitle="Help Center" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

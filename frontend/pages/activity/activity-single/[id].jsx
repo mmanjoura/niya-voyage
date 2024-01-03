@@ -221,56 +221,6 @@ console.log("This is the activity data", activity.data);
       </section>
       {/* End Faq about sections */}
 
-      <section className="mt-40 border-top-light pt-40">
-        <div className="container">
-          <div className="row y-gap-40 justify-between">
-            <div className="col-xl-3">
-              <h3 className="text-22 fw-500">Guest reviews</h3>
-              <ReviewProgress2 />
-              {/* End review with progress */}
-            </div>
-            {/* End col-xl-3 */}
-
-            <div className="col-xl-8">
-              <DetailsReview2 />
-            </div>
-            {/* End col-xl-8 */}
-          </div>
-          {/* End .row */}
-        </div>
-        {/* End .container */}
-        {/* End container */}
-      </section>
-      {/* End Review section */}
-
-      <section className="mt-40 border-top-light pt-40">
-        <div className="container">
-          <div className="row y-gap-30 justify-between">
-            <div className="col-xl-3">
-              <div className="row">
-                <div className="col-auto">
-                  <h3 className="text-22 fw-500">Leave a Reply</h3>
-                  <p className="text-15 text-dark-1 mt-5">
-                    Your email address will not be published.
-                  </p>
-                </div>
-              </div>
-              {/* End .row */}
-
-              <ReplyFormReview2 />
-              {/* End ReplyFormReview */}
-            </div>
-            {/* End .col-xl-3 */}
-
-            <div className="col-xl-8">
-              <ReplyForm />
-            </div>
-            {/* End .col-xl-8 */}
-          </div>
-          {/* End .row */}
-        </div>
-        {/* End .container */}
-      </section>
       {/* End Reply Comment box section */}
 
       <section className="layout-pt-lg layout-pb-lg mt-50 border-top-light">

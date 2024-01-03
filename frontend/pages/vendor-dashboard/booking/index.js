@@ -8,7 +8,7 @@ import FilterBox from "./components/filter-box";
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Vendor History" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

@@ -7,7 +7,7 @@ import DefaultFooter from "../../components/footer/default";
 const UiElements = () => {
   return (
     <>
-      <Seo pageTitle="Ui Elements" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

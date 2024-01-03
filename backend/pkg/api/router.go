@@ -5,7 +5,6 @@ import (
 	"niya-voyage/backend/pkg/api/activities"
 	"niya-voyage/backend/pkg/api/addBanners"
 	"niya-voyage/backend/pkg/api/blogs"
-	"niya-voyage/backend/pkg/api/books"
 	"niya-voyage/backend/pkg/api/cars"
 	"niya-voyage/backend/pkg/api/changePasses"
 	"niya-voyage/backend/pkg/api/customers"
@@ -43,18 +42,11 @@ func InitRouter() *gin.Engine {
 	}
 	// r.Use(middleware.Cors())
 	r.Use(middleware.CORSMiddleware())
-	r.Use(middleware.RateLimiter(rate.Every(1*time.Minute), 60)) // 60 requests per minute
+	r.Use(middleware.RateLimiter(rate.Every(1*time.Minute), 600)) // 60 requests per minute
 
 	docs.SwaggerInfo.BasePath = "/api/v1"
 	v1 := r.Group("/api/v1")
 	{
-
-		v1.GET("/books", middleware.APIKeyAuth(), books.FindBooks)
-		v1.POST("/books", middleware.APIKeyAuth(), middleware.JWTAuth(), books.CreateBook)
-		v1.GET("/books/:id", middleware.APIKeyAuth(), books.FindBook)
-		v1.PUT("/books/:id", middleware.APIKeyAuth(), books.UpdateBook)
-		v1.DELETE("/books/:id", middleware.APIKeyAuth(), books.DeleteBook)
-
 		// Hotels routes
 		v1.GET("/hotels", middleware.APIKeyAuth(), hotels.FindHotels)
 		v1.POST("/hotels", middleware.APIKeyAuth(), middleware.JWTAuth(), hotels.CreateHotel)

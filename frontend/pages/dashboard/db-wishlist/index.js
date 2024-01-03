@@ -7,7 +7,7 @@ import WishlistTable from "./components/WishlistTable";
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Wishlist" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>

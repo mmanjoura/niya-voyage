@@ -10,7 +10,7 @@ import TourProperties from "../../../components/golf-list/golf-list-v3/TourPrope
 const index = () => {
   return (
     <>
-      <Seo pageTitle="golf List v3" />
+      <Seo pageTitle="Niya Voyage" />
       {/* End Page Title */}
 
       <div className="header-margin"></div>
