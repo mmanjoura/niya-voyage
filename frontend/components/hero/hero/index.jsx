@@ -14,7 +14,7 @@ const index = () => {
                 className="text-60 lg:text-40 md:text-30 text-white"
                 data-aos="fade-up"
               >
-                Discover Your World
+               Unfold Your Adventure Story with <br /> Niya Voyage
               </h1>
               <p
                 className="text-white mt-6 md:mt-10"
